@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw4gkchggdpib"]
+
+[ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
+[ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
+
+[node name="Testing" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_1jdum")]
+collision_mask = 26
+
+[node name="TileMap" parent="." instance=ExtResource("2_m7350")]
+layer_0/tile_data = PackedInt32Array(262139, 589824, 10, 262140, 655360, 10, 262141, 720896, 10, 262142, 786432, 10, 262143, 851968, 10, 196608, 917504, 10, 196609, 589824, 10, 196610, 655360, 10, 196611, 720896, 10, 196612, 786432, 10, 196613, 589824, 10, 196614, 655360, 10, 196615, 720896, 10, 196616, 786432, 10, 262145, 589824, 10, 262146, 655360, 10, 262147, 720896, 10, 262148, 786432, 10, 262149, 851968, 10, 262150, 917504, 10, 262151, 983040, 10, 262152, 1048576, 10, 196617, 851968, 10, 196618, 917504, 10, 196619, 983040, 10, 196620, 1048576, 10)
