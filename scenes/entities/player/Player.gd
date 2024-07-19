@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @onready var standy_sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer
 

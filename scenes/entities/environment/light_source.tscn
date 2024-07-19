@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3eu22l24js0b"]
+
+[ext_resource type="Script" path="res://scenes/entities/environment/light_source.gd" id="1_eft2r"]
+[ext_resource type="Texture2D" uid="uid://cgpuroa4kq3ad" path="res://assets/objects/Lantern.png" id="1_oukhp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxf4l"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjavv"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf8u5"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xji0o"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw678"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dnjg"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqxtl"]
+atlas = ExtResource("1_oukhp")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87ojf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxf4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjavv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf8u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xji0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw678")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dnjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqxtl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_32im0"]
+offsets = PackedFloat32Array(0, 0.709677)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1fpoi"]
+gradient = SubResource("Gradient_32im0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="LightSource" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_eft2r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+position = Vector2(7.62939e-06, -7.62939e-06)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_87ojf")
+autoplay = "default"
+frame_progress = 0.211253
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(8, -16)
+color = Color(1, 1, 0.45098, 1)
+energy = 3.0
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_1fpoi")
+texture_scale = 20.0
+height = 100.0

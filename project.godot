@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="PirateJam15FR"
+run/main_scene="res://scenes/testing.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SignalBus="*res://singletons/SignalBus.gd"
+
+[display]
+
+window/size/always_on_top=true
 
 [input]
 
@@ -62,6 +67,8 @@ Dash={
 
 [layer_names]
 
+2d_render/layer_1="SkyLight"
+2d_render/layer_2="SourceLight"
 2d_physics/layer_1="player"
 2d_physics/layer_2="traps"
 2d_physics/layer_3="enemies"

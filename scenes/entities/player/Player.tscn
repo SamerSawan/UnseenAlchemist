@@ -146,6 +146,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5kyyt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
 texture = ExtResource("2_hg4lv")
 hframes = 10
 vframes = 5

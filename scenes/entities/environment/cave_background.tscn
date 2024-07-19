@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjusufat4ckyy"]
+
+[ext_resource type="Texture2D" uid="uid://ddnegbx8trk0" path="res://assets/background/Backround_Cave_Exit.png" id="1_uh1ie"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = -5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_uh1ie")

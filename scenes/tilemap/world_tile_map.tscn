@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbatddp8o882r"]
+[gd_scene load_steps=9 format=3 uid="uid://bbatddp8o882r"]
 
 [ext_resource type="Texture2D" uid="uid://ouabf2y0a5wu" path="res://assets/tilemaps/ground_tileset.png" id="1_ywc4x"]
 [ext_resource type="Texture2D" uid="uid://c6tbqlk2cvykr" path="res://assets/tilemaps/ground_tileset-sheet.png" id="2_2qbfw"]
 [ext_resource type="Texture2D" uid="uid://dqqpi0g623qlq" path="res://assets/tilemaps/ground_tileset-sheet2.png" id="3_k2304"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qonvb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eqxld"]
 texture = ExtResource("1_ywc4x")
@@ -1411,6 +1413,8 @@ sources/1 = SubResource("TileSetAtlasSource_svlel")
 sources/3 = SubResource("TileSetAtlasSource_n5wt4")
 
 [node name="TileMap" type="TileMap"]
+light_mask = 2
 z_index = 1
+material = SubResource("CanvasItemMaterial_qonvb")
 tile_set = SubResource("TileSet_xttnd")
 format = 2
