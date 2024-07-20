@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://baajoxfci0h7"]
+
+[ext_resource type="Texture2D" uid="uid://vg7sdax03p6g" path="res://assets/objects/crate.png" id="1_hfoio"]
+[ext_resource type="Script" path="res://scripts/test_crate.gd" id="1_ko2oq"]
+[ext_resource type="Texture2D" uid="uid://d0cyiyvj6nl30" path="res://assets/objects/crate_s.png" id="2_i01ny"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7ebwf"]
+diffuse_texture = ExtResource("1_hfoio")
+normal_texture = ExtResource("2_i01ny")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dvcud"]
+cull_mode = 2
+polygon = PackedVector2Array(83.5, 79, -83.5, 79, -83.5, -79, 84, -80.4999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_innco"]
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d1ks"]
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m83nm"]
+size = Vector2(48, 48)
+
+[node name="TestCrate" type="Node2D"]
+script = ExtResource("1_ko2oq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
+scale = Vector2(0.285714, 0.298137)
+texture = SubResource("CanvasTexture_7ebwf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 3
+scale = Vector2(0.285714, 0.298137)
+occluder = SubResource("OccluderPolygon2D_dvcud")
+occluder_light_mask = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Left" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-28, 8)
+shape = SubResource("RectangleShape2D_innco")
+
+[node name="Right" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(28, 8)
+shape = SubResource("RectangleShape2D_7d1ks")
+
+[node name="LightDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightDetect"]
+shape = SubResource("RectangleShape2D_m83nm")
+debug_color = Color(0.443137, 0.45098, 1, 0.419608)

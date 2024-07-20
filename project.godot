@@ -22,6 +22,9 @@ SignalBus="*res://singletons/SignalBus.gd"
 [display]
 
 window/size/always_on_top=true
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -73,8 +76,9 @@ Dash={
 2d_physics/layer_2="traps"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="ladder"
-2d_physics/layer_5="deathzone"
+2d_physics/layer_5="object"
 2d_physics/layer_6="ingredient"
+2d_physics/layer_7="deathzone"
 
 [rendering]
 
