@@ -135,7 +135,7 @@ graph_offset = Vector2(15, 59)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 5
-collision_mask = 0
+collision_mask = 18
 script = ExtResource("1_5jc4u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -171,22 +171,22 @@ script = ExtResource("3_tsau4")
 [node name="TopRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -13)
 target_position = Vector2(9, 0)
-collision_mask = 2
+collision_mask = 8
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 16)
 target_position = Vector2(9, 0)
-collision_mask = 2
+collision_mask = 8
 
 [node name="TopLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -13)
 target_position = Vector2(-9, 0)
-collision_mask = 2
+collision_mask = 8
 
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 16)
 target_position = Vector2(-9, 0)
-collision_mask = 2
+collision_mask = 8
 
 [node name="ToFloor" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 7)

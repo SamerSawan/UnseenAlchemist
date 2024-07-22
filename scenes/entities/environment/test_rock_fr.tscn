@@ -15,11 +15,19 @@ polygon = PackedVector2Array(4, -19.6, 12, -15.6, 12, -11, 14.8, 1, 16, 1, 16, 3
 light_mask = 3
 position = Vector2(0, -24)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 light_mask = 3
 position = Vector2(-1.13687e-13, 0)
 scale = Vector2(0.6, 0.75)
 texture = SubResource("CanvasTexture_e1e2p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-1.13687e-13, 0)
+scale = Vector2(0.6, 0.75)
+polygon = PackedVector2Array(4, -20.6, 13, -15.6, 13, -11, 15.8, 1, 17, 1, 17, 3, 21, 6.6, 21, 11, 21.9, 22, 22.8, 22, 25, 32, -24.2, 32, -19, 23.8, -19, 20.8, -17.6, 18, -16.4, 18, -14, 15.6, -14, 11.9, -8.8, -9, -7.8, -9, -5.8, -16, -4.6, -16, -2, -20.3, -2, -22, 4, -22)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 light_mask = 3

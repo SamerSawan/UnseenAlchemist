@@ -97,7 +97,7 @@ texture_scale = 20.0
 height = 100.0
 
 [node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 256
 
 [node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_m32ew")

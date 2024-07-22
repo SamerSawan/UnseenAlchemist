@@ -75,10 +75,12 @@ Dash={
 2d_physics/layer_1="player"
 2d_physics/layer_2="traps"
 2d_physics/layer_3="enemies"
-2d_physics/layer_4="ladder"
+2d_physics/layer_4="world"
 2d_physics/layer_5="object"
 2d_physics/layer_6="ingredient"
 2d_physics/layer_7="deathzone"
+2d_physics/layer_9="lightsource"
+2d_physics/layer_10="Layer 10"
 
 [rendering]
 

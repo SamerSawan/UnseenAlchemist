@@ -1401,7 +1401,8 @@ texture = ExtResource("3_k2304")
 25:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.5, 8, 6.125, -1.125, 8, -1.25, 8, 8)
 
 [sub_resource type="TileSet" id="TileSet_xttnd"]
-physics_layer_0/collision_layer = 2
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 7
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 1"
 terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)

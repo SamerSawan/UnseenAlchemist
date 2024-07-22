@@ -7,7 +7,7 @@ var player_entered
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	cast_ray()
 
 func cast_ray(): #might just signal activate via signalbus? not sure where else this would go though
@@ -25,7 +25,7 @@ func _on_detection_area_body_entered(body):
 	if body.name == "Player": #should only apply to player
 		player_entered = true
 
-func _on_detection_area_body_exited(body):
+func _on_detection_area_body_exited(_body):
 	player_entered = false
 	
 func reset():

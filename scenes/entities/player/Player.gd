@@ -22,11 +22,12 @@ const DRAG = 2000
 var last_direction = Vector2.RIGHT
 var climbs: int = 2
 
-#mechanic
+#mechanics
 var can_dash = true
 var jump_buffer: bool = false
 var coyote_jump: bool = false
 var transparency: float
+var is_stealthed: bool = true
 #states
 var current_state = null
 var prev_state = null
@@ -45,9 +46,8 @@ func _ready():
 	prev_state = STATES.IDLE 
 	current_state = STATES.IDLE
 	
-	SignalBus.jump_buffer.connect(jump_buffer_func)
-	SignalBus.coyote_jump.connect(coyote_jump_func)
-	
+	signal_connector()
+
 func _process(_delta):
 	animation_handler()
 	
@@ -135,3 +135,14 @@ func coyote_jump_func(): #couldnt find anywhere in states, putting it here
 func _on_coyote_timer_timeout():
 	coyote_jump = false
 
+func enter_stealth(): #functions to handle stealth-unique activities
+	is_stealthed = true
+
+func exit_stealth():
+	is_stealthed = false
+
+func signal_connector():
+	SignalBus.jump_buffer.connect(jump_buffer_func)
+	SignalBus.coyote_jump.connect(coyote_jump_func)
+	SignalBus.stealth_entered.connect(enter_stealth)
+	SignalBus.stealth_exited.connect(exit_stealth)
