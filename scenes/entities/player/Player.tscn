@@ -151,20 +151,20 @@ vframes = 5
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="STATES" type="Node" parent="."]
+[node name="STATE_MACHINE" type="Node" parent="."]
 script = ExtResource("3_tsau4")
 
-[node name="IDLE" parent="STATES" instance=ExtResource("4_1wwnh")]
+[node name="IDLE" parent="STATE_MACHINE" instance=ExtResource("4_1wwnh")]
 
-[node name="MOVE" parent="STATES" instance=ExtResource("5_yne2w")]
+[node name="MOVE" parent="STATE_MACHINE" instance=ExtResource("5_yne2w")]
 
-[node name="JUMP" parent="STATES" instance=ExtResource("3_qxsd6")]
+[node name="JUMP" parent="STATE_MACHINE" instance=ExtResource("3_qxsd6")]
 
-[node name="FALL" parent="STATES" instance=ExtResource("7_lh8u6")]
+[node name="FALL" parent="STATE_MACHINE" instance=ExtResource("7_lh8u6")]
 
-[node name="DASH" parent="STATES" instance=ExtResource("8_r8y6p")]
+[node name="DASH" parent="STATE_MACHINE" instance=ExtResource("8_r8y6p")]
 
-[node name="SLIDE" parent="STATES" instance=ExtResource("9_8c52p")]
+[node name="SLIDE" parent="STATE_MACHINE" instance=ExtResource("9_8c52p")]
 
 [node name="Raycasts" type="Node2D" parent="."]
 
