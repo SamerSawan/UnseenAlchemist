@@ -75,10 +75,27 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.3001, 0.375, 0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 12, 13, 14, 15, 16, 17]
+"values": [10, 11, 12, 13, 14, 14, 15, 16, 17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_run_play_playerwalk"
+}, {
+"args": [],
+"method": &"_on_run_play_playerwalk"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jchmi"]
@@ -213,6 +230,10 @@ active = true
 parameters/conditions/is_idle = false
 parameters/conditions/is_respawning = false
 parameters/conditions/is_running = false
+
+[node name="FMODPlayerWalkSFX" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/player_walk"
+event_guid = "{3f397415-201b-4028-b831-b6f825f1ce62}"
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

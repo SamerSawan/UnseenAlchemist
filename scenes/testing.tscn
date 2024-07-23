@@ -60,3 +60,8 @@ position = Vector2(400, 24)
 
 [node name="Watcher" parent="." instance=ExtResource("9_c74pm")]
 position = Vector2(464, -40)
+
+[node name="FMODCaveAmbience1" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/cave_ambience_1"
+event_guid = "{a00812b1-5712-47b5-aa2a-84c8952f2b71}"
+autoplay = true
