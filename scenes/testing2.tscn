@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://i4rcgt7ns4f8"]
+[gd_scene load_steps=11 format=3 uid="uid://dcv5lb7b1cg7t"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_xqoc6"]
-[ext_resource type="PackedScene" uid="uid://bv7cgyjygoe2b" path="res://scenes/entities/enemies/guard.tscn" id="2_7auk3"]
+[ext_resource type="PackedScene" uid="uid://s8gie7h8k0ak" path="res://scenes/entities/enemies/guard.tscn" id="2_7auk3"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_721kw"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="3_3vesf"]
 [ext_resource type="Texture2D" uid="uid://bepkoem3prrkq" path="res://icon.svg" id="4_qgpfy"]

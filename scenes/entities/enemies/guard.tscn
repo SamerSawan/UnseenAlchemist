@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv7cgyjygoe2b"]
+[gd_scene load_steps=3 format=3 uid="uid://s8gie7h8k0ak"]
 
 [ext_resource type="Texture2D" uid="uid://dwpqtip4ofikc" path="res://assets/creatures/Guard.png" id="1_48nk8"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/State_Machine.gd" id="2_77mio"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_23h1u"]
 animations = [{
@@ -23,4 +22,3 @@ sprite_frames = SubResource("SpriteFrames_23h1u")
 polygon = PackedVector2Array(0, -14, -9, -12, -14, -3, -12, 11, -7, 12, -6, 14, -6, 18, -6, 20, -2, 20, -2, 15, 0, 13, 2, 13, 3, 15, 3, 20, 7, 20, 7, 15, 9, 12, 18, 11, 20, 10, 20, 7, 18, 5, 17, 4, 11, 4, 11, 2, 14, 1, 16, 0, 16, -2, 13, -4, 12, -12, 3, -14)
 
 [node name="State_Machine" type="Node" parent="."]
-script = ExtResource("2_77mio")
