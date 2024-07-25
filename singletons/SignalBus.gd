@@ -9,3 +9,4 @@ signal coyote_jump
 
 signal stealth_entered
 signal stealth_exited
+signal shoot_anim

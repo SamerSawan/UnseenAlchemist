@@ -146,3 +146,7 @@ func signal_connector():
 	SignalBus.coyote_jump.connect(coyote_jump_func)
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
+#	SignalBus.shoot_anim.connect(bobby) connect to advance animation to throwing
+
+func update_animation_parameters():
+	pass

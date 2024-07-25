@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/potion_thrower.gd" id="1_mb72h"]
 
-[node name="potion_thrower" type="Node2D"]
+[node name="potion_thrower" type="Node2D" groups=["potion_thrower"]]
 script = ExtResource("1_mb72h")
 
 [node name="Marker2D" type="Marker2D" parent="."]
