@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=41 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbt8rn6n0th8w" path="res://scenes/entities/player/FALL.tscn" id="7_lh8u6"]
 [ext_resource type="PackedScene" uid="uid://c87ieq1e0rmdv" path="res://scenes/entities/player/DASH.tscn" id="8_r8y6p"]
 [ext_resource type="PackedScene" uid="uid://db2qsmecwrg3x" path="res://scenes/entities/player/SLIDE.tscn" id="9_8c52p"]
+[ext_resource type="PackedScene" uid="uid://cer781hwett3f" path="res://scenes/entities/player/potion_thrower.tscn" id="10_r8rc8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -28,15 +29,10 @@ tracks/0/keys = {
 "values": [13]
 }
 
-[sub_resource type="Animation" id="Animation_h3574"]
-resource_name = "respawn"
-length = 0.5
-step = 0.05
-
-[sub_resource type="Animation" id="Animation_6si3n"]
-resource_name = "run"
-length = 0.5
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_cbwow"]
+resource_name = "death"
+length = 1.5
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,10 +40,61 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.75, 0.9, 1.05, 1.2, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [66, 67, 68, 69, 70]
+"values": [118, 119, 120, 121, 122, 123, 124, 125, 126]
+}
+
+[sub_resource type="Animation" id="Animation_cepck"]
+resource_name = "fall"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [60, 61, 62]
+}
+
+[sub_resource type="Animation" id="Animation_jgc1i"]
+resource_name = "idle"
+length = 1.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16, 17, 18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_uahk3"]
+resource_name = "jump"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [53, 54, 55, 56, 57, 58, 59]
 }
 
 [sub_resource type="Animation" id="Animation_1njqn"]
@@ -68,22 +115,21 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
-[sub_resource type="Animation" id="Animation_jgc1i"]
-resource_name = "idle"
-length = 1.8
+[sub_resource type="Animation" id="Animation_ya8ia"]
+resource_name = "potionCraft"
+length = 1.2
 loop_mode = 1
-step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 0
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [13, 14, 15, 16, 17, 18, 19, 20]
+"values": [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116]
 }
 
 [sub_resource type="Animation" id="Animation_fqsea"]
@@ -121,26 +167,15 @@ tracks/0/keys = {
 "values": [40, 41, 42]
 }
 
-[sub_resource type="Animation" id="Animation_uahk3"]
-resource_name = "jump"
-length = 0.35
+[sub_resource type="Animation" id="Animation_h3574"]
+resource_name = "respawn"
+length = 0.5
 step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [53, 54, 55, 56, 57, 58, 59]
-}
 
-[sub_resource type="Animation" id="Animation_cepck"]
-resource_name = "fall"
-length = 0.2
+[sub_resource type="Animation" id="Animation_6si3n"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -148,27 +183,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [60, 61, 62]
-}
-
-[sub_resource type="Animation" id="Animation_cbwow"]
-resource_name = "death"
-length = 1.5
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.75, 0.9, 1.05, 1.2, 1.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [118, 119, 120, 121, 122, 123, 124, 125, 126]
+"values": [66, 67, 68, 69, 70]
 }
 
 [sub_resource type="Animation" id="Animation_2mr3x"]
@@ -186,23 +204,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [79, 80, 81, 82, 83, 84, 85]
-}
-
-[sub_resource type="Animation" id="Animation_ya8ia"]
-resource_name = "potionCraft"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jchmi"]
@@ -373,6 +374,8 @@ parameters/conditions/is_idle = false
 parameters/conditions/is_jumping = false
 parameters/conditions/is_respawning = false
 parameters/conditions/is_running = false
+
+[node name="potion_thrower" parent="." instance=ExtResource("10_r8rc8")]
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
