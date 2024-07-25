@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2p5dko2gtaw3"]
+
+[ext_resource type="Script" path="res://scenes/fmod/fmod_potion_shatter_sfx.gd" id="1_8qtkr"]
+
+[node name="FmodPotionShatterSFX" type="FmodEventEmitter2D"]
+event_name = "event:/potion_shatter"
+event_guid = "{aa1121c4-be77-4889-8a76-253bde58eab2}"
+script = ExtResource("1_8qtkr")

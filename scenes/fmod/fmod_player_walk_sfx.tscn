@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://drmjso3sgdgc3"]
+
+[ext_resource type="Script" path="res://scenes/fmod/fmod_player_walk_sfx.gd" id="1_1gbg8"]
+
+[node name="FMODPlayerWalkSFX" type="FmodEventEmitter2D"]
+event_name = "event:/player_walk"
+event_guid = "{3f397415-201b-4028-b831-b6f825f1ce62}"
+script = ExtResource("1_1gbg8")

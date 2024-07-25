@@ -29,8 +29,8 @@ var coyote_jump: bool = false
 var transparency: float
 var is_stealthed: bool = true
 #states
-var current_state = null
-var prev_state = null
+var current_state : Node = null
+var prev_state : Node = null
 
 #nodes
 @onready var STATES = $STATES
@@ -146,7 +146,3 @@ func signal_connector():
 	SignalBus.coyote_jump.connect(coyote_jump_func)
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
-
-func _on_run_play_playerwalk():
-	if current_state == STATES.MOVE:
-		$FMODPlayerWalkSFX.play()

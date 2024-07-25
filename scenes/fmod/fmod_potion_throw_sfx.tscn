@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxlc66mf7tw27"]
+
+[ext_resource type="Script" path="res://scenes/fmod/fmod_potion_throw_sfx.gd" id="1_f4enp"]
+
+[node name="FMODPotionThrowSFX" type="FmodEventEmitter2D"]
+event_name = "event:/potion_throw"
+event_guid = "{8692a08c-08a4-4027-bf9a-06aed10caaf3}"
+script = ExtResource("1_f4enp")
