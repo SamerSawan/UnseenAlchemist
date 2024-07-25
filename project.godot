@@ -26,6 +26,10 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="W:/Godot/googly moogly.avi"
+
 [input]
 
 MoveRight={

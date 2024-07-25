@@ -31,7 +31,8 @@ var is_stealthed: bool = true
 #states
 var current_state = null
 var prev_state = null
-
+var new_state
+enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH}
 #nodes
 @onready var STATES = $STATES
 @onready var RAYCASTS = $Raycasts
@@ -51,7 +52,6 @@ func _ready():
 func _process(_delta):
 	animation_handler()
 	
-
 func _physics_process(delta):
 	if inputs_active:
 		player_input()
@@ -63,6 +63,10 @@ func _physics_process(delta):
 func gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity_value * delta
+
+func change_animation_state(state):
+	new_state = state
+	SignalBus.anim_state_change.emit()
 
 func change_state(input_state):
 	if input_state != null:
@@ -84,12 +88,20 @@ func get_next_to_wall():
 func animation_handler():
 	if horizontal_direction != 0: #turning
 		player_sprite.flip_h = (horizontal_direction == -1)
-	if (velocity.x != 0 && is_on_floor()):
-		animation_tree["parameters/conditions/is_idle"] = false
-		animation_tree["parameters/conditions/is_running"] = true
-	if is_on_floor() && velocity.x == 0:
-		animation_tree["parameters/conditions/is_idle"] = true
-		animation_tree["parameters/conditions/is_running"] = false
+	if new_state == WINDUP:
+		inputs_active = false
+	else:
+		inputs_active = true
+	if (new_state != WINDUP) && (new_state != THROW): #otherwise it just skips these
+		if (velocity.x != 0 && is_on_floor()):
+			change_animation_state(RUN)
+		if is_on_floor() && velocity.x == 0:
+			change_animation_state(IDLE)
+		if !is_on_floor():
+			if velocity.y < 0:
+				change_animation_state(JUMP)
+			if velocity.y > 0:
+				change_animation_state(FALL)
 		
 func player_input():
 	horizontal_direction = Input.get_axis("MoveLeft", "MoveRight") #returns -1 if first arg is pressed, else 1
@@ -146,7 +158,9 @@ func signal_connector():
 	SignalBus.coyote_jump.connect(coyote_jump_func)
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
-#	SignalBus.shoot_anim.connect(bobby) connect to advance animation to throwing
 
-func update_animation_parameters():
-	pass
+
+func _on_animation_tree_animation_finished(anim_name): #or it won't switch back to idle
+	if new_state == THROW:
+		change_animation_state(IDLE)
+	#prevent animation from getting stuck

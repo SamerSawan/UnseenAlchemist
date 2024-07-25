@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbcg3cqjrnbg5"]
+
+[ext_resource type="Texture2D" uid="uid://d3v2kd7h6jgtq" path="res://assets/player/throw_indicator.png" id="1_o5l5b"]
+[ext_resource type="Script" path="res://scripts/throw_indicator.gd" id="1_ohclm"]
+
+[node name="ThrowIndicator" type="Node2D"]
+visible = false
+script = ExtResource("1_ohclm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-10, 0)
+texture = ExtResource("1_o5l5b")
