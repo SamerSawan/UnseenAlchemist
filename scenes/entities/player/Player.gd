@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var standy_sprite = $Sprite2D
+@onready var player_sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -83,7 +83,7 @@ func get_next_to_wall():
 
 func animation_handler():
 	if horizontal_direction != 0: #turning
-		standy_sprite.flip_h = (horizontal_direction == 1)
+		player_sprite.flip_h = (horizontal_direction == -1)
 	if (velocity.x != 0 && is_on_floor()):
 		animation_tree["parameters/conditions/is_idle"] = false
 		animation_tree["parameters/conditions/is_running"] = true

@@ -31,5 +31,3 @@ func _on_detection_area_body_exited(_body):
 func reset():
 	player_entered == false
 
-
-
