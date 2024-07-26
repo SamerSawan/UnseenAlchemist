@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://pkj61idi5eya"]
+
+[ext_resource type="Resource" uid="uid://ntgqmrrsom6q" path="res://Inventory/inventoryItems/ClumpOfMoss.tres" id="1_hxxj6"]
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory.gd" id="2_xyu8f"]
+
+[resource]
+script = ExtResource("2_xyu8f")
+items = Array[Resource("res://scripts/InventoryRelated/inventory_item.gd")]([ExtResource("1_hxxj6"), null, null, ExtResource("1_hxxj6"), ExtResource("1_hxxj6"), null, ExtResource("1_hxxj6"), null, ExtResource("1_hxxj6"), null, null, null])

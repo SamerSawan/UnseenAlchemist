@@ -8,6 +8,9 @@ extends CharacterBody2D
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+#Inventory Related
+@export var inventory: Inv
+
 #player input
 var horizontal_direction: float = 0
 var vertical_direction: float = 0
