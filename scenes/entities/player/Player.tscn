@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=40 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dbt8rn6n0th8w" path="res://scenes/entities/player/FALL.tscn" id="7_lh8u6"]
 [ext_resource type="PackedScene" uid="uid://c87ieq1e0rmdv" path="res://scenes/entities/player/DASH.tscn" id="8_r8y6p"]
 [ext_resource type="PackedScene" uid="uid://db2qsmecwrg3x" path="res://scenes/entities/player/SLIDE.tscn" id="9_8c52p"]
-[ext_resource type="PackedScene" uid="uid://drmjso3sgdgc3" path="res://scenes/fmod/fmod_player_walk_sfx.tscn" id="10_l0hex"]
-[ext_resource type="PackedScene" uid="uid://bxlc66mf7tw27" path="res://scenes/fmod/fmod_potion_throw_sfx.tscn" id="11_j1usd"]
-[ext_resource type="PackedScene" uid="uid://d2p5dko2gtaw3" path="res://scenes/fmod/fmod_potion_shatter_sfx.tscn" id="12_a37fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -97,6 +94,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [53, 54, 55, 56, 57, 58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playsound_player_jump"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_1njqn"]
@@ -210,7 +221,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FMODPlayerWalkSFX")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -218,7 +229,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_play_player_walk"
+"method": &"playsound_player_walk"
 }]
 }
 
@@ -328,7 +339,7 @@ advance_mode = 2
 states/fall/node = SubResource("AnimationNodeAnimation_tk1mj")
 states/fall/position = Vector2(284, 208)
 states/idle/node = SubResource("AnimationNodeAnimation_v4mf6")
-states/idle/position = Vector2(443, 100)
+states/idle/position = Vector2(445, 100)
 states/jump/node = SubResource("AnimationNodeAnimation_6cedl")
 states/jump/position = Vector2(394, 208)
 states/respawn/node = SubResource("AnimationNodeAnimation_41qvh")
@@ -422,15 +433,27 @@ parameters/conditions/is_jumping = false
 parameters/conditions/is_respawning = false
 parameters/conditions/is_running = false
 
-[node name="FMODPlayerWalkSFX" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("10_l0hex")]
-autoplay = true
-root_node = NodePath("..")
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
 
-[node name="FMODPotionThrowSFX" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("11_j1usd")]
-root_node = NodePath("..")
+[node name="FmodPlayerWalkSFX" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/player_walk"
+event_guid = "{3f397415-201b-4028-b831-b6f825f1ce62}"
 
-[node name="FmodPotionShatterSFX" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("12_a37fp")]
-root_node = NodePath("..")
+[node name="FmodPlayerJumpSFX" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/player_jump"
+event_guid = "{2031f155-f126-4ea9-888a-6d301594e86f}"
+
+[node name="FmodPlayerLandSFX" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/player_land"
+event_guid = "{5b98ea55-1363-4d18-892b-03b5ba0acca2}"
+
+[node name="FmodPotionThrowSFX" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/potion_throw"
+event_guid = "{8692a08c-08a4-4027-bf9a-06aed10caaf3}"
+
+[node name="FmodPotionShatterSFX" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/potion_shatter"
+event_guid = "{aa1121c4-be77-4889-8a76-253bde58eab2}"
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

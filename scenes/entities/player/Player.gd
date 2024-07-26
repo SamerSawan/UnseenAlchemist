@@ -29,14 +29,13 @@ var coyote_jump: bool = false
 var transparency: float
 var is_stealthed: bool = true
 #states
-var current_state : Node = null
-var prev_state : Node = null
+var current_state = null
+var prev_state = null
 
 #nodes
 @onready var STATES = $STATES
 @onready var RAYCASTS = $Raycasts
 @onready var animation_tree = $AnimationTree
-
 
 func _ready():
 	for state in STATES.get_children():
@@ -146,3 +145,22 @@ func signal_connector():
 	SignalBus.coyote_jump.connect(coyote_jump_func)
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
+
+func playsound_player_walk():
+	if current_state == STATES.MOVE:
+		$FmodPlayerWalkSFX.play()
+	
+func playsound_player_jump():
+	if current_state == STATES.JUMP:
+		$FmodPlayerJumpSFX.play()
+	
+func playsound_player_land():
+	$FmodPlayerLandSFX.play()
+
+func playsound_potion_throw():
+	$FmodPotionThrowSFX.play()
+	
+func playsound_potion_shatter():
+	$FmodPotionShatterSFX.play()
+
+
