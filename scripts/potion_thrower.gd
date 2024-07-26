@@ -11,18 +11,20 @@ func _ready():
 	
 func _process(delta):
 	aim_potion(delta)
-	queue_redraw()
+#	queue_redraw()
 	
 func aim_potion(delta): #hold to wind up throw 
+	if Input.is_action_just_pressed("Shoot"): #to properly reset the indicator's position
+		indicator_rotator = -20*player.last_direction.x
 	if Input.is_action_pressed("Shoot") && potion_velocity.x > 0 && potion_velocity.y > -500:
-		potion_velocity.x -= (100 * delta)
+		potion_velocity.x -= (100 * delta) #decrease x velocity, increase y velocity
 		potion_velocity.y -= (100 * delta)
-		indicator_rotator += 23*delta
+		indicator_rotator -= 23*delta * player.last_direction.x #winds up while charging (guessed value)
 		player.change_animation_state(2) #code for windup
 	else:
 		shoot()
 
-#func _draw():
+#func _draw(): this is NOT happening
 #	draw_line(player.position, potion_velocity/25, Color.GREEN, 10.0)
 #	draw_arc(player.global_position,200,PI,2*PI,100,Color.GREEN,10.0)
 	
@@ -34,4 +36,3 @@ func shoot():
 		potion_container.add_child(potion_instance)
 		potion_instance.global_position = $Marker2D.global_position #spawn on player
 		potion_velocity = Vector2(400,-200) #reset initial throw speeds after every throw
-		indicator_rotator = 20

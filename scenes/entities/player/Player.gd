@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var player_sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer
+@onready var throw_indicator = $ThrowIndicator
+@onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
+@onready var spotted_eye = $SpottedEye
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,6 +31,7 @@ var jump_buffer: bool = false
 var coyote_jump: bool = false
 var transparency: float
 var is_stealthed: bool = true
+var watched: bool = false
 #states
 var current_state = null
 var prev_state = null
@@ -88,6 +92,11 @@ func get_next_to_wall():
 func animation_handler():
 	if horizontal_direction != 0: #turning
 		player_sprite.flip_h = (horizontal_direction == -1)
+		throw_indicator.scale.x = -last_direction.x
+		throw_indicator.position.x = 11*horizontal_direction
+		
+	spotted_eye.visible = watched
+	
 	if new_state == WINDUP:
 		inputs_active = false
 	else:
