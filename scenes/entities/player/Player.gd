@@ -19,8 +19,8 @@ var dash_input = false
 var inputs_active: bool = true
 
 #player movement
-const SPEED = 250.0
-const JUMP_VELOCITY = -400.0
+@export var SPEED: float = 250.0
+@export var JUMP_VELOCITY:float = -400.0
 const DRAG = 2000
 var last_direction = Vector2.RIGHT
 var climbs: int = 2
@@ -32,6 +32,7 @@ var coyote_jump: bool = false
 var transparency: float
 var is_stealthed: bool = true
 var watched: bool = false
+@export var push_force: float = 80.0
 #states
 var current_state = null
 var prev_state = null
@@ -62,7 +63,12 @@ func _physics_process(delta):
 	change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
+	box_push()
 	move_and_slide()
+#	for i in get_slide_collision_count(): #from the interwebs kind of sucks
+#		var c = get_slide_collision(i)
+#		if c.get_collider() is RigidBody2D:
+#			c.get_collider().apply_impulse(-c.get_normal() * push_force)
 
 func gravity(delta):
 	if not is_on_floor():
@@ -101,7 +107,7 @@ func animation_handler():
 		inputs_active = false
 	else:
 		inputs_active = true
-	if (new_state != WINDUP) && (new_state != THROW): #otherwise it just skips these
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
@@ -173,3 +179,13 @@ func _on_animation_tree_animation_finished(anim_name): #or it won't switch back 
 	if new_state == THROW:
 		change_animation_state(IDLE)
 	#prevent animation from getting stuck
+
+func box_push():
+	if $Raycasts/TopRight.is_colliding() && Input.is_action_pressed("MoveRight"):
+		$Raycasts/TopRight.get_collider().position.x += 1
+		change_animation_state(PUSH)
+	elif $Raycasts/TopLeft.is_colliding() && Input.is_action_pressed("MoveLeft"):
+		$Raycasts/TopLeft.get_collider().position.x -= 1
+		change_animation_state(PUSH)
+	else:
+		change_animation_state(IDLE)

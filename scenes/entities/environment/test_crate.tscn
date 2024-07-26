@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://scripts/test_crate.gd" id="1_ko2oq"]
 [ext_resource type="Texture2D" uid="uid://d0cyiyvj6nl30" path="res://assets/objects/crate_s.png" id="2_i01ny"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pevfe"]
+size = Vector2(48, 48)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_7ebwf"]
 diffuse_texture = ExtResource("1_hfoio")
 normal_texture = ExtResource("2_i01ny")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pevfe"]
-size = Vector2(48, 48)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dvcud"]
 cull_mode = 2
@@ -22,49 +22,52 @@ size = Vector2(8, 32)
 size = Vector2(8, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m83nm"]
-size = Vector2(48, 48)
+size = Vector2(48, 47)
 
-[node name="TestCrate" type="Node2D"]
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 18
+collision_mask = 9
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pevfe")
+
+[node name="TestCrate" type="Node2D" parent="."]
 script = ExtResource("1_ko2oq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="TestCrate"]
 light_mask = 3
 scale = Vector2(0.285714, 0.298137)
 texture = SubResource("CanvasTexture_7ebwf")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 18
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_pevfe")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TestCrate"]
 light_mask = 3
 scale = Vector2(0.285714, 0.298137)
 occluder = SubResource("OccluderPolygon2D_dvcud")
 occluder_light_mask = 3
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="TestCrate"]
 collision_layer = 16
 collision_mask = 0
 
-[node name="Left" type="CollisionShape2D" parent="Area2D"]
+[node name="Left" type="CollisionShape2D" parent="TestCrate/Area2D"]
 position = Vector2(-28, 8)
 shape = SubResource("RectangleShape2D_innco")
 disabled = true
 
-[node name="Right" type="CollisionShape2D" parent="Area2D"]
+[node name="Right" type="CollisionShape2D" parent="TestCrate/Area2D"]
 position = Vector2(28, 8)
 shape = SubResource("RectangleShape2D_7d1ks")
 disabled = true
 
-[node name="LightDetect" type="Area2D" parent="."]
+[node name="LightDetect" type="Area2D" parent="TestCrate"]
 collision_layer = 0
 collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LightDetect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestCrate/LightDetect"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_m83nm")
 debug_color = Color(0.443137, 0.45098, 1, 0.419608)
 
-[connection signal="area_entered" from="LightDetect" to="." method="_on_light_detect_area_entered"]
-[connection signal="area_exited" from="LightDetect" to="." method="_on_light_detect_area_exited"]
+[connection signal="area_entered" from="TestCrate/LightDetect" to="TestCrate" method="_on_light_detect_area_entered"]
+[connection signal="area_exited" from="TestCrate/LightDetect" to="TestCrate" method="_on_light_detect_area_exited"]

@@ -19,7 +19,7 @@ func determine_hitbox_enable():
 		right_hitbox.set_deferred("disabled",false)
 	if global_position.x < direction.x:
 		left_hitbox.set_deferred("disabled",false)
-		
+
 func determine_hitbox_disable():
 	if global_position.x > direction.x:
 		right_hitbox.set_deferred("disabled",true)
