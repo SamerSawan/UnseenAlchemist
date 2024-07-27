@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerAnimationTree.gd" id="10_j2100"]
 [ext_resource type="PackedScene" uid="uid://cer781hwett3f" path="res://scenes/entities/player/potion_thrower.tscn" id="10_r8rc8"]
 [ext_resource type="PackedScene" uid="uid://bbcg3cqjrnbg5" path="res://scenes/entities/player/throw_indicator.tscn" id="12_sv6en"]
-[ext_resource type="PackedScene" uid="uid://bg7gdjmlllix1" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
+[ext_resource type="PackedScene" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -430,7 +430,7 @@ script = ExtResource("3_tsau4")
 [node name="TopRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -13)
 target_position = Vector2(10, 0)
-collision_mask = 24
+collision_mask = 16
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 16)
@@ -440,7 +440,7 @@ collision_mask = 8
 [node name="TopLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -13)
 target_position = Vector2(-10, 0)
-collision_mask = 24
+collision_mask = 16
 
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 16)
