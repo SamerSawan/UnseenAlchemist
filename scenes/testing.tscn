@@ -34,7 +34,6 @@ scale = Vector2(4.82031, 3.46875)
 texture = ExtResource("5_035o4")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 color = Color(0.803922, 0.611765, 0.611765, 1)
 energy = 0.8
 blend_mode = 1

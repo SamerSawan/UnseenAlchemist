@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cer781hwett3f" path="res://scenes/entities/player/potion_thrower.tscn" id="10_r8rc8"]
 [ext_resource type="PackedScene" uid="uid://bbcg3cqjrnbg5" path="res://scenes/entities/player/throw_indicator.tscn" id="12_sv6en"]
 [ext_resource type="PackedScene" uid="uid://bg7gdjmlllix1" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
-[ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory.tscn" id="15_pa6kt"]
+[ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory/inventory.tscn" id="15_pa6kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -478,6 +478,7 @@ script = ExtResource("10_j2100")
 [node name="potion_thrower" parent="." instance=ExtResource("10_r8rc8")]
 
 [node name="ThrowIndicator" parent="." instance=ExtResource("12_sv6en")]
+visible = true
 position = Vector2(-11, -3)
 
 [node name="SpottedEye" parent="." instance=ExtResource("13_kxmew")]

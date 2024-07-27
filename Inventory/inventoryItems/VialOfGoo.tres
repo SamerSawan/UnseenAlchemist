@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cyy4wthjgp552"]
+
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory_item.gd" id="1_4nu3k"]
+[ext_resource type="Texture2D" uid="uid://lisotk2t2y5k" path="res://assets/props/potionIngredients/VialOfGoo.png" id="2_50dfn"]
+
+[resource]
+script = ExtResource("1_4nu3k")
+name = "VialOfGoo"
+texture = ExtResource("2_50dfn")
