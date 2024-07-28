@@ -161,7 +161,12 @@ func _on_jump_buffer_timeout():
 func coyote_jump_func(): #couldnt find anywhere in states, putting it here
 	$CoyoteTimer.start()
 	coyote_jump = true
-		
+
+func player_pickup_func():
+	print("asshole ballsack sucker but from player script")
+	print(SignalBus.item.name)
+	inventory.insert(SignalBus.item)
+
 func _on_coyote_timer_timeout():
 	coyote_jump = false
 
@@ -176,6 +181,7 @@ func signal_connector():
 	SignalBus.coyote_jump.connect(coyote_jump_func)
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
+	SignalBus.player_pickup.connect(player_pickup_func)
 
 
 func _on_animation_tree_animation_finished(anim_name): #or it won't switch back to idle

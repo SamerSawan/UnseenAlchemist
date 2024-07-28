@@ -1,13 +1,44 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=8 format=3 uid="uid://pkj61idi5eya"]
+[gd_resource type="Resource" script_class="Inv" load_steps=12 format=3 uid="uid://pkj61idi5eya"]
 
-[ext_resource type="Resource" uid="uid://ntgqmrrsom6q" path="res://Inventory/inventoryItems/ClumpOfMoss.tres" id="1_hxxj6"]
-[ext_resource type="Resource" uid="uid://cyy4wthjgp552" path="res://Inventory/inventoryItems/VialOfGoo.tres" id="2_q2afc"]
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory_slot.gd" id="1_6nfdi"]
 [ext_resource type="Script" path="res://scripts/InventoryRelated/inventory.gd" id="2_xyu8f"]
-[ext_resource type="Resource" uid="uid://b8ksubu0acgsh" path="res://Inventory/inventoryItems/GunpowderPouch.tres" id="3_7fofa"]
-[ext_resource type="Resource" uid="uid://g5ebqq8fg28v" path="res://Inventory/inventoryItems/MagicalBranch.tres" id="4_y0hfg"]
-[ext_resource type="Resource" uid="uid://bffhysveb4cai" path="res://Inventory/inventoryItems/DarkShroom.tres" id="5_baf6o"]
-[ext_resource type="Resource" uid="uid://bwbqv0u7s2lym" path="res://Inventory/inventoryItems/DeadMouse.tres" id="6_ae351"]
+
+[sub_resource type="Resource" id="Resource_8nwx7"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_sk1mu"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_irlbi"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_1dee5"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_pgv0r"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_j6nlr"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_vevc6"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_cj3um"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_qfxx6"]
+script = ExtResource("1_6nfdi")
+quantity = 0
 
 [resource]
 script = ExtResource("2_xyu8f")
-items = Array[Resource("res://scripts/InventoryRelated/inventory_item.gd")]([ExtResource("1_hxxj6"), ExtResource("2_q2afc"), ExtResource("3_7fofa"), ExtResource("1_hxxj6"), ExtResource("1_hxxj6"), ExtResource("4_y0hfg"), ExtResource("5_baf6o"), ExtResource("6_ae351"), ExtResource("6_ae351")])
+items = Array[ExtResource("1_6nfdi")]([SubResource("Resource_8nwx7"), SubResource("Resource_sk1mu"), SubResource("Resource_irlbi"), SubResource("Resource_1dee5"), SubResource("Resource_pgv0r"), SubResource("Resource_j6nlr"), SubResource("Resource_vevc6"), SubResource("Resource_cj3um"), SubResource("Resource_qfxx6")])

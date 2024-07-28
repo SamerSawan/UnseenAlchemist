@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4bowaeln1jh1"]
+[gd_scene load_steps=4 format=3 uid="uid://c4bowaeln1jh1"]
 
-[ext_resource type="Script" path="res://scenes/entities/player/inventory/InventorySlot.gd" id="1_n03da"]
+[ext_resource type="Script" path="res://scenes/entities/player/inventory/InventorySlotUI.gd" id="1_w7t8d"]
 [ext_resource type="Texture2D" uid="uid://bsqp63fcv2i6k" path="res://assets/ui/inventory/inventory-slot.png" id="1_xjst3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3aed"]
 
 [node name="inventorySlot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
-script = ExtResource("1_n03da")
+script = ExtResource("1_w7t8d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xjst3")
@@ -24,3 +26,15 @@ offset_bottom = 16.0
 layout_mode = 2
 
 [node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(19, 26)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 17.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+text = "99"
+label_settings = SubResource("LabelSettings_x3aed")
+horizontal_alignment = 2

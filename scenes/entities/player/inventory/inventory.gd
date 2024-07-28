@@ -1,11 +1,14 @@
 extends Control
 
+#This script controls if inventory UI is visible
+
 @onready var inventory: Inv = preload("res://Inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 var is_open = false
 
 
 func _ready():
+	SignalBus.update_inventory.connect(update_slots)
 	update_slots()
 	close()
 

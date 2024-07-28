@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=13 format=3 uid="uid://cw4gkchggdpib"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bkd6uxi25cj26" path="res://assets/props/Rock6.png" id="8_00fqs"]
 [ext_resource type="PackedScene" uid="uid://baajoxfci0h7" path="res://scenes/entities/environment/test_crate.tscn" id="8_o42l2"]
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="9_c74pm"]
+[ext_resource type="PackedScene" uid="uid://c6wjmxyt2q7nt" path="res://scenes/entities/environment/collectables/DeadMouse.tscn" id="11_vvrs8"]
+[ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="12_1tvkj"]
+[ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="13_j5ded"]
 
 [node name="Testing" type="Node2D"]
 
@@ -63,3 +66,15 @@ position = Vector2(464, -40)
 
 [node name="TestCrate3" parent="." instance=ExtResource("8_o42l2")]
 position = Vector2(420, -282)
+
+[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
+position = Vector2(-85, 39)
+
+[node name="DarkShroom2" parent="." instance=ExtResource("12_1tvkj")]
+position = Vector2(-59, 39)
+
+[node name="DeadMouse" parent="." instance=ExtResource("11_vvrs8")]
+position = Vector2(1, 37)
+
+[node name="GunpowderPouch" parent="." instance=ExtResource("13_j5ded")]
+position = Vector2(-24, 38)
