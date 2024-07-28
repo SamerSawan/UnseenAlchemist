@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=68 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://cer781hwett3f" path="res://scenes/entities/player/potion_thrower.tscn" id="10_r8rc8"]
 [ext_resource type="PackedScene" uid="uid://bbcg3cqjrnbg5" path="res://scenes/entities/player/throw_indicator.tscn" id="12_sv6en"]
 [ext_resource type="PackedScene" uid="uid://bg7gdjmlllix1" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
+[ext_resource type="PackedScene" uid="uid://bs1ed3rk410d3" path="res://scenes/sound/SoundQueue.tscn" id="14_w5etk"]
+[ext_resource type="AudioStream" uid="uid://b782od5m0606f" path="res://assets/sounds/player_walk.ogg" id="15_6b1gi"]
+[ext_resource type="AudioStream" uid="uid://cf3p3dbfyhjj" path="res://assets/sounds/potion_throw.ogg" id="16_rrhkj"]
+[ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
+[ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -98,6 +103,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [53, 54, 55, 56, 57, 58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundQueue_Jump")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.075),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_1njqn"]
@@ -191,6 +210,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [66, 67, 68, 69, 70]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundQueue_Walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2mr3x"]
 resource_name = "throw"
@@ -207,6 +240,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [83, 84, 85]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundQueue_Throw")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3b0vg"]
@@ -372,7 +419,7 @@ advance_expression = "state == JUMP"
 states/fall/node = SubResource("AnimationNodeAnimation_tk1mj")
 states/fall/position = Vector2(447, 301)
 states/idle/node = SubResource("AnimationNodeAnimation_v4mf6")
-states/idle/position = Vector2(329, 100)
+states/idle/position = Vector2(363, 95)
 states/jump/node = SubResource("AnimationNodeAnimation_6cedl")
 states/jump/position = Vector2(276, 206)
 states/push/node = SubResource("AnimationNodeAnimation_6n4n1")
@@ -419,7 +466,8 @@ script = ExtResource("3_tsau4")
 
 [node name="JUMP" parent="STATES" instance=ExtResource("3_qxsd6")]
 
-[node name="FALL" parent="STATES" instance=ExtResource("7_lh8u6")]
+[node name="FALL" parent="STATES" node_paths=PackedStringArray("SoundQueue_Land") instance=ExtResource("7_lh8u6")]
+SoundQueue_Land = NodePath("../../SoundQueue_Land")
 
 [node name="DASH" parent="STATES" instance=ExtResource("8_r8y6p")]
 
@@ -479,6 +527,33 @@ position = Vector2(-11, -3)
 
 [node name="SpottedEye" parent="." instance=ExtResource("13_kxmew")]
 position = Vector2(0, -22)
+
+[node name="SoundQueue_Walk" parent="." instance=ExtResource("14_w5etk")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Walk"]
+stream = ExtResource("15_6b1gi")
+bus = &"SFX"
+
+[node name="SoundQueue_Throw" parent="." instance=ExtResource("14_w5etk")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Throw"]
+stream = ExtResource("16_rrhkj")
+bus = &"SFX"
+
+[node name="SoundQueue_Jump" parent="." instance=ExtResource("14_w5etk")]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Jump"]
+stream = ExtResource("17_y0c4b")
+bus = &"SFX"
+
+[node name="SoundQueue_Land" parent="." instance=ExtResource("14_w5etk")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Land"]
+stream = ExtResource("18_gscrw")
+volume_db = -3.0
+pitch_scale = 0.8
+bus = &"SFX"
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
