@@ -26,7 +26,6 @@ func _ready():
 
 func on_door_interact():
 	if next_level != null:
-		AudioPlayer.cave_id = cave_id
 		get_tree().change_scene_to_file(next_level)
 	else:
 		pass
