@@ -10,6 +10,24 @@ extends Control
 @onready var strength_potion_recipe = $NinePatchRect/GridContainer/StrengthPotionRecipe
 
 var item : InventoryItem
+var is_open = false
+
+func _process(delta):
+	if Input.is_action_just_pressed("OpenCrafting"):
+		if is_open:
+			close()
+		else:
+			open()
+
+func close():
+	visible = false
+	is_open = false
+
+func open():
+	visible = true
+	is_open = true
+
+
 
 func _on_strength_potion_recipe_button_down():
 	dash_potion_recipe.button_pressed = false
