@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=69 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
@@ -17,6 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory/inventory.tscn" id="15_pa6kt"]
 [ext_resource type="PackedScene" uid="uid://cs1hpgf26oh3h" path="res://scenes/entities/player/inventory/craftingMenu.tscn" id="16_4k25x"]
 [ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="17_3dkai"]
+[ext_resource type="PackedScene" uid="uid://bs1ed3rk410d3" path="res://scenes/sound/SoundQueue.tscn" id="14_w5etk"]
+[ext_resource type="AudioStream" uid="uid://b782od5m0606f" path="res://assets/sounds/player_walk.ogg" id="15_6b1gi"]
+[ext_resource type="AudioStream" uid="uid://cf3p3dbfyhjj" path="res://assets/sounds/potion_throw.ogg" id="16_rrhkj"]
+[ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
+[ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -102,6 +107,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [53, 54, 55, 56, 57, 58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundQueue_Jump")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.075),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_1njqn"]
@@ -195,6 +214,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [66, 67, 68, 69, 70]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundQueue_Walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2mr3x"]
 resource_name = "throw"
@@ -211,6 +244,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [83, 84, 85]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundQueue_Throw")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3b0vg"]
@@ -372,11 +419,15 @@ advance_expression = "state == PUSH"
 advance_mode = 2
 advance_expression = "state == JUMP"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rx7xf"]
+advance_mode = 2
+advance_expression = "state == IDLE"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1o03s"]
 states/fall/node = SubResource("AnimationNodeAnimation_tk1mj")
 states/fall/position = Vector2(447, 301)
 states/idle/node = SubResource("AnimationNodeAnimation_v4mf6")
-states/idle/position = Vector2(329, 100)
+states/idle/position = Vector2(363, 95)
 states/jump/node = SubResource("AnimationNodeAnimation_6cedl")
 states/jump/position = Vector2(276, 206)
 states/push/node = SubResource("AnimationNodeAnimation_6n4n1")
@@ -389,12 +440,12 @@ states/throw/node = SubResource("AnimationNodeAnimation_qgg2w")
 states/throw/position = Vector2(807, 153)
 states/windup/node = SubResource("AnimationNodeAnimation_xj810")
 states/windup/position = Vector2(807, 259)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_47qey"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_bw7lu"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_fxgf3"), "idle", "respawn", SubResource("AnimationNodeStateMachineTransition_62wcy"), "run", "respawn", SubResource("AnimationNodeStateMachineTransition_y2uql"), "respawn", "idle", SubResource("AnimationNodeStateMachineTransition_gn0js"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_ilwtg"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_akyst"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_fdnik"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_n4stb"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_d8q4c"), "throw", "idle", SubResource("AnimationNodeStateMachineTransition_7hcdy"), "windup", "throw", SubResource("AnimationNodeStateMachineTransition_vyssx"), "idle", "windup", SubResource("AnimationNodeStateMachineTransition_ktvw7"), "run", "windup", SubResource("AnimationNodeStateMachineTransition_lge5s"), "jump", "windup", SubResource("AnimationNodeStateMachineTransition_yprd7"), "fall", "windup", SubResource("AnimationNodeStateMachineTransition_xsy5d"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_jh434"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_t7seg"), "idle", "push", SubResource("AnimationNodeStateMachineTransition_g32oo"), "push", "idle", SubResource("AnimationNodeStateMachineTransition_df4to"), "run", "push", SubResource("AnimationNodeStateMachineTransition_w1y4w"), "push", "run", SubResource("AnimationNodeStateMachineTransition_akrdc"), "fall", "push", SubResource("AnimationNodeStateMachineTransition_850k8"), "push", "jump", SubResource("AnimationNodeStateMachineTransition_pvekg")]
-graph_offset = Vector2(39, -55.5365)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_47qey"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_bw7lu"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_fxgf3"), "idle", "respawn", SubResource("AnimationNodeStateMachineTransition_62wcy"), "run", "respawn", SubResource("AnimationNodeStateMachineTransition_y2uql"), "respawn", "idle", SubResource("AnimationNodeStateMachineTransition_gn0js"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_ilwtg"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_akyst"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_fdnik"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_n4stb"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_d8q4c"), "throw", "idle", SubResource("AnimationNodeStateMachineTransition_7hcdy"), "windup", "throw", SubResource("AnimationNodeStateMachineTransition_vyssx"), "idle", "windup", SubResource("AnimationNodeStateMachineTransition_ktvw7"), "run", "windup", SubResource("AnimationNodeStateMachineTransition_lge5s"), "jump", "windup", SubResource("AnimationNodeStateMachineTransition_yprd7"), "fall", "windup", SubResource("AnimationNodeStateMachineTransition_xsy5d"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_jh434"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_t7seg"), "idle", "push", SubResource("AnimationNodeStateMachineTransition_g32oo"), "push", "idle", SubResource("AnimationNodeStateMachineTransition_df4to"), "run", "push", SubResource("AnimationNodeStateMachineTransition_w1y4w"), "push", "run", SubResource("AnimationNodeStateMachineTransition_akrdc"), "fall", "push", SubResource("AnimationNodeStateMachineTransition_850k8"), "push", "jump", SubResource("AnimationNodeStateMachineTransition_pvekg"), "windup", "idle", SubResource("AnimationNodeStateMachineTransition_rx7xf")]
+graph_offset = Vector2(-43, 61.4635)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 5
-collision_mask = 18
+collision_mask = 26
 script = ExtResource("1_5jc4u")
 inventory = ExtResource("2_cjjn4")
 SPEED = 200.0
@@ -413,7 +464,7 @@ vframes = 10
 frame = 13
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="STATES" type="Node" parent="."]
 script = ExtResource("3_tsau4")
@@ -424,7 +475,8 @@ script = ExtResource("3_tsau4")
 
 [node name="JUMP" parent="STATES" instance=ExtResource("3_qxsd6")]
 
-[node name="FALL" parent="STATES" instance=ExtResource("7_lh8u6")]
+[node name="FALL" parent="STATES" node_paths=PackedStringArray("SoundQueue_Land") instance=ExtResource("7_lh8u6")]
+SoundQueue_Land = NodePath("../../SoundQueue_Land")
 
 [node name="DASH" parent="STATES" instance=ExtResource("8_r8y6p")]
 
@@ -435,7 +487,7 @@ script = ExtResource("3_tsau4")
 [node name="TopRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -13)
 target_position = Vector2(10, 0)
-collision_mask = 24
+collision_mask = 16
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 16)
@@ -445,7 +497,7 @@ collision_mask = 8
 [node name="TopLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -13)
 target_position = Vector2(-10, 0)
-collision_mask = 24
+collision_mask = 16
 
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 16)
@@ -486,6 +538,7 @@ position = Vector2(-11, -3)
 [node name="SpottedEye" parent="." instance=ExtResource("13_kxmew")]
 position = Vector2(0, -22)
 
+
 [node name="Inventory" parent="." instance=ExtResource("15_pa6kt")]
 offset_left = 14.0
 offset_top = -58.0
@@ -503,6 +556,32 @@ offset_left = -107.0
 offset_top = 95.0
 offset_right = -107.0
 offset_bottom = 95.0
+[node name="SoundQueue_Walk" parent="." instance=ExtResource("14_w5etk")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Walk"]
+stream = ExtResource("15_6b1gi")
+bus = &"SFX"
+
+[node name="SoundQueue_Throw" parent="." instance=ExtResource("14_w5etk")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Throw"]
+stream = ExtResource("16_rrhkj")
+bus = &"SFX"
+
+[node name="SoundQueue_Jump" parent="." instance=ExtResource("14_w5etk")]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Jump"]
+stream = ExtResource("17_y0c4b")
+bus = &"SFX"
+
+[node name="SoundQueue_Land" parent="." instance=ExtResource("14_w5etk")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundQueue_Land"]
+stream = ExtResource("18_gscrw")
+volume_db = -3.0
+pitch_scale = 0.8
+bus = &"SFX"
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

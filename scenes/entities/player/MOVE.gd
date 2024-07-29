@@ -13,5 +13,6 @@ func update(delta):
 	if Player.dash_input and Player.can_dash:
 		return STATES.DASH
 	return null
+	
 func enter_state():
 	Player.can_dash = true
