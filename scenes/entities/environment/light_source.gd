@@ -9,7 +9,7 @@ func _ready():
 	
 func _physics_process(_delta):
 	cast_ray()
-
+#as is, tags hits if the player is in the area, and behind a box relative to the light
 func cast_ray(): #might just signal activate via signalbus? not sure where else this would go though
 	if player_entered == true:
 		player_position = player.global_position

@@ -6,16 +6,16 @@ extends CharacterBody2D
 @onready var HoleRaycast = $Raycasts/HoleDetect
 
 var speed: float = 2500.0
-@export var patrol_speed = 200.0
+@export var patrol_speed = 2500.0
 @export var chase_speed = 8000.0
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player_spotted: bool = false
 
 var direction
-var current_destination
-var current_patrol_point: Sprite2D
-var last_patrol_point
+var current_destination: Vector2
+var current_patrol_point: Vector2
+var last_patrol_point: Vector2
 var player
 #"states"
 var is_idle: bool = false
@@ -26,9 +26,9 @@ func _ready():
 	patrol_points_setter()
 #	$PP1.visible = false uncomment after testing to hide patrol points
 #	$PP2.visible = false
-	current_patrol_point = Patrol2
+	current_patrol_point = Patrol2.position
 	current_destination = current_patrol_point
-	direction = position.direction_to(current_destination.position)
+	direction = position.direction_to(current_destination)
 	
 func _physics_process(delta):
 	flip_sprite()
@@ -65,15 +65,15 @@ func chase():
 func _on_pp_2_area_body_entered(body):
 	if body == self && !is_chasing:
 		idle()
-		current_destination = Patrol1
-		direction = position.direction_to(current_destination.position)
+		current_destination = Patrol1.position
+		direction = position.direction_to(current_destination)
 
 
 func _on_pp_1_area_body_entered(body):
 	if body == self && !is_chasing:
 		idle()
-		current_destination = Patrol2
-		direction = position.direction_to(current_destination.position)
+		current_destination = Patrol2.position
+		direction = position.direction_to(current_destination)
 
 func move(delta):
 	if !is_idle && HoleRaycast.is_colliding():
@@ -89,7 +89,8 @@ func _on_idle_timer_timeout(): #to make him idle at patrol points
 	is_idle = false
 
 func spotted_player(body): #on area body entered
-	if body == player:
+	if body == player && !player.is_stealthed: #check stealth
+		$LoseAggroTimer.stop() #this WONT trigger the timeout effect, but will reset timer
 		last_patrol_point = current_destination
 		is_chasing = true
 		print("HOLY FUCKAMOLEY!!!!")
@@ -99,7 +100,8 @@ func lose_aggro(body): #on area body exited
 
 func _on_lose_aggro_timer_timeout(): #stop chasing if LOS broken for too long
 	is_chasing = false
-	direction = position.direction_to(last_patrol_point.position)
+	direction = position.direction_to(last_patrol_point)
+	speed = patrol_speed
 	
 func patrol_points_setter(): #this broke for no reason so here's a function
 	var PP1globalP = $PP1.global_position

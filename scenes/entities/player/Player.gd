@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var anim_player = $AnimationPlayer
 @onready var throw_indicator = $ThrowIndicator
 @onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
-@onready var spotted_eye = $SpottedEye
+@onready var spotted_eye = $SpottedEye/Spotted
+@onready var stealth_eye = $SpottedEye/Stealthed
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -105,6 +106,7 @@ func animation_handler():
 		throw_indicator.position.x = 11*horizontal_direction
 		
 	spotted_eye.visible = watched
+	stealth_eye.visible != spotted_eye.visible #should be one or the other
 	
 	if new_state == WINDUP:
 		inputs_active = false
@@ -120,7 +122,8 @@ func animation_handler():
 				change_animation_state(JUMP)
 			if velocity.y > 0:
 				change_animation_state(FALL)
-		
+	running_particles()
+
 func player_input():
 	horizontal_direction = Input.get_axis("MoveLeft", "MoveRight") #returns -1 if first arg is pressed, else 1
 	vertical_direction = Input.get_axis("MoveDown", "MoveUp")
@@ -197,3 +200,9 @@ func box_push():
 		change_animation_state(PUSH)
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
+
+func running_particles(): #might remove if its costing too much cpu power
+	if is_on_floor() && velocity.x != 0:
+		$RunningParticles.emitting = true
+	else:
+		$RunningParticles.emitting = false
