@@ -11,7 +11,6 @@ func _ready():
 	
 func _process(delta):
 	aim_potion(delta)
-	print(player.new_state)
 #	queue_redraw()
 	#had to rearrange a lot of code below to get cancelling to work
 func aim_potion(delta): #hold to wind up throw 

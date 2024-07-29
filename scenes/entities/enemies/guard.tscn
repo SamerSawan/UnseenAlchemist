@@ -15,7 +15,7 @@ radius = 5.0
 size = Vector2(36, 51)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahilb"]
-radius = 247.002
+radius = 136.0
 
 [node name="Guard" type="CharacterBody2D"]
 z_index = 2
@@ -38,7 +38,7 @@ script = ExtResource("3_bkiug")
 [node name="Raycasts" type="Node2D" parent="."]
 
 [node name="WallDetect" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 12)
+position = Vector2(0, 25)
 target_position = Vector2(32, 0)
 collision_mask = 8
 
@@ -52,7 +52,6 @@ root_node = NodePath("../Sprite2D")
 
 [node name="PP1" type="Sprite2D" parent="."]
 self_modulate = Color(0, 1, 0.0156863, 1)
-position = Vector2(-79, 0)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_2dh8h")
 
@@ -66,7 +65,6 @@ shape = SubResource("CircleShape2D_knr3v")
 
 [node name="PP2" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
-position = Vector2(106, 0)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_2dh8h")
 
@@ -85,6 +83,10 @@ one_shot = true
 [node name="GapJumpCD" type="Timer" parent="."]
 one_shot = true
 
+[node name="LoseAggroTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_l44av")
@@ -94,8 +96,10 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_ahilb")
-disabled = true
 
 [connection signal="body_entered" from="PP1/PP1Area" to="." method="_on_pp_1_area_body_entered"]
 [connection signal="body_entered" from="PP2/PP2Area" to="." method="_on_pp_2_area_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="LoseAggroTimer" to="." method="_on_lose_aggro_timer_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="." method="spotted_player"]
+[connection signal="body_exited" from="DetectionArea" to="." method="lose_aggro"]
