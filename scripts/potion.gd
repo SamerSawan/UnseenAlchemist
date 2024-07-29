@@ -4,6 +4,7 @@ var currentPotion : String
 @onready var sprite_2d = $Sprite2D
 var potion_parent
 var smoke = preload("res://scenes/entities/environment/Potions/smoke.tscn")
+var sleep = preload("res://scenes/entities/environment/Potions/sleep.tscn")
 
 func _ready():
 	potion_parent = get_tree().get_first_node_in_group("potion_thrower")
@@ -44,7 +45,6 @@ func _on_area_2d_body_entered(body):
 			"StatuePotion":
 				pass
 			"SmokePotion":
-				
 				var smoke_instance = smoke.instantiate()
 				potion_parent.potion_container.call_deferred("add_child", smoke_instance)
 				smoke_instance.global_position = global_position
@@ -55,6 +55,8 @@ func _on_area_2d_body_entered(body):
 			"DashPotion":
 				pass
 			"SleepPotion":
-				pass
+				var sleep_instance = sleep.instantiate()
+				potion_parent.potion_container.call_deferred("add_child", sleep_instance)
+				sleep_instance.global_position = global_position
 	queue_free() 
 	

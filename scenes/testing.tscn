@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=19 format=3 uid="uid://cw4gkchggdpib"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
@@ -16,7 +16,8 @@
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="12_rk3rv"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="13_6twty"]
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="13_j5ded"]
-[ext_resource type="PackedScene" uid="uid://d2wscv24iru04" path="res://scenes/entities/environment/Potions/smoke.tscn" id="17_11e6k"]
+[ext_resource type="PackedScene" uid="uid://be46oejergnpw" path="res://scenes/entities/environment/collectables/VialOfGoo.tscn" id="13_xr7ts"]
+[ext_resource type="PackedScene" uid="uid://dttbldav6svgj" path="res://scenes/entities/environment/collectables/ClumpOfMoss.tscn" id="14_8l527"]
 
 [node name="Testing" type="Node2D"]
 
@@ -75,17 +76,25 @@ position = Vector2(464, -40)
 [node name="TestCrate3" parent="." instance=ExtResource("8_o42l2")]
 position = Vector2(420, -282)
 
-[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
+[node name="Ingredients" type="Node" parent="."]
+
+[node name="DarkShroom" parent="Ingredients" instance=ExtResource("12_1tvkj")]
 position = Vector2(-85, 39)
 
-[node name="DarkShroom2" parent="." instance=ExtResource("12_1tvkj")]
+[node name="DarkShroom2" parent="Ingredients" instance=ExtResource("12_1tvkj")]
 position = Vector2(-59, 39)
 
-[node name="DeadMouse" parent="." instance=ExtResource("11_vvrs8")]
+[node name="DeadMouse" parent="Ingredients" instance=ExtResource("11_vvrs8")]
 position = Vector2(1, 37)
 
-[node name="GunpowderPouch" parent="." instance=ExtResource("13_j5ded")]
+[node name="GunpowderPouch" parent="Ingredients" instance=ExtResource("13_j5ded")]
 position = Vector2(-24, 38)
+
+[node name="VialOfGoo" parent="Ingredients" instance=ExtResource("13_xr7ts")]
+position = Vector2(31, 38)
+
+[node name="ClumpOfMoss" parent="Ingredients" instance=ExtResource("14_8l527")]
+position = Vector2(52, 37)
 
 [node name="SoundManager" parent="." instance=ExtResource("10_52htw")]
 
@@ -98,7 +107,3 @@ volume_db = -10.0
 pitch_scale = 0.8
 autoplay = true
 bus = &"Ambience"
-
-[node name="Smoke" parent="." instance=ExtResource("17_11e6k")]
-z_index = 5
-position = Vector2(38, 25)

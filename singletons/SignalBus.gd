@@ -22,3 +22,8 @@ signal potion_changed
 signal potion_crafted
 var item
 var equipped_potion
+
+
+#potion effects
+signal is_slept
+signal is_awake
