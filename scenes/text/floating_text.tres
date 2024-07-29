@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://del6w51wv8dxs"]
+
+[ext_resource type="StyleBox" uid="uid://bx525f64lullx" path="res://scenes/text/style_box_flat_1.tres" id="1_hw6mu"]
+[ext_resource type="FontFile" uid="uid://b537mpgf1sy3b" path="res://assets/fonts/alagard.ttf" id="2_g18xi"]
+
+[resource]
+default_font = ExtResource("2_g18xi")
+Button/colors/font_focus_color = Color(0.94902, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.94902, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.627451, 0, 0, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 22
+Button/styles/normal = ExtResource("1_hw6mu")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(1, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0.627451, 0, 0, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/constants/shadow_outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 16

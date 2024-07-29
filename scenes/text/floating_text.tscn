@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq4821dkspwhi"]
+[gd_scene load_steps=3 format=3 uid="uid://bq4821dkspwhi"]
 
-[ext_resource type="FontFile" uid="uid://duk2ada0nbhmh" path="res://assets/fonts/Daydream.ttf" id="1_2pb0d"]
-
-[sub_resource type="Theme" id="Theme_akv3a"]
-default_font = ExtResource("1_2pb0d")
-default_font_size = 12
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="1_g7d3r"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_huqcj"]
 
@@ -16,7 +12,7 @@ offset_left = 113.0
 offset_top = -42.0
 offset_right = 315.0
 offset_bottom = 7.0
-theme = SubResource("Theme_akv3a")
+theme = ExtResource("1_g7d3r")
 theme_override_colors/font_shadow_color = Color(0.470588, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 4

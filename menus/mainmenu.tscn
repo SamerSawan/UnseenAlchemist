@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmhar6jccqpy8"]
+
+[ext_resource type="Script" path="res://menus/mainmenu.gd" id="1_sdj0e"]
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="2_p5iqj"]
+
+[node name="mainmenu" type="Control" node_paths=PackedStringArray("startbutton", "optionsbutton", "quitbutton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sdj0e")
+startbutton = NodePath("VBoxContainer/StartButton")
+optionsbutton = NodePath("VBoxContainer/OptionsButton")
+quitbutton = NodePath("VBoxContainer/QuitButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -136.0
+offset_right = 192.0
+offset_bottom = -26.0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme = ExtResource("2_p5iqj")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_p5iqj")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+theme = ExtResource("2_p5iqj")
+text = "Quit"
