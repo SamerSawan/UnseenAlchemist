@@ -78,19 +78,6 @@ pitch_scale = 0.8
 autoplay = true
 bus = &"Ambience"
 
-[node name="Guard" parent="." instance=ExtResource("10_4jism")]
-position = Vector2(2626, 42)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
-[node name="Guard2" parent="." instance=ExtResource("10_4jism")]
-position = Vector2(2705, 49)
-rotation = -1.61024
-
-[node name="Guard3" parent="." instance=ExtResource("10_4jism")]
-position = Vector2(2788, 54)
-rotation = 1.63454
-
 [node name="CaveDoor" parent="." instance=ExtResource("11_rpxe0")]
 z_index = -20
 position = Vector2(1404, -48)
@@ -323,5 +310,8 @@ text = "[center]While in [color=green]stealth[/color],
 [color=magenta]you[/color] are [color=green]unseen[/color].
  Sneak past the guard.[/center]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
+
+[node name="Guard" parent="." instance=ExtResource("10_4jism")]
+position = Vector2(2582, 32)
 
 [editable path="LightSource5"]
