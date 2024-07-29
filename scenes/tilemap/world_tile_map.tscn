@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbatddp8o882r"]
+[gd_scene load_steps=10 format=3 uid="uid://bbatddp8o882r"]
 
 [ext_resource type="Texture2D" uid="uid://ouabf2y0a5wu" path="res://assets/tilemaps/ground_tileset.png" id="1_ywc4x"]
 [ext_resource type="Texture2D" uid="uid://c6tbqlk2cvykr" path="res://assets/tilemaps/ground_tileset-sheet.png" id="2_2qbfw"]
 [ext_resource type="Texture2D" uid="uid://dqqpi0g623qlq" path="res://assets/tilemaps/ground_tileset-sheet2.png" id="3_k2304"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qonvb"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uinch"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eqxld"]
 texture = ExtResource("1_ywc4x")
@@ -272,6 +277,7 @@ texture = ExtResource("1_ywc4x")
 0:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:10/0/physics_layer_0/angular_velocity = 0.0
 0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+0:10/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_uinch")
 2:10/0 = 0
 2:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:10/0/physics_layer_0/angular_velocity = 0.0
@@ -1409,6 +1415,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Terrain 0"
 terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_eqxld")
 sources/1 = SubResource("TileSetAtlasSource_svlel")
 sources/3 = SubResource("TileSetAtlasSource_n5wt4")
