@@ -6,7 +6,7 @@ extends Control
 
 func _ready():
 	startbutton.pressed.connect(_on_start_button_pressed)
-	optionsbutton.pressed.connect(_on_options_button_pressed)
+	#optionsbutton.pressed.connect(_on_options_button_pressed)
 	quitbutton.pressed.connect(_on_quit_button_pressed)
 	
 	startbutton.grab_focus() # for keyboard

@@ -2,7 +2,7 @@ extends Node2D
 
 #attach a text node to this and it will fade in and out
 
-@export var text : Node
+@export var text : RichTextLabel
 @export var max_distance : float = 300.0
 @export var fade_speed: float = 1.0
 

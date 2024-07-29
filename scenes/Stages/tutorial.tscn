@@ -251,15 +251,16 @@ position = Vector2(253, 5)
 text = NodePath("../WASDText")
 
 [node name="WASDText" type="RichTextLabel" parent="Text"]
+z_index = 10
 anchors_preset = -1
 anchor_left = -0.125868
-anchor_top = -0.0555555
-anchor_right = -0.125868
-anchor_bottom = -0.0555555
-offset_left = 277.0
-offset_top = 4.99997
-offset_right = 479.0
-offset_bottom = 54.0
+anchor_top = -0.112654
+anchor_right = -0.122396
+anchor_bottom = -0.112654
+offset_left = 294.0
+offset_top = 29.0
+offset_right = 496.0
+offset_bottom = 78.0
 theme = ExtResource("14_3tiwf")
 theme_override_colors/font_shadow_color = Color(0.470588, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -276,6 +277,7 @@ position = Vector2(1182, -38)
 text = NodePath("../PushText")
 
 [node name="PushText" type="RichTextLabel" parent="Text"]
+z_index = 10
 anchors_preset = -1
 anchor_left = -0.144097
 anchor_top = -0.300926
@@ -300,6 +302,7 @@ position = Vector2(2278, 21)
 text = NodePath("../PushText")
 
 [node name="DarknessSneakText" type="RichTextLabel" parent="Text"]
+z_index = 10
 anchors_preset = -1
 anchor_left = -0.0407986
 anchor_right = -0.0407986
