@@ -16,8 +16,9 @@ func _physics_process(_delta):
 	player_detection()
 
 func fell_asleep():
-	animated_sprite_2d.play("sleep")
-	player.watched = false
+	if is_sleep:
+		animated_sprite_2d.play("sleep")
+		player.watched = false
 
 func woke_up():
 	animated_sprite_2d.play("idle")

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var Patrol2 = $"PP2"
 @onready var WallRaycast = $Raycasts/WallDetect
 @onready var HoleRaycast = $Raycasts/HoleDetect
+var is_sleep = false
 
 var speed: float = 2500.0
 @export var patrol_speed = 200.0
@@ -29,6 +30,8 @@ func _ready():
 	current_patrol_point = Patrol2
 	current_destination = current_patrol_point
 	direction = position.direction_to(current_destination.position)
+	SignalBus.is_slept.connect(fell_asleep)
+	SignalBus.is_awake.connect(woke_up)
 	
 func _physics_process(delta):
 	flip_sprite()
@@ -38,7 +41,15 @@ func _physics_process(delta):
 	
 	chase()
 	move_and_slide()
-	
+
+func fell_asleep():
+	if is_sleep:
+		player.watched = false
+		is_chasing = false
+
+func woke_up():
+	pass
+
 func gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity_value * delta
