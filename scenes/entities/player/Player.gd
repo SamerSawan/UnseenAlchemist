@@ -187,5 +187,5 @@ func box_push():
 	elif $Raycasts/TopLeft.is_colliding() && Input.is_action_pressed("MoveLeft"):
 		$Raycasts/TopLeft.get_collider().position.x -= 1
 		change_animation_state(PUSH)
-	else:
+	elif new_state != WINDUP:
 		change_animation_state(IDLE)

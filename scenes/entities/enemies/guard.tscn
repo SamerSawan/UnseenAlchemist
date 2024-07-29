@@ -44,7 +44,7 @@ collision_mask = 8
 
 [node name="HoleDetect" type="RayCast2D" parent="Raycasts"]
 position = Vector2(14, 18)
-target_position = Vector2(0, 68)
+target_position = Vector2(0, 80)
 collision_mask = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

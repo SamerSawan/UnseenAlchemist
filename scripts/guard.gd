@@ -23,6 +23,8 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	$PP1.top_level = true #stop the patrol points
 	$PP2.top_level = true #from moving with parent
+#	$PP1.visible = false uncomment after testing to hide patrol points
+#	$PP2.visible = false
 	current_patrol_point = Patrol2
 	current_destination = current_patrol_point
 	direction = position.direction_to(current_destination.position)
@@ -49,7 +51,7 @@ func raycast_business(): #jump over cliffs
 	if !HoleRaycast.is_colliding() && $GapJumpCD.is_stopped():
 		$GapJumpCD.start()
 		velocity.y -= 200
-		velocity.x += 200
+		velocity.x += 200*(round(direction.x))
 
 func spotted_player():
 	player_spotted = true
@@ -78,5 +80,6 @@ func flip_sprite():
 	if !is_idle:
 		$Sprite2D.flip_h = (round(direction.x) == -1)
 		WallRaycast.target_position.x = 32*(round(direction.x))
+		HoleRaycast.position.x = 14*(round(direction.x))
 func _on_idle_timer_timeout():
 	is_idle = false
