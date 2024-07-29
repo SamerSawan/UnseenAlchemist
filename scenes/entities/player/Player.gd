@@ -163,7 +163,6 @@ func coyote_jump_func(): #couldnt find anywhere in states, putting it here
 	coyote_jump = true
 
 func player_pickup_func():
-	print("asshole ballsack sucker but from player script")
 	print(SignalBus.item.name)
 	inventory.insert(SignalBus.item)
 

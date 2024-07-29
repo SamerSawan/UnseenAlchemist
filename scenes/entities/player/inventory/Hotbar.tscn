@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://capcmvqrt02sa"]
+
+[ext_resource type="Script" path="res://scenes/entities/player/inventory/Hotbar.gd" id="1_dch5h"]
+[ext_resource type="Texture2D" uid="uid://cx3v614rc2jmm" path="res://assets/ui/inventory/InventoryBackground.png" id="1_vxj6g"]
+[ext_resource type="PackedScene" uid="uid://bdlxwwywjfy7a" path="res://scenes/entities/player/inventory/hotbar_slot.tscn" id="3_2nxek"]
+
+[node name="Hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dch5h")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 22.0
+texture = ExtResource("1_vxj6g")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 144.0
+offset_bottom = 21.0
+theme_override_constants/h_separation = 12
+columns = 8
+
+[node name="hotbarSlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2
+
+[node name="hotbarSlot8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_2nxek")]
+layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=67 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bg7gdjmlllix1" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
 [ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory/inventory.tscn" id="15_pa6kt"]
 [ext_resource type="PackedScene" uid="uid://cs1hpgf26oh3h" path="res://scenes/entities/player/inventory/craftingMenu.tscn" id="16_4k25x"]
+[ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="17_3dkai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -496,6 +497,12 @@ offset_left = -105.0
 offset_top = -114.0
 offset_right = -105.0
 offset_bottom = -114.0
+
+[node name="Hotbar" parent="." instance=ExtResource("17_3dkai")]
+offset_left = -107.0
+offset_top = 95.0
+offset_right = -107.0
+offset_bottom = 95.0
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

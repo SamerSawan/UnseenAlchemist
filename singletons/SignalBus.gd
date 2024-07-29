@@ -19,3 +19,4 @@ signal shoot_anim_throw
 signal player_pickup
 signal update_inventory
 var item
+var equipped_potion
