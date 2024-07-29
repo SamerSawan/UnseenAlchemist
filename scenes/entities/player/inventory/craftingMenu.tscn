@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs1hpgf26oh3h"]
+[gd_scene load_steps=12 format=3 uid="uid://cs1hpgf26oh3h"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/inventory/craftingMenu.gd" id="1_4codi"]
 [ext_resource type="Texture2D" uid="uid://cx3v614rc2jmm" path="res://assets/ui/inventory/InventoryBackground.png" id="1_hvbf6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ch4x7n5mawc1w" path="res://scenes/entities/player/inventory/Recipes/StatuePotionRecipe.tscn" id="7_bnnqm"]
 [ext_resource type="PackedScene" uid="uid://ojx1khnlk60b" path="res://scenes/entities/player/inventory/Recipes/SleepyPotionRecipe.tscn" id="8_7q2hx"]
 [ext_resource type="PackedScene" uid="uid://dpc3ycnlpi4vu" path="res://scenes/entities/player/inventory/Recipes/StrengthPotionRecipe.tscn" id="9_7c5ch"]
+[ext_resource type="PackedScene" uid="uid://dpvwms6l0mkuv" path="res://scenes/entities/player/inventory/Recipes/CraftButton.tscn" id="11_jsrbu"]
 
 [node name="CraftingMenu" type="Control"]
 layout_mode = 3
@@ -65,6 +66,13 @@ layout_mode = 2
 [node name="StrengthPotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("9_7c5ch")]
 layout_mode = 2
 
+[node name="CraftButton" parent="NinePatchRect" instance=ExtResource("11_jsrbu")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 131.0
+offset_right = 128.0
+offset_bottom = 156.0
+
 [connection signal="button_down" from="NinePatchRect/GridContainer/DashPotionRecipe" to="." method="_on_dash_potion_recipe_button_down"]
 [connection signal="button_down" from="NinePatchRect/GridContainer/InvisPotionRecipe" to="." method="_on_invis_potion_recipe_button_down"]
 [connection signal="button_down" from="NinePatchRect/GridContainer/NoisePotionRecipe" to="." method="_on_noise_potion_recipe_button_down"]
@@ -73,3 +81,4 @@ layout_mode = 2
 [connection signal="button_down" from="NinePatchRect/GridContainer/StatuePotionRecipe" to="." method="_on_statue_potion_recipe_button_down"]
 [connection signal="button_down" from="NinePatchRect/GridContainer/SleepyPotionRecipe" to="." method="_on_sleepy_potion_recipe_button_down"]
 [connection signal="button_down" from="NinePatchRect/GridContainer/StrengthPotionRecipe" to="." method="_on_strength_potion_recipe_button_down"]
+[connection signal="pressed" from="NinePatchRect/CraftButton" to="." method="_on_craft_button_pressed"]

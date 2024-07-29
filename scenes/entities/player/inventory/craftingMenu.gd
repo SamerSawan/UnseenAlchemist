@@ -107,3 +107,8 @@ func _on_dash_potion_recipe_button_down():
 	statue_potion_recipe.button_pressed = false
 	sleepy_potion_recipe.button_pressed = false
 	strength_potion_recipe.button_pressed = false
+
+
+func _on_craft_button_pressed():
+	
+	is_open = false
