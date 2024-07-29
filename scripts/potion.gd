@@ -3,6 +3,7 @@ extends RigidBody2D
 var currentPotion : String
 @onready var sprite_2d = $Sprite2D
 var potion_parent
+var smoke = preload("res://scenes/entities/environment/Potions/smoke.tscn")
 
 func _ready():
 	potion_parent = get_tree().get_first_node_in_group("potion_thrower")
@@ -35,6 +36,25 @@ func _on_area_2d_body_entered(body):
 	var sound_queue = get_node("SoundQueue_PotionShatter")
 	sound_queue.reparent(get_node("/root"), true)
 	sound_queue.play_sound()
-	
+	match currentPotion:
+			"InvisPotion":
+				pass
+			"SlimePotion":
+				pass
+			"StatuePotion":
+				pass
+			"SmokePotion":
+				
+				var smoke_instance = smoke.instantiate()
+				potion_parent.potion_container.call_deferred("add_child", smoke_instance)
+				smoke_instance.global_position = global_position
+			"StrengthPotion":
+				pass
+			"NoisePotion":
+				pass
+			"DashPotion":
+				pass
+			"SleepPotion":
+				pass
 	queue_free() 
 	

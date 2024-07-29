@@ -173,6 +173,7 @@ debug_color = Color(0.788235, 0.345098, 0.670588, 0.235294)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = false
 collision_mask = 25
+collide_with_areas = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
