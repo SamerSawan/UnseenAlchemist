@@ -1,24 +1,105 @@
-[gd_scene load_steps=3 format=3 uid="uid://s8gie7h8k0ak"]
+[gd_scene load_steps=9 format=3 uid="uid://s8gie7h8k0ak"]
 
 [ext_resource type="Texture2D" uid="uid://dwpqtip4ofikc" path="res://assets/creatures/Guard.png" id="1_48nk8"]
+[ext_resource type="Script" path="res://scripts/guard.gd" id="1_habcd"]
+[ext_resource type="Texture2D" uid="uid://bepkoem3prrkq" path="res://icon.svg" id="2_2dh8h"]
+[ext_resource type="Script" path="res://scripts/EnemyStates/State_Machine.gd" id="3_bkiug"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_23h1u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_48nk8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="CircleShape2D" id="CircleShape2D_knr3v"]
+radius = 4.47214
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qq1n3"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l44av"]
+size = Vector2(36, 51)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahilb"]
+radius = 136.0
 
 [node name="Guard" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_habcd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_23h1u")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_48nk8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.5, 1.5)
 polygon = PackedVector2Array(0, -14, -9, -12, -14, -3, -12, 11, -7, 12, -6, 14, -6, 18, -6, 20, -2, 20, -2, 15, 0, 13, 2, 13, 3, 15, 3, 20, 7, 20, 7, 15, 9, 12, 18, 11, 20, 10, 20, 7, 18, 5, 17, 4, 11, 4, 11, 2, 14, 1, 16, 0, 16, -2, 13, -4, 12, -12, 3, -14)
+disabled = true
 
 [node name="State_Machine" type="Node" parent="."]
+script = ExtResource("3_bkiug")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="WallDetect" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 25)
+target_position = Vector2(32, 0)
+collision_mask = 8
+
+[node name="HoleDetect" type="RayCast2D" parent="Raycasts"]
+position = Vector2(14, 18)
+target_position = Vector2(0, 80)
+collision_mask = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+
+[node name="PP1" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0.0156863, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_2dh8h")
+
+[node name="PP1Area" type="Area2D" parent="PP1"]
+scale = Vector2(20, 20)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PP1/PP1Area"]
+shape = SubResource("CircleShape2D_knr3v")
+
+[node name="PP2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_2dh8h")
+
+[node name="PP2Area" type="Area2D" parent="PP2"]
+scale = Vector2(20, 20)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PP2/PP2Area"]
+shape = SubResource("CircleShape2D_qq1n3")
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="GapJumpCD" type="Timer" parent="."]
+one_shot = true
+
+[node name="LoseAggroTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_l44av")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_ahilb")
+
+[connection signal="body_entered" from="PP1/PP1Area" to="." method="_on_pp_1_area_body_entered"]
+[connection signal="body_entered" from="PP2/PP2Area" to="." method="_on_pp_2_area_body_entered"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="LoseAggroTimer" to="." method="_on_lose_aggro_timer_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="." method="spotted_player"]
+[connection signal="body_exited" from="DetectionArea" to="." method="lose_aggro"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b227w1r7152xo"]
+
+[ext_resource type="Texture2D" uid="uid://bgjx8ie4yf8w0" path="res://assets/potions/SmokePotionRecipe.png" id="1_lbfr6"]
+[ext_resource type="Texture2D" uid="uid://cju6na0yjavk3" path="res://assets/potions/SmokePotionRecipeActive.png" id="2_m7gog"]
+
+[node name="SmokePotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_lbfr6")
+texture_pressed = ExtResource("2_m7gog")

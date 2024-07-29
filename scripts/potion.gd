@@ -1,14 +1,31 @@
 extends RigidBody2D
 
-var mouse_position
+var currentPotion : String
+@onready var sprite_2d = $Sprite2D
+var potion_parent
 
 func _ready():
-	var potion_parent = get_tree().get_first_node_in_group("potion_thrower")
-#	mouse_position = get_tree().get_first_node_in_group("player").get_local_mouse_position().normalized()
+	potion_parent = get_tree().get_first_node_in_group("potion_thrower")
 	linear_velocity = potion_parent.potion_velocity
-	#get the position of the mouse, relative to the player (* mouse_position)
-	#normalize gives it as a x,y ratio from -1 to 1
-
+	if potion_parent.potion_resource:
+		currentPotion = potion_parent.potion_resource.name
+		match currentPotion:
+			"InvisPotion":
+				sprite_2d.frame = 0
+			"SlimePotion":
+				sprite_2d.frame = 1
+			"StatuePotion":
+				sprite_2d.frame = 2
+			"SmokePotion":
+				sprite_2d.frame = 3
+			"StrengthPotion":
+				sprite_2d.frame = 4
+			"NoisePotion":
+				sprite_2d.frame = 5
+			"DashPotion":
+				sprite_2d.frame = 6
+			"SleepPotion":
+				sprite_2d.frame = 7
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):

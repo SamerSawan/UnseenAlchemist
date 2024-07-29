@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dttbldav6svgj"]
+
+[ext_resource type="Script" path="res://scenes/entities/environment/collectables/ClumpOfMoss.gd" id="1_ah41r"]
+[ext_resource type="Texture2D" uid="uid://1dgrk4ymng7p" path="res://assets/props/potionIngredients/ClumpOfMoss.png" id="1_na3q8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0yace"]
+
+[node name="ClumpOfMoss" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_ah41r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_na3q8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0yace")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

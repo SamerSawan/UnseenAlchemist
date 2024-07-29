@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dqqcj4n8t3edi"]
+
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory_item.gd" id="1_pxbde"]
+[ext_resource type="Texture2D" uid="uid://blpo6shion4ha" path="res://assets/potions/DashPotion.png" id="2_kvwdy"]
+
+[resource]
+script = ExtResource("1_pxbde")
+name = "DashPotion"
+texture = ExtResource("2_kvwdy")

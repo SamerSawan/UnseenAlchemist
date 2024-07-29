@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=12 format=3 uid="uid://pkj61idi5eya"]
+
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory_slot.gd" id="1_6nfdi"]
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory.gd" id="2_xyu8f"]
+
+[sub_resource type="Resource" id="Resource_8nwx7"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_sk1mu"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_irlbi"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_1dee5"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_pgv0r"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_whqn1"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_thfkq"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_dewea"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_6kruv"]
+script = ExtResource("1_6nfdi")
+quantity = 0
+
+[resource]
+script = ExtResource("2_xyu8f")
+items = Array[ExtResource("1_6nfdi")]([SubResource("Resource_8nwx7"), SubResource("Resource_sk1mu"), SubResource("Resource_irlbi"), SubResource("Resource_1dee5"), SubResource("Resource_pgv0r"), SubResource("Resource_whqn1"), SubResource("Resource_thfkq"), SubResource("Resource_dewea"), SubResource("Resource_6kruv")])

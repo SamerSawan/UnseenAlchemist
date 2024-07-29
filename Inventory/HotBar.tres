@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=11 format=3 uid="uid://cmoybvl7snu4s"]
+
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory_slot.gd" id="1_07766"]
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory.gd" id="2_0mwyc"]
+
+[sub_resource type="Resource" id="Resource_vq3i5"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_jjfab"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_d5aru"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_68ulf"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_hyysv"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_2hamy"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_02vty"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_qi6g6"]
+script = ExtResource("1_07766")
+quantity = 0
+
+[resource]
+script = ExtResource("2_0mwyc")
+items = Array[ExtResource("1_07766")]([SubResource("Resource_vq3i5"), SubResource("Resource_jjfab"), SubResource("Resource_d5aru"), SubResource("Resource_68ulf"), SubResource("Resource_hyysv"), SubResource("Resource_2hamy"), SubResource("Resource_02vty"), SubResource("Resource_qi6g6")])

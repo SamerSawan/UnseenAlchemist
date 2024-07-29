@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d38px4waeg31r"]
 
 [ext_resource type="Script" path="res://scripts/potion.gd" id="1_v5qeu"]
-[ext_resource type="Texture2D" uid="uid://cvhtewydqb6f4" path="res://assets/player/Potion.png" id="2_tqoqp"]
+[ext_resource type="Texture2D" uid="uid://ehsdi1b1pkoy" path="res://assets/potions/All-Potions.png" id="2_bgr3b"]
 [ext_resource type="Script" path="res://scenes/sound/SoundQueue.gd" id="3_31sil"]
 [ext_resource type="AudioStream" uid="uid://b54syej8i8vd" path="res://assets/sounds/potion_shatter.ogg" id="4_xhmet"]
 
@@ -19,7 +19,8 @@ script = ExtResource("1_v5qeu")
 shape = SubResource("CircleShape2D_qrapt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tqoqp")
+texture = ExtResource("2_bgr3b")
+hframes = 8
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

@@ -11,8 +11,8 @@ func _physics_process(delta):#might be easier on the processing
 	rotate_stick()
 
 func rotate_stick():
-	rotation_degrees = potion_thrower.indicator_rotator
-	if Input.is_action_just_released("Shoot"): 
+	rotation_degrees = potion_thrower.indicator_rotator #for cancel situations below
+	if (Input.is_action_just_released("Shoot") || player.inputs_active == true) && player.is_on_floor(): 
 		visible = false
-	if Input.is_action_just_pressed("Shoot"):
+	if Input.is_action_just_pressed("Shoot") || player.inputs_active == false:
 		visible = true
