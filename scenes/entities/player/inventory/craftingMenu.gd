@@ -157,6 +157,7 @@ func _on_craft_button_pressed():
 	if inventory.remove(ingr1):
 		if inventory.remove(ingr2):
 			hotbar.insert(item)
+			SignalBus.potion_crafted.emit()
 			close()
 		else:
 			inventory.insert(ingr1)

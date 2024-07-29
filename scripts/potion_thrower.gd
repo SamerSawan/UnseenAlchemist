@@ -5,14 +5,19 @@ extends Node2D
 var potion = preload("res://scenes/entities/player/potion.tscn")
 var player
 var indicator_rotator: float = 20
+var potion_resource = SignalBus.equipped_potion
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	SignalBus.potion_changed.connect(update_potion)
 	
 func _process(delta):
 	aim_potion(delta)
 #	queue_redraw()
-	
+
+func update_potion():
+	potion_resource = SignalBus.equipped_potion
+
 func aim_potion(delta): #hold to wind up throw 
 	if Input.is_action_just_pressed("Shoot"): #to properly reset the indicator's position
 		indicator_rotator = -20*player.last_direction.x
