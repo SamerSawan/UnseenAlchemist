@@ -27,3 +27,5 @@ var equipped_potion
 #potion effects
 signal is_slept
 signal is_awake
+signal is_slowed
+signal not_slowed

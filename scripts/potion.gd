@@ -5,6 +5,7 @@ var currentPotion : String
 var potion_parent
 var smoke = preload("res://scenes/entities/environment/Potions/smoke.tscn")
 var sleep = preload("res://scenes/entities/environment/Potions/sleep.tscn")
+var slime = preload("res://scenes/entities/environment/Potions/Slime.tscn")
 
 func _ready():
 	potion_parent = get_tree().get_first_node_in_group("potion_thrower")
@@ -41,7 +42,9 @@ func _on_area_2d_body_entered(body):
 			"InvisPotion":
 				pass
 			"SlimePotion":
-				pass
+				var slime_instance = slime.instantiate()
+				potion_parent.potion_container.call_deferred("add_child", slime_instance)
+				slime_instance.global_position = global_position
 			"StatuePotion":
 				pass
 			"SmokePotion":

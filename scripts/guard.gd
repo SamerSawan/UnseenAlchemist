@@ -4,7 +4,11 @@ extends CharacterBody2D
 @onready var Patrol2 = $"PP2"
 @onready var WallRaycast = $Raycasts/WallDetect
 @onready var HoleRaycast = $Raycasts/HoleDetect
+
+#potions
 var is_sleep = false
+var is_slowed = false
+@onready var slow_timer = $SlowTimer
 
 var speed: float = 2500.0
 @export var patrol_speed = 200.0
@@ -32,6 +36,8 @@ func _ready():
 	direction = position.direction_to(current_destination.position)
 	SignalBus.is_slept.connect(fell_asleep)
 	SignalBus.is_awake.connect(woke_up)
+	SignalBus.is_slowed.connect(slowed)
+	SignalBus.not_slowed.connect(not_slowed)
 	
 func _physics_process(delta):
 	flip_sprite()
@@ -42,13 +48,26 @@ func _physics_process(delta):
 	chase()
 	move_and_slide()
 
+func slowed():
+	if is_slowed:
+		speed = 1000
+		patrol_speed = 100
+		chase_speed = 4000
+		slow_timer.start()
+
+func not_slowed():
+	speed = 2500
+	patrol_speed = 200
+	chase_speed = 8000
+
 func fell_asleep():
 	if is_sleep:
 		player.watched = false
 		is_chasing = false
+		speed = 0
 
 func woke_up():
-	pass
+	speed = 2500.0
 
 func gravity(delta):
 	if not is_on_floor():
@@ -121,3 +140,8 @@ func patrol_points_setter(): #this broke for no reason so here's a function
 	$PP1.global_position = PP1globalP
 	$PP2.global_position = PP2globalP #this is genuinely mind boggling
 	#becoming top_level ruins positioning, so we're saving them first
+
+
+func _on_slow_timer_timeout():
+	is_slowed = false
+	not_slowed()

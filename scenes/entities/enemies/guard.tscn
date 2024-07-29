@@ -97,9 +97,14 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_ahilb")
 
+[node name="SlowTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="body_entered" from="PP1/PP1Area" to="." method="_on_pp_1_area_body_entered"]
 [connection signal="body_entered" from="PP2/PP2Area" to="." method="_on_pp_2_area_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="LoseAggroTimer" to="." method="_on_lose_aggro_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="spotted_player"]
 [connection signal="body_exited" from="DetectionArea" to="." method="lose_aggro"]
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
