@@ -13,7 +13,8 @@ func _ready():
 	SignalBus.is_awake.connect(woke_up)
 	
 func _physics_process(_delta):
-	player_detection()
+	if !player.is_statue:
+		player_detection()
 
 func fell_asleep():
 	if is_sleep:
@@ -35,7 +36,7 @@ func _on_detection_area_body_exited(_body):
 	player.watched = false
 	
 func player_detection():
-	if player_entered == true and !is_sleep: #points raycast to the player
+	if player_entered == true and !is_sleep and !player.is_statue: #points raycast to the player
 		ray_to_player.set_target_position(player.global_position - ray_to_player.global_position)
 		if ray_to_player.is_colliding() && ray_to_player.get_collider() == player: #checks if first object hit is player
 			player.watched = true

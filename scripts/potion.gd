@@ -3,12 +3,15 @@ extends RigidBody2D
 var currentPotion : String
 @onready var sprite_2d = $Sprite2D
 var potion_parent
+var player_parent
 var smoke = preload("res://scenes/entities/environment/Potions/smoke.tscn")
 var sleep = preload("res://scenes/entities/environment/Potions/sleep.tscn")
 var slime = preload("res://scenes/entities/environment/Potions/Slime.tscn")
+var strength = preload("res://scenes/entities/environment/Potions/strength.tscn")
 
 func _ready():
 	potion_parent = get_tree().get_first_node_in_group("potion_thrower")
+	player_parent = get_tree().get_first_node_in_group("Player")
 	linear_velocity = potion_parent.potion_velocity
 	if potion_parent.potion_resource:
 		currentPotion = potion_parent.potion_resource.name
@@ -40,23 +43,23 @@ func _on_area_2d_body_entered(body):
 	sound_queue.play_sound()
 	match currentPotion:
 			"InvisPotion":
-				pass
+				SignalBus.activate_invis.emit()
 			"SlimePotion":
 				var slime_instance = slime.instantiate()
 				potion_parent.potion_container.call_deferred("add_child", slime_instance)
 				slime_instance.global_position = global_position
 			"StatuePotion":
-				pass
+				SignalBus.activate_statue.emit()
 			"SmokePotion":
 				var smoke_instance = smoke.instantiate()
 				potion_parent.potion_container.call_deferred("add_child", smoke_instance)
 				smoke_instance.global_position = global_position
 			"StrengthPotion":
-				pass
+				SignalBus.activate_strength.emit()
 			"NoisePotion":
 				pass
 			"DashPotion":
-				pass
+				SignalBus.activate_dash.emit()
 			"SleepPotion":
 				var sleep_instance = sleep.instantiate()
 				potion_parent.potion_container.call_deferred("add_child", sleep_instance)

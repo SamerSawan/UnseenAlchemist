@@ -46,6 +46,15 @@ enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH}
 @onready var RAYCASTS = $Raycasts
 @onready var animation_tree = $AnimationTree
 
+#potion_effects
+var is_strong = false
+var dash_enabled = false
+var is_statue = false
+@onready var strength = $Strength
+@onready var dash = $Dash
+@onready var invis = $Invis
+@onready var invis_timer = $Invis/invis_timer
+
 
 func _ready():
 	for state in STATES.get_children():
@@ -61,13 +70,15 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
-	if inputs_active:
+	if inputs_active and !is_statue:
 		player_input()
 	change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
-	box_push()
-	move_and_slide()
+	if is_strong:
+		box_push()
+	if !is_statue:
+		move_and_slide()
 #	for i in get_slide_collision_count(): #from the interwebs kind of sucks
 #		var c = get_slide_collision(i)
 #		if c.get_collider() is RigidBody2D:
@@ -138,7 +149,7 @@ func player_input():
 		climb_input = false
 	
 	#dash
-	if Input.is_action_just_pressed("Dash"):
+	if Input.is_action_just_pressed("Dash") and dash_enabled:
 		dash_input = true
 	else: 
 		dash_input = false
@@ -175,12 +186,38 @@ func enter_stealth(): #functions to handle stealth-unique activities
 func exit_stealth():
 	is_stealthed = false
 
+func activate_strength():
+	is_strong = true
+	strength.emitting = true
+	$Strength/strength_timer.start()
+
+func activate_dash():
+	dash_enabled = true
+	dash.emitting = true
+	$Dash/dash_timer.start()
+
+func activate_invis():
+	$Sprite2D.self_modulate.a = 0.5
+	is_stealthed = true
+	invis.emitting = true
+	$Invis/invis_timer.start()
+
+func activate_statue():
+	is_statue = true
+	$statue_timer.start()
+	$CollisionShape2D.disabled = true
+	is_stealthed = true
+
 func signal_connector():
 	SignalBus.jump_buffer.connect(jump_buffer_func)
 	SignalBus.coyote_jump.connect(coyote_jump_func)
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
 	SignalBus.player_pickup.connect(player_pickup_func)
+	SignalBus.activate_strength.connect(activate_strength)
+	SignalBus.activate_dash.connect(activate_dash)
+	SignalBus.activate_invis.connect(activate_invis)
+	SignalBus.activate_statue.connect(activate_statue)
 
 
 func _on_animation_tree_animation_finished(anim_name): #or it won't switch back to idle
@@ -197,3 +234,24 @@ func box_push():
 		change_animation_state(PUSH)
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
+
+
+func _on_strength_timer_timeout():
+	is_strong = false
+	strength.emitting = false
+
+func _on_dash_timer_timeout():
+	dash_enabled = false
+	dash.emitting = false
+
+func _on_invis_timer_timeout():
+	$Sprite2D.self_modulate.a = 1
+	is_stealthed = false
+	invis.emitting = false
+
+
+func _on_statue_timer_timeout():
+	is_statue = false
+	$CollisionShape2D.disabled = false
+	is_stealthed = false
+	SignalBus.statue_disabled.emit()

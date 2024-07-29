@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://baajoxfci0h7" path="res://scenes/entities/environment/test_crate.tscn" id="8_o42l2"]
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="9_c74pm"]
 [ext_resource type="PackedScene" uid="uid://56scp0c1nx7i" path="res://scenes/sound/SoundManager.tscn" id="10_52htw"]
+[ext_resource type="PackedScene" uid="uid://bt28sxy8k434s" path="res://scenes/entities/environment/collectables/MagicalBranch.tscn" id="10_yx511"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="11_pii1v"]
-[ext_resource type="PackedScene" uid="uid://c6wjmxyt2q7nt" path="res://scenes/entities/environment/collectables/DeadMouse.tscn" id="11_vvrs8"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="12_1tvkj"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="12_rk3rv"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="13_6twty"]
@@ -78,23 +78,20 @@ position = Vector2(420, -282)
 
 [node name="Ingredients" type="Node" parent="."]
 
-[node name="DarkShroom" parent="Ingredients" instance=ExtResource("12_1tvkj")]
-position = Vector2(-85, 39)
-
-[node name="DarkShroom2" parent="Ingredients" instance=ExtResource("12_1tvkj")]
-position = Vector2(-59, 39)
-
-[node name="DeadMouse" parent="Ingredients" instance=ExtResource("11_vvrs8")]
-position = Vector2(1, 37)
-
-[node name="GunpowderPouch" parent="Ingredients" instance=ExtResource("13_j5ded")]
-position = Vector2(-24, 38)
-
-[node name="VialOfGoo" parent="Ingredients" instance=ExtResource("13_xr7ts")]
-position = Vector2(31, 38)
+[node name="MagicalBranch" parent="Ingredients" instance=ExtResource("10_yx511")]
+position = Vector2(-66, 36)
 
 [node name="ClumpOfMoss" parent="Ingredients" instance=ExtResource("14_8l527")]
-position = Vector2(52, 37)
+position = Vector2(-41, 35)
+
+[node name="VialOfGoo" parent="Ingredients" instance=ExtResource("13_xr7ts")]
+position = Vector2(-12, 38)
+
+[node name="DarkShroom" parent="Ingredients" instance=ExtResource("12_1tvkj")]
+position = Vector2(9, 37)
+
+[node name="GunpowderPouch" parent="Ingredients" instance=ExtResource("13_j5ded")]
+position = Vector2(38, 37)
 
 [node name="SoundManager" parent="." instance=ExtResource("10_52htw")]
 

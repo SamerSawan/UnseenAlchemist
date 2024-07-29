@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhc4atemrly51"]
+[gd_scene load_steps=8 format=3 uid="uid://bhc4atemrly51"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_37g35"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="1_f173j"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjusufat4ckyy" path="res://scenes/entities/environment/cave_background.tscn" id="3_jdviq"]
 [ext_resource type="PackedScene" uid="uid://dttbldav6svgj" path="res://scenes/entities/environment/collectables/ClumpOfMoss.tscn" id="5_p16bp"]
 [ext_resource type="PackedScene" uid="uid://be46oejergnpw" path="res://scenes/entities/environment/collectables/VialOfGoo.tscn" id="6_hqel7"]
+[ext_resource type="PackedScene" uid="uid://c6wjmxyt2q7nt" path="res://scenes/entities/environment/collectables/DeadMouse.tscn" id="7_ndl2q"]
 
 [node name="GuardPlayground" type="Node2D"]
 
@@ -27,15 +28,21 @@ position = Vector2(-560, -48)
 [node name="PP2" parent="Guard" index="6"]
 position = Vector2(368, -80)
 
-[node name="Node" type="Node" parent="."]
+[node name="ingredients" type="Node" parent="."]
 
-[node name="ClumpOfMoss" parent="Node" instance=ExtResource("5_p16bp")]
+[node name="ClumpOfMoss" parent="ingredients" instance=ExtResource("5_p16bp")]
 position = Vector2(59, 75)
 
-[node name="VialOfGoo" parent="Node" instance=ExtResource("6_hqel7")]
+[node name="VialOfGoo" parent="ingredients" instance=ExtResource("6_hqel7")]
 position = Vector2(83, 75)
 
-[node name="VialOfGoo2" parent="Node" instance=ExtResource("6_hqel7")]
+[node name="VialOfGoo2" parent="ingredients" instance=ExtResource("6_hqel7")]
 position = Vector2(37, 75)
+
+[node name="DeadMouse" parent="ingredients" instance=ExtResource("7_ndl2q")]
+position = Vector2(132, 75)
+
+[node name="DeadMouse2" parent="ingredients" instance=ExtResource("7_ndl2q")]
+position = Vector2(108, 75)
 
 [editable path="Guard"]
