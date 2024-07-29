@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=18 format=3 uid="uid://cw4gkchggdpib"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="12_rk3rv"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="13_6twty"]
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="13_j5ded"]
+[ext_resource type="PackedScene" uid="uid://d2wscv24iru04" path="res://scenes/entities/environment/Potions/smoke.tscn" id="17_11e6k"]
 
 [node name="Testing" type="Node2D"]
 
@@ -97,3 +98,7 @@ volume_db = -10.0
 pitch_scale = 0.8
 autoplay = true
 bus = &"Ambience"
+
+[node name="Smoke" parent="." instance=ExtResource("17_11e6k")]
+z_index = 5
+position = Vector2(38, 25)

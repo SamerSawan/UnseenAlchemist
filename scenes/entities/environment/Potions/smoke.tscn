@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2wscv24iru04"]
+
+[ext_resource type="Script" path="res://scenes/entities/environment/Potions/smoke.gd" id="1_rx27j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81xde"]
+radius = 41.0488
+
+[node name="Smoke" type="CPUParticles2D"]
+amount = 500
+emission_shape = 1
+emission_sphere_radius = 47.32
+gravity = Vector2(0, -50)
+scale_amount_max = 4.0
+color = Color(0.560784, 0.560784, 0.560784, 0.568627)
+script = ExtResource("1_rx27j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_81xde")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
