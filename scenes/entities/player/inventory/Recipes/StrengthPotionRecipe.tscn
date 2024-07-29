@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpc3ycnlpi4vu"]
+
+[ext_resource type="Texture2D" uid="uid://ctrpo80xf8k46" path="res://assets/potions/StrengthPotionRecipe.png" id="1_mly0r"]
+[ext_resource type="Texture2D" uid="uid://b64idhvo1kkk2" path="res://assets/potions/StrengthPotionRecipeActive.png" id="2_eyu6h"]
+
+[node name="StrengthPotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_mly0r")
+texture_pressed = ExtResource("2_eyu6h")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4bowaeln1jh1"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/inventory/InventorySlotUI.gd" id="1_w7t8d"]
-[ext_resource type="Texture2D" uid="uid://bsqp63fcv2i6k" path="res://assets/ui/inventory/inventory-slot.png" id="1_xjst3"]
+[ext_resource type="Texture2D" uid="uid://c36tr8x5fluue" path="res://assets/ui/inventory/InventorySlot.png" id="2_qn4pu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3aed"]
 
@@ -13,7 +13,7 @@ offset_bottom = 16.0
 script = ExtResource("1_w7t8d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xjst3")
+texture = ExtResource("2_qn4pu")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

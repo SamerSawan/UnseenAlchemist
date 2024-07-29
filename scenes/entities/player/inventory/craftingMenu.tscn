@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs1hpgf26oh3h"]
+
+[ext_resource type="Script" path="res://scenes/entities/player/inventory/craftingMenu.gd" id="1_4codi"]
+[ext_resource type="Texture2D" uid="uid://cx3v614rc2jmm" path="res://assets/ui/inventory/InventoryBackground.png" id="1_hvbf6"]
+[ext_resource type="PackedScene" uid="uid://cfs3aqd7uiahp" path="res://scenes/entities/player/inventory/Recipes/DashPotionRecipe.tscn" id="2_x4g0l"]
+[ext_resource type="PackedScene" uid="uid://n5mh3w4ji24t" path="res://scenes/entities/player/inventory/Recipes/InvisPotionRecipe.tscn" id="3_r6mkn"]
+[ext_resource type="PackedScene" uid="uid://blx8f308pmfi0" path="res://scenes/entities/player/inventory/Recipes/NoisePotionRecipe.tscn" id="4_p6svu"]
+[ext_resource type="PackedScene" uid="uid://b227w1r7152xo" path="res://scenes/entities/player/inventory/Recipes/SmokePotionRecipe.tscn" id="5_6532r"]
+[ext_resource type="PackedScene" uid="uid://bugnxpfbx8nwy" path="res://scenes/entities/player/inventory/Recipes/SlimePotionRecipe.tscn" id="6_21tla"]
+[ext_resource type="PackedScene" uid="uid://ch4x7n5mawc1w" path="res://scenes/entities/player/inventory/Recipes/StatuePotionRecipe.tscn" id="7_bnnqm"]
+[ext_resource type="PackedScene" uid="uid://ojx1khnlk60b" path="res://scenes/entities/player/inventory/Recipes/SleepyPotionRecipe.tscn" id="8_7q2hx"]
+[ext_resource type="PackedScene" uid="uid://dpc3ycnlpi4vu" path="res://scenes/entities/player/inventory/Recipes/StrengthPotionRecipe.tscn" id="9_7c5ch"]
+
+[node name="CraftingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -936.0
+offset_bottom = -476.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4codi")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 172.0
+texture = ExtResource("1_hvbf6")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 204.0
+offset_bottom = 123.0
+theme_override_constants/h_separation = 26
+columns = 2
+
+[node name="DashPotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("2_x4g0l")]
+layout_mode = 2
+
+[node name="InvisPotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("3_r6mkn")]
+layout_mode = 2
+
+[node name="NoisePotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("4_p6svu")]
+layout_mode = 2
+
+[node name="SmokePotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("5_6532r")]
+layout_mode = 2
+
+[node name="SlimePotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("6_21tla")]
+layout_mode = 2
+
+[node name="StatuePotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("7_bnnqm")]
+layout_mode = 2
+
+[node name="SleepyPotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("8_7q2hx")]
+layout_mode = 2
+
+[node name="StrengthPotionRecipe" parent="NinePatchRect/GridContainer" instance=ExtResource("9_7c5ch")]
+layout_mode = 2
+
+[connection signal="button_down" from="NinePatchRect/GridContainer/DashPotionRecipe" to="." method="_on_dash_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/InvisPotionRecipe" to="." method="_on_invis_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/NoisePotionRecipe" to="." method="_on_noise_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/SmokePotionRecipe" to="." method="_on_smoke_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/SlimePotionRecipe" to="." method="_on_slime_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/StatuePotionRecipe" to="." method="_on_statue_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/SleepyPotionRecipe" to="." method="_on_sleepy_potion_recipe_button_down"]
+[connection signal="button_down" from="NinePatchRect/GridContainer/StrengthPotionRecipe" to="." method="_on_strength_potion_recipe_button_down"]

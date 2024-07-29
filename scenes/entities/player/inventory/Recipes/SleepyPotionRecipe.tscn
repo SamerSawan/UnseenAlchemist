@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ojx1khnlk60b"]
+
+[ext_resource type="Texture2D" uid="uid://cfkywjg5ldy50" path="res://assets/potions/SleepyPotionRecipe.png" id="1_qvcd5"]
+[ext_resource type="Texture2D" uid="uid://brc8n1fepj2h3" path="res://assets/potions/SleepyPotionRecipeActive.png" id="2_5my28"]
+
+[node name="SleepyPotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_qvcd5")
+texture_pressed = ExtResource("2_5my28")

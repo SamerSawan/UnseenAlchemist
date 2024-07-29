@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsqp63fcv2i6k"
-path="res://.godot/imported/inventory-slot.png-84cb9662cc6780ed18adf5a6c010decd.ctex"
+uid="uid://b64idhvo1kkk2"
+path="res://.godot/imported/StrengthPotionRecipeActive.png-014c98c6b13a1865c4f0216df9b2b74e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/inventory/inventory-slot.png"
-dest_files=["res://.godot/imported/inventory-slot.png-84cb9662cc6780ed18adf5a6c010decd.ctex"]
+source_file="res://assets/potions/StrengthPotionRecipeActive.png"
+dest_files=["res://.godot/imported/StrengthPotionRecipeActive.png-014c98c6b13a1865c4f0216df9b2b74e.ctex"]
 
 [params]
 

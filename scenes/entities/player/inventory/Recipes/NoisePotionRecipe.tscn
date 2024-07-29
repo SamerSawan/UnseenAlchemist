@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://blx8f308pmfi0"]
+
+[ext_resource type="Texture2D" uid="uid://k26yq1pe3ijc" path="res://assets/potions/NoisePotionRecipe.png" id="1_owokn"]
+[ext_resource type="Texture2D" uid="uid://rnuvqfupfkhi" path="res://assets/potions/NoisePotionRecipeActive.png" id="2_2q8nk"]
+
+[node name="NoisePotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_owokn")
+texture_pressed = ExtResource("2_2q8nk")

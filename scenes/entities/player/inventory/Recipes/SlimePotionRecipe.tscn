@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bugnxpfbx8nwy"]
+
+[ext_resource type="Texture2D" uid="uid://cyiq2jiex1ivb" path="res://assets/potions/SlimePotionRecipe.png" id="1_n7c1d"]
+[ext_resource type="Texture2D" uid="uid://byfa2x6sxvyc0" path="res://assets/potions/SlimePotionRecipeActive.png" id="2_xdxr2"]
+
+[node name="SlimePotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_n7c1d")
+texture_pressed = ExtResource("2_xdxr2")

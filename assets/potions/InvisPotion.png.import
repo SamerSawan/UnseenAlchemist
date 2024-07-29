@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbugmphrvj0e"
-path="res://.godot/imported/inventory-background.png-9f67e49e5e3a73ce301743ef0bbca7bb.ctex"
+uid="uid://ban8cf3ui8v1n"
+path="res://.godot/imported/InvisPotion.png-873e000ebefe82536387947efc61bf3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/inventory/inventory-background.png"
-dest_files=["res://.godot/imported/inventory-background.png-9f67e49e5e3a73ce301743ef0bbca7bb.ctex"]
+source_file="res://assets/potions/InvisPotion.png"
+dest_files=["res://.godot/imported/InvisPotion.png-873e000ebefe82536387947efc61bf3f.ctex"]
 
 [params]
 
