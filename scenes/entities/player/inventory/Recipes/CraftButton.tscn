@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpvwms6l0mkuv"]
+
+[ext_resource type="Texture2D" uid="uid://mo2bewh0tv7y" path="res://assets/ui/inventory/CRAFT BUTTON.png" id="1_h3rh6"]
+[ext_resource type="Texture2D" uid="uid://qclyexgthrj" path="res://assets/ui/inventory/CRAFT BUTTON PRESSED.png" id="2_suuy1"]
+[ext_resource type="FontFile" uid="uid://bgcis10oco2qr" path="res://assets/ui/inventory/Daydream.ttf" id="3_jvnt8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifk7l"]
+font = ExtResource("3_jvnt8")
+font_size = 8
+
+[node name="CraftButton" type="TextureButton"]
+offset_right = 48.0
+offset_bottom = 25.0
+texture_normal = ExtResource("1_h3rh6")
+texture_pressed = ExtResource("2_suuy1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 19.0
+text = "CRAFT"
+label_settings = SubResource("LabelSettings_ifk7l")

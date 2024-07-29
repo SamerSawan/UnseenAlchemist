@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://n5mh3w4ji24t"]
+
+[ext_resource type="Texture2D" uid="uid://cnnak8v3epm7a" path="res://assets/potions/InvisPotionRecipe.png" id="1_2rwx7"]
+[ext_resource type="Texture2D" uid="uid://doewnx2wv140j" path="res://assets/potions/InvisPotionRecipeActive.png" id="2_fgc73"]
+
+[node name="InvisPotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_2rwx7")
+texture_pressed = ExtResource("2_fgc73")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bffhysveb4cai"]
+
+[ext_resource type="Script" path="res://scripts/InventoryRelated/inventory_item.gd" id="1_41tet"]
+[ext_resource type="Texture2D" uid="uid://b060stqmhdl7x" path="res://assets/props/potionIngredients/DarkShroom.png" id="2_oxgxa"]
+
+[resource]
+script = ExtResource("1_41tet")
+name = "DarkShroom"
+texture = ExtResource("2_oxgxa")

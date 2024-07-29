@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfs3aqd7uiahp"]
+
+[ext_resource type="Texture2D" uid="uid://bic7v6f6qu7gp" path="res://assets/potions/DashPotionRecipe.png" id="1_iqd4k"]
+[ext_resource type="Texture2D" uid="uid://dp27q40gws6my" path="res://assets/potions/DashPotionRecipeActive.png" id="2_0byl6"]
+
+[node name="DashPotionRecipe" type="TextureButton"]
+toggle_mode = true
+texture_normal = ExtResource("1_iqd4k")
+texture_pressed = ExtResource("2_0byl6")

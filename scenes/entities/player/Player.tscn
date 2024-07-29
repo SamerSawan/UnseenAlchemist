@@ -1,7 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=73 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
+[ext_resource type="Resource" uid="uid://pkj61idi5eya" path="res://Inventory/player_inventory.tres" id="2_cjjn4"]
 [ext_resource type="PackedScene" uid="uid://cicy1oxqu8qll" path="res://scenes/entities/player/JUMP.tscn" id="3_qxsd6"]
 [ext_resource type="Script" path="res://scenes/entities/player/STATES.gd" id="3_tsau4"]
 [ext_resource type="PackedScene" uid="uid://fgu6pqitahmu" path="res://scenes/entities/player/IDLE.tscn" id="4_1wwnh"]
@@ -15,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bg7gdjmlllix1" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
 [ext_resource type="PackedScene" uid="uid://bs1ed3rk410d3" path="res://scenes/sound/SoundQueue.tscn" id="14_w5etk"]
 [ext_resource type="AudioStream" uid="uid://b782od5m0606f" path="res://assets/sounds/player_walk.ogg" id="15_6b1gi"]
+[ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory/inventory.tscn" id="15_pa6kt"]
+[ext_resource type="PackedScene" uid="uid://cs1hpgf26oh3h" path="res://scenes/entities/player/inventory/craftingMenu.tscn" id="16_4k25x"]
 [ext_resource type="AudioStream" uid="uid://cf3p3dbfyhjj" path="res://assets/sounds/potion_throw.ogg" id="16_rrhkj"]
+[ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="17_3dkai"]
 [ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
 [ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
 
@@ -443,6 +447,7 @@ graph_offset = Vector2(-43, 61.4635)
 z_index = 5
 collision_mask = 26
 script = ExtResource("1_5jc4u")
+inventory = ExtResource("2_cjjn4")
 SPEED = 200.0
 JUMP_VELOCITY = -350.0
 push_force = 200.0
@@ -527,10 +532,29 @@ script = ExtResource("10_j2100")
 [node name="potion_thrower" parent="." instance=ExtResource("10_r8rc8")]
 
 [node name="ThrowIndicator" parent="." instance=ExtResource("12_sv6en")]
+visible = true
 position = Vector2(-11, -3)
 
 [node name="SpottedEye" parent="." instance=ExtResource("13_kxmew")]
 position = Vector2(0, -22)
+
+[node name="Inventory" parent="." instance=ExtResource("15_pa6kt")]
+offset_left = 14.0
+offset_top = -58.0
+offset_right = 14.0
+offset_bottom = -58.0
+
+[node name="CraftingMenu" parent="." instance=ExtResource("16_4k25x")]
+offset_left = -105.0
+offset_top = -114.0
+offset_right = -105.0
+offset_bottom = -114.0
+
+[node name="Hotbar" parent="." instance=ExtResource("17_3dkai")]
+offset_left = -107.0
+offset_top = 95.0
+offset_right = -107.0
+offset_bottom = 95.0
 
 [node name="SoundQueue_Walk" parent="." instance=ExtResource("14_w5etk")]
 

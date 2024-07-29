@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=17 format=3 uid="uid://cw4gkchggdpib"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
@@ -11,8 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="9_c74pm"]
 [ext_resource type="PackedScene" uid="uid://56scp0c1nx7i" path="res://scenes/sound/SoundManager.tscn" id="10_52htw"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="11_pii1v"]
+[ext_resource type="PackedScene" uid="uid://c6wjmxyt2q7nt" path="res://scenes/entities/environment/collectables/DeadMouse.tscn" id="11_vvrs8"]
+[ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="12_1tvkj"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="12_rk3rv"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="13_6twty"]
+[ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="13_j5ded"]
 
 [node name="Testing" type="Node2D"]
 
@@ -70,6 +73,18 @@ position = Vector2(464, -40)
 
 [node name="TestCrate3" parent="." instance=ExtResource("8_o42l2")]
 position = Vector2(420, -282)
+
+[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
+position = Vector2(-85, 39)
+
+[node name="DarkShroom2" parent="." instance=ExtResource("12_1tvkj")]
+position = Vector2(-59, 39)
+
+[node name="DeadMouse" parent="." instance=ExtResource("11_vvrs8")]
+position = Vector2(1, 37)
+
+[node name="GunpowderPouch" parent="." instance=ExtResource("13_j5ded")]
+position = Vector2(-24, 38)
 
 [node name="SoundManager" parent="." instance=ExtResource("10_52htw")]
 
