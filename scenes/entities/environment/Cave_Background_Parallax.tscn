@@ -17,3 +17,13 @@ texture = ExtResource("1_supw0")
 position = Vector2(320, 0)
 texture = ExtResource("1_supw0")
 flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_supw0")
+offset = Vector2(640, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(320, 0)
+texture = ExtResource("1_supw0")
+offset = Vector2(640, 0)
+flip_h = true
