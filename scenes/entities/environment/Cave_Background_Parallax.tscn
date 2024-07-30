@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm6mv5wl8fdk1"]
+
+[ext_resource type="Texture2D" uid="uid://ddnegbx8trk0" path="res://assets/background/Backround_Cave_Exit.png" id="1_supw0"]
+
+[node name="Cave_Background_Parallax" type="ParallaxBackground"]
+scroll_base_scale = Vector2(0.1, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(160, -480)
+motion_scale = Vector2(0.1, 0.3)
+motion_mirroring = Vector2(640, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_supw0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(320, 0)
+texture = ExtResource("1_supw0")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_supw0")
+offset = Vector2(640, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(320, 0)
+texture = ExtResource("1_supw0")
+offset = Vector2(640, 0)
+flip_h = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 320)
+texture = ExtResource("1_supw0")
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(320, 320)
+texture = ExtResource("1_supw0")
+flip_h = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 320)
+texture = ExtResource("1_supw0")
+offset = Vector2(640, 0)
+
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(320, 320)
+texture = ExtResource("1_supw0")
+offset = Vector2(640, 0)
+flip_h = true

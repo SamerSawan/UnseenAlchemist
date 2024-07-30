@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b74hgtvtnf6xu"]
+
+[ext_resource type="Script" path="res://scenes/save/save_debugger.gd" id="1_2feqs"]
+
+[node name="SaveDebugger" type="CanvasLayer"]
+script = ExtResource("1_2feqs")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 1106.0
+offset_top = 585.0
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="Save" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="Load" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Save"
+
+[connection signal="pressed" from="GridContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="GridContainer/Load" to="." method="_on_load_pressed"]

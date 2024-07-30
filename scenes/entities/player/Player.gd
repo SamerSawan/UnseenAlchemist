@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @onready var player_sprite = $Sprite2D
@@ -69,6 +70,12 @@ func _ready():
 	prev_state = STATES.IDLE 
 	current_state = STATES.IDLE
 	
+	var watched_timer : Timer = Timer.new()
+	self.add_child(watched_timer)
+	watched_timer.set_one_shot(false)
+	watched_timer.start(0.2)
+	watched_timer.timeout.connect(_on_watched_timer_timeout)
+	
 	signal_connector()
 
 func _process(_delta):
@@ -113,6 +120,7 @@ func get_next_to_wall():
 			else:
 				return Vector2.LEFT
 	return null
+
 
 func animation_handler():
 	if horizontal_direction != 0: #turning
@@ -245,6 +253,37 @@ func box_push():
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
 
+
+func _on_watched_timer_timeout(): # to trigger music
+	#print("watched timer proc")
+	if spotted_sound:
+		if watched:
+			spotted_sound.fade_in()
+		else:
+			spotted_sound.fade_out()
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"current_scene" : get_tree().get_current_scene().scene_file_path,
+		"inventory" : serialize_inventory(inventory.items),
+	}
+	return save_dict
+
+func serialize_inventory(slots: Array) -> Array:
+	var serialized_slots = []
+	for slot in slots:
+		var serialized_slot = {
+			"item_name": slot.item_name,
+			"item_texture_path": slot.item.texture.get_path(),
+			"quantity": slot.quantity
+		}
+		serialized_slots.append(serialized_slot)
+	return serialized_slots
+
 func _on_strength_timer_timeout():
 	is_strong = false
 	strength.emitting = false
@@ -270,4 +309,5 @@ func running_particles(): #might remove if its costing too much cpu power
 		$RunningParticles.emitting = true
 	else:
 		$RunningParticles.emitting = false
+
 

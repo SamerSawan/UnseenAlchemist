@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PirateJam15FR"
-run/main_scene="res://scenes/testing.tscn"
+run/main_scene="res://menus/mainmenu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://singletons/SignalBus.gd"
 SoundManager="*res://scenes/sound/SoundManager.tscn"
+ConfigFileHandler="*res://singletons/ConfigFileHandler.gd"
+SaveHandler="*res://singletons/SaveHandler.gd"
 AudioPlayer="*res://scripts/audio_player.gd"
 
 [display]

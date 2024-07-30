@@ -1,0 +1,19 @@
+[gd_resource type="Environment" format=3 uid="uid://clln3rmvxgy6p"]
+
+[resource]
+background_mode = 3
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+glow_enabled = true
+glow_levels/1 = 1.15
+glow_levels/5 = 2.85
+glow_levels/6 = 7.24
+glow_levels/7 = 3.7
+glow_intensity = 3.62
+glow_blend_mode = 1
+glow_hdr_threshold = 0.75
+glow_hdr_scale = 2.03
+fog_enabled = true
+fog_density = 0.4185
+adjustment_enabled = true

@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjusufat4ckyy"]
+[gd_scene load_steps=3 format=3 uid="uid://bjusufat4ckyy"]
 
+[ext_resource type="Script" path="res://scenes/entities/environment/cave_background.gd" id="1_cb4dq"]
 [ext_resource type="Texture2D" uid="uid://ddnegbx8trk0" path="res://assets/background/Backround_Cave_Exit.png" id="1_uh1ie"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = -5
+script = ExtResource("1_cb4dq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 light_mask = 3

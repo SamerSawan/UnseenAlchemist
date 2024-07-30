@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/bassser.ogg-0b03d333662b19e808b3daf56af6aa49.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
+loop=true
+loop_offset=0.0
+bpm=168.0
+beat_count=160
 bar_beats=4

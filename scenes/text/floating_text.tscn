@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq4821dkspwhi"]
+
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="1_g7d3r"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_huqcj"]
+
+[node name="FloatingText" type="RichTextLabel"]
+anchors_preset = -1
+anchor_right = 0.00347222
+anchor_bottom = 0.0385802
+offset_left = 113.0
+offset_top = -42.0
+offset_right = 315.0
+offset_bottom = 7.0
+theme = ExtResource("1_g7d3r")
+theme_override_colors/font_shadow_color = Color(0.470588, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "Example"
+custom_effects = [SubResource("RichTextEffect_huqcj")]
+metadata/_edit_use_anchors_ = true

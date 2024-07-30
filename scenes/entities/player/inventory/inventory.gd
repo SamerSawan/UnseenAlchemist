@@ -1,3 +1,4 @@
+class_name Inventory
 extends Control
 
 #This script controls if inventory UI is visible
