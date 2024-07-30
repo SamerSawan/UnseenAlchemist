@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://gs21mlt4ildj"]
+
+[ext_resource type="Texture2D" uid="uid://f1015gyfrhxm" path="res://assets/objects/props/bush4.png" id="1_4s7e2"]
+[ext_resource type="Texture2D" uid="uid://c2wgu1aqyta0s" path="res://assets/objects/prop normal maps/bush4_n.png" id="2_hd35n"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0f77g"]
+polygon = PackedVector2Array(12.7, -8.3, 11.7, -8.3, 11.7, -6.3, 10.7, -6.3, 10.7, -5.7, 11.7, -5.7, 11.7, -4.7, 12.3, -4.7, 12.3, -5.7, 18.7, -5.7, 18.7, -2.6, 15.7, -0.6, 15.7, 0.299999, 22.7, 0.299999, 22.7, 3.7, 19.7, 3.7, 19.7, 4.4, 17.9, 5.3, 18.7, 5.3, 18.7, 8.3, 20.4, 8.3, 21.4, 10.3, 22.7, 10.3, 22.7, 12.3, 23.7, 12.3, 23.7, 16.7, 20.3, 16.7, 20.3, 15.7, 19.7, 15.7, 19.7, 16.6, 22.7, 18.6, 22.7, 22.7, 19.3, 22.7, 19.3, 21.7, 18.7, 21.7, 18.7, 23.7, 17.7, 23.7, -16.7, 24, -16.7, 23.4, -18.3, 22.3, -18.3, 23.7, -21.7, 23.7, -21.7, 22.7, -22.7, 22.7, -22.7, 17.7, -23.7, 17.7, -23.7, 12.3, -22.7, 12.3, -22.7, 8.3, -21.7, 8.3, -21.7, 5.3, -20.7, 5.3, -20.7, 1.3, -18.5, 1.3, -17.5, -1.7, -16.7, -1.7, -16.7, -2.7, -15.7, -2.7, -15.7, -4.3, -17.7, -4.3, -17.7, -7.7, -11.3, -7.7, -11.3, -6.7, -9.3, -6.7, -9.3, -5.7, -7.7, -5.7, -7.7, -6.5, -3.7, -7.6, -3.7, -8.7, 4.3, -8.7, 4.3, -9.7, 7.3, -9.7, 7.3, -10.7, 12.7, -10.7)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mqhpa"]
+diffuse_texture = ExtResource("1_4s7e2")
+normal_texture = ExtResource("2_hd35n")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciopj"]
+size = Vector2(20, 22)
+
+[node name="Bush4" type="Node2D"]
+z_index = 4
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_0f77g")
+occluder_light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_mqhpa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_ciopj")

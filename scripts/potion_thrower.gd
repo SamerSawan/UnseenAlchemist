@@ -18,6 +18,7 @@ func _process(delta):
 
 func update_potion():
 	potion_resource = SignalBus.equipped_potion
+
 func aim_potion(delta): #hold to wind up throw 
 	if Input.is_action_pressed("Shoot") && player.is_on_floor():
 		if Input.is_action_pressed("MoveRight") || Input.is_action_pressed("MoveLeft") || Input.is_action_pressed("Jump"):

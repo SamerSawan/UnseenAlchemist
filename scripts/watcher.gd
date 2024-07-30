@@ -24,7 +24,7 @@ func fell_asleep():
 func woke_up():
 	animated_sprite_2d.play("idle")
 
-			
+
 func _on_detection_area_body_entered(body):
 	if body.name == "Player": #should only apply to player
 		ray_to_player.set_deferred("enabled",true)
@@ -40,7 +40,7 @@ func player_detection():
 		ray_to_player.set_target_position(player.global_position - ray_to_player.global_position)
 		if ray_to_player.is_colliding() && ray_to_player.get_collider() == player: #checks if first object hit is player
 			player.watched = true
-			print("yep... thats him") #ideally, this part will warn enemies
+			#ideally, this part will warn enemies
 			#or do whatever the watcher does when it detects the player
 		else:
 			player.watched = false

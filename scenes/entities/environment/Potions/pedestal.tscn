@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyqxs041qy6s1"]
+
+[ext_resource type="Texture2D" uid="uid://skg4443av3py" path="res://assets/props/potionIngredients/Pedestal.png" id="1_0j0kj"]
+
+[node name="Pedestal" type="Sprite2D"]
+texture = ExtResource("1_0j0kj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+emission_shape = 1
+emission_sphere_radius = 19.28
+gravity = Vector2(0, -30)
+scale_amount_max = 4.0
+color = Color(1, 0.827451, 0.258824, 1)
