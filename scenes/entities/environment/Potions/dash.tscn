@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dhto2nrug8yg2"]
+
+[node name="Dash" type="CPUParticles2D"]
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 47.32
+gravity = Vector2(0, -50)
+scale_amount_max = 4.0
+color = Color(0, 0.576471, 0.960784, 0.568627)
