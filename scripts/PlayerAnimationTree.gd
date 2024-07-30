@@ -1,15 +1,6 @@
 extends AnimationTree
 
-enum {
-	IDLE,
-	RUN,
-	WINDUP,
-	THROW,
-	DIE,
-	JUMP,
-	FALL,
-	PUSH,
-}
+enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH,CLIMB,DRINK,DASH}
 
 var state
 var new_state

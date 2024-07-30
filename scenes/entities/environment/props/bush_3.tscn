@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://chsw1qos2tgs"]
+[gd_scene load_steps=7 format=3 uid="uid://chsw1qos2tgs"]
 
 [ext_resource type="Texture2D" uid="uid://dx65xwy8logph" path="res://assets/objects/props/bush3.png" id="1_6sqqy"]
+[ext_resource type="Script" path="res://scripts/objects/hide_in_props.gd" id="1_x1bm0"]
 [ext_resource type="Texture2D" uid="uid://cpjqkb2n1bv4q" path="res://assets/objects/prop normal maps/bush3_n.png" id="2_52f6l"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gf7j8"]
@@ -15,6 +16,7 @@ size = Vector2(22, 9)
 
 [node name="Bush3" type="Node2D"]
 z_index = 4
+script = ExtResource("1_x1bm0")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(0, -16)
@@ -27,7 +29,11 @@ texture = SubResource("CanvasTexture_7dum3")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -16)
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 19)
 shape = SubResource("RectangleShape2D_fpwgf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

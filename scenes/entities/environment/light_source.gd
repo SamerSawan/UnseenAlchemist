@@ -46,7 +46,7 @@ func player_detection(): #its just so much easier than cast_ray()
 			player.is_hidden = true
 			player.stealth_eye.frame = 2 #new hidden icon
 			player.enter_stealth()
-		else: #no obstuction in LOS
+		else: #no obstuction in LOS (lit up)
 			player.is_stealthed = false
 			player.is_hidden = false
 			player.stealth_eye.frame = 1

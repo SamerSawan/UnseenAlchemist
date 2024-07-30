@@ -1,8 +1,8 @@
 [gd_scene load_steps=74 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
-[ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
 [ext_resource type="Resource" uid="uid://pkj61idi5eya" path="res://Inventory/player_inventory.tres" id="2_r7m5n"]
+[ext_resource type="Texture2D" uid="uid://c0hrt3gm12mvt" path="res://assets/player/PlayerSheetJuly30.png" id="3_5boqq"]
 [ext_resource type="PackedScene" uid="uid://cicy1oxqu8qll" path="res://scenes/entities/player/JUMP.tscn" id="3_qxsd6"]
 [ext_resource type="Script" path="res://scenes/entities/player/STATES.gd" id="3_tsau4"]
 [ext_resource type="PackedScene" uid="uid://fgu6pqitahmu" path="res://scenes/entities/player/IDLE.tscn" id="4_1wwnh"]
@@ -470,9 +470,9 @@ shape = SubResource("RectangleShape2D_5kyyt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 3
-texture = ExtResource("2_aty5o")
+texture = ExtResource("3_5boqq")
 hframes = 13
-vframes = 11
+vframes = 12
 frame = 13
 
 [node name="Camera2D" type="Camera2D" parent="."]

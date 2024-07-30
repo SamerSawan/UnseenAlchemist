@@ -45,7 +45,7 @@ var is_hidden: bool = false #for hiding in props or behind boxes
 var current_state = null
 var prev_state = null
 var new_state
-enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH}
+enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH,CLIMB,DRINK,DASH}
 #nodes
 @onready var STATES = $STATES
 @onready var RAYCASTS = $Raycasts
