@@ -78,16 +78,18 @@ script = ExtResource("1_eft2r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
-position = Vector2(7.62939e-06, -7.62939e-06)
+position = Vector2(0, -32)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_87ojf")
 autoplay = "default"
 frame_progress = 0.211253
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(8, -16)
+position = Vector2(8, -48)
 color = Color(1, 1, 0.45098, 1)
 energy = 3.0
+range_layer_min = -10
+range_layer_max = 20
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
@@ -97,11 +99,20 @@ texture_scale = 20.0
 height = 100.0
 
 [node name="DetectionArea" type="Area2D" parent="."]
+light_mask = 0
 collision_layer = 256
 
 [node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
+light_mask = 0
 shape = SubResource("CircleShape2D_m32ew")
 debug_color = Color(0.482353, 0.588235, 0, 0.419608)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(4, 4)
+target_position = Vector2(-268, -8)
+collision_mask = 25
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

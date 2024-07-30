@@ -14,5 +14,5 @@ func rotate_stick():
 	rotation_degrees = potion_thrower.indicator_rotator #for cancel situations below
 	if (Input.is_action_just_released("Shoot") || player.inputs_active == true) && player.is_on_floor(): 
 		visible = false
-	if Input.is_action_just_pressed("Shoot") || player.inputs_active == false:
+	if Input.is_action_just_pressed("Shoot") || (player.inputs_active == false && player.dying == false):
 		visible = true

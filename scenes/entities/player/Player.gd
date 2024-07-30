@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var anim_player = $AnimationPlayer
 @onready var throw_indicator = $ThrowIndicator
 @onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
-@onready var spotted_eye = $SpottedEye
+@onready var spotted_eye = $SpottedEye/Spotted
+@onready var stealth_eye = $SpottedEye/Stealthed
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -33,14 +34,18 @@ var can_dash = true
 var jump_buffer: bool = false
 var coyote_jump: bool = false
 var transparency: float
+var is_visible: bool = false
 var is_stealthed: bool = true
 var watched: bool = false
-@export var push_force: float = 80.0
+var being_chased: bool = false
+var dying: bool = false
+var is_hidden: bool = false #for hiding in props or behind boxes
+#@export var push_force: float = 80.0
 #states
 var current_state = null
 var prev_state = null
 var new_state
-enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH}
+enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH,CLIMB,DRINK,DASH}
 #nodes
 @onready var STATES = $STATES
 @onready var RAYCASTS = $Raycasts
@@ -61,9 +66,9 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
-	if inputs_active:
+	if inputs_active && !dying:
 		player_input()
-	change_state(current_state.update(delta))
+		change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
 	box_push()
@@ -105,12 +110,13 @@ func animation_handler():
 		throw_indicator.position.x = 11*horizontal_direction
 		
 	spotted_eye.visible = watched
+	stealth_eye.visible = !spotted_eye.visible #should be one or the other
 	
 	if new_state == WINDUP:
 		inputs_active = false
 	else:
-		inputs_active = true
-	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH): #otherwise it just skips these
+		inputs_active = true #very not good 
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
@@ -120,7 +126,8 @@ func animation_handler():
 				change_animation_state(JUMP)
 			if velocity.y > 0:
 				change_animation_state(FALL)
-		
+	running_particles()
+
 func player_input():
 	horizontal_direction = Input.get_axis("MoveLeft", "MoveRight") #returns -1 if first arg is pressed, else 1
 	vertical_direction = Input.get_axis("MoveDown", "MoveUp")
@@ -143,13 +150,12 @@ func player_input():
 	else: 
 		dash_input = false
 	
-func respawn_anim(): #CONNECTED TO CAVE DOOR
-	animation_tree["parameters/conditions/is_respawning"] = true
+func respawn_anim(): #needs to be updated
 	velocity = Vector2.ZERO
 	inputs_active = false
-	await get_tree().create_timer(0.5).timeout #just to give it time to play
-	inputs_active = true
-	animation_tree["parameters/conditions/is_respawning"] = false
+	dying = true #used to stop indicator from showing up on death
+	change_animation_state(DIE)
+	z_index = 10
 
 func jump_buffer_func(): #catches signal from FALL state
 	$JumpBuffer.start()
@@ -181,19 +187,31 @@ func signal_connector():
 	SignalBus.stealth_entered.connect(enter_stealth)
 	SignalBus.stealth_exited.connect(exit_stealth)
 	SignalBus.player_pickup.connect(player_pickup_func)
-
+	SignalBus.player_died.connect(respawn_anim)
 
 func _on_animation_tree_animation_finished(anim_name): #or it won't switch back to idle
-	if new_state == THROW:
+	if new_state == THROW: #i literally have no idea how this is working
 		change_animation_state(IDLE)
 	#prevent animation from getting stuck
+	if anim_name == "death": #reset level on death
+		get_tree().reload_current_scene()
 
 func box_push():
 	if $Raycasts/TopRight.is_colliding() && Input.is_action_pressed("MoveRight"):
 		$Raycasts/TopRight.get_collider().position.x += 1
 		change_animation_state(PUSH)
+#		SignalBus.box_pushing.emit()
 	elif $Raycasts/TopLeft.is_colliding() && Input.is_action_pressed("MoveLeft"):
 		$Raycasts/TopLeft.get_collider().position.x -= 1
 		change_animation_state(PUSH)
+#		SignalBus.box_pushing.emit()
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
+	
+func running_particles(): #might remove if its costing too much cpu power
+	if is_on_floor() && velocity.x != 0:
+		$RunningParticles.emitting = true
+	else:
+		$RunningParticles.emitting = false
+
+
