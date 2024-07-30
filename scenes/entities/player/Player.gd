@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var throw_indicator = $ThrowIndicator
 @onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
 @onready var spotted_eye = $SpottedEye
+@onready var spotted_sound = $Sound_PlayerWatched
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -35,6 +36,8 @@ var coyote_jump: bool = false
 var transparency: float
 var is_stealthed: bool = true
 var watched: bool = false
+
+
 @export var push_force: float = 80.0
 #states
 var current_state = null
@@ -54,6 +57,12 @@ func _ready():
 	
 	prev_state = STATES.IDLE 
 	current_state = STATES.IDLE
+	
+	var watched_timer : Timer = Timer.new()
+	self.add_child(watched_timer)
+	watched_timer.set_one_shot(false)
+	watched_timer.start(0.2)
+	watched_timer.timeout.connect(_on_watched_timer_timeout)
 	
 	signal_connector()
 
@@ -97,6 +106,7 @@ func get_next_to_wall():
 			else:
 				return Vector2.LEFT
 	return null
+
 
 func animation_handler():
 	if horizontal_direction != 0: #turning
@@ -197,3 +207,11 @@ func box_push():
 		change_animation_state(PUSH)
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
+
+func _on_watched_timer_timeout(): # to trigger music
+	#print("watched timer proc")
+	if spotted_sound:
+		if watched:
+			spotted_sound.fade_in()
+		else:
+			spotted_sound.fade_out()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=76 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://dvn1nxytyfj7c" path="res://assets/player/PlayerSheetJuly24.png" id="2_aty5o"]
@@ -23,6 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
 [ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
 [ext_resource type="AudioStream" uid="uid://ccsf6besv3uoc" path="res://assets/sounds/player_push.ogg" id="23_w5smx"]
+[ext_resource type="AudioStream" uid="uid://bvqh4xt7mseaa" path="res://assets/sounds/jester boy.ogg" id="24_ek6vj"]
+[ext_resource type="Script" path="res://scenes/entities/player/Sound_PlayerWatched.gd" id="25_v4vho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -605,6 +607,11 @@ stream = ExtResource("23_w5smx")
 volume_db = -6.0
 pitch_scale = 0.9
 bus = &"SFX"
+
+[node name="Sound_PlayerWatched" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_ek6vj")
+bus = &"Music"
+script = ExtResource("25_v4vho")
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

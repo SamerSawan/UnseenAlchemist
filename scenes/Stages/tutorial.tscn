@@ -271,7 +271,6 @@ scale = Vector2(0.54, 0.54)
 [node name="Bush8" type="Sprite2D" parent="Stuff"]
 position = Vector2(4047, 102)
 rotation = -0.141862
-scale = Vector2(1, 1)
 texture = ExtResource("19_2u17r")
 
 [node name="OrangeBush5" type="Sprite2D" parent="Stuff"]
