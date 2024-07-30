@@ -19,6 +19,9 @@
 [ext_resource type="AudioStream" uid="uid://cf3p3dbfyhjj" path="res://assets/sounds/potion_throw.ogg" id="16_rrhkj"]
 [ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
 [ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/strength.tscn" id="23_wnod0"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/dash.tscn" id="24_uxo1w"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/invis.tscn" id="25_mf8wk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -575,6 +578,27 @@ volume_db = -3.0
 pitch_scale = 0.8
 bus = &"SFX"
 
+[node name="Strength" parent="." instance=ExtResource("23_wnod0")]
+emitting = false
+
+[node name="strength_timer" type="Timer" parent="Strength"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Dash" parent="." instance=ExtResource("24_uxo1w")]
+emitting = false
+
+[node name="dash_timer" type="Timer" parent="Dash"]
+wait_time = 3.0
+
+[node name="Invis" parent="." instance=ExtResource("25_mf8wk")]
+emitting = false
+
+[node name="invis_timer" type="Timer" parent="Invis"]
+wait_time = 3.0
+
+[node name="statue_timer" type="Timer" parent="."]
+wait_time = 2.0
 [node name="RunningParticles" type="CPUParticles2D" parent="."]
 position = Vector2(1, 14)
 amount = 4
@@ -595,5 +619,9 @@ color = Color(0.658824, 0.658824, 0.658824, 1)
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="Strength/strength_timer" to="." method="_on_strength_timer_timeout"]
+[connection signal="timeout" from="Dash/dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Invis/invis_timer" to="." method="_on_invis_timer_timeout"]
+[connection signal="timeout" from="statue_timer" to="." method="_on_statue_timer_timeout"]
 
 [editable path="potion_thrower"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpqy5tphabuj1"]
+
+[ext_resource type="Script" path="res://Slime.gd" id="1_3b51c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81xde"]
+radius = 41.0488
+
+[node name="Slime" type="CPUParticles2D"]
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 47.32
+gravity = Vector2(0, -50)
+scale_amount_max = 4.0
+color = Color(0.392157, 0.635294, 0.27451, 0.568627)
+script = ExtResource("1_3b51c")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_81xde")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]

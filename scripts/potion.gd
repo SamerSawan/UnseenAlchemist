@@ -44,7 +44,6 @@ func _on_area_2d_body_entered(body):
 			"StatuePotion":
 				pass
 			"SmokePotion":
-				
 				var smoke_instance = smoke.instantiate()
 				potion_parent.potion_container.call_deferred("add_child", smoke_instance)
 				smoke_instance.global_position = global_position

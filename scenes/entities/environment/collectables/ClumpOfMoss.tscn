@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dttbldav6svgj"]
+[gd_scene load_steps=5 format=3 uid="uid://dttbldav6svgj"]
 
 [ext_resource type="Script" path="res://scenes/entities/environment/collectables/ClumpOfMoss.gd" id="1_ah41r"]
 [ext_resource type="Texture2D" uid="uid://1dgrk4ymng7p" path="res://assets/props/potionIngredients/ClumpOfMoss.png" id="1_na3q8"]
+[ext_resource type="Texture2D" uid="uid://com6o8bmu7h3p" path="res://assets/ui/E_button.png" id="3_a67ab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yace"]
 
@@ -14,6 +15,10 @@ texture = ExtResource("1_na3q8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0yace")
+
+[node name="E_button" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+texture = ExtResource("3_a67ab")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
