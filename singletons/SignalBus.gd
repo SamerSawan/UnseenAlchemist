@@ -6,6 +6,8 @@ signal deathzone
 signal player_died
 signal jump_buffer
 signal coyote_jump
+signal box_pushing
+signal respawn
 
 signal stealth_entered
 signal stealth_exited

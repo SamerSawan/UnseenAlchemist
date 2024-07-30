@@ -78,14 +78,14 @@ script = ExtResource("1_eft2r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
-position = Vector2(7.62939e-06, -7.62939e-06)
+position = Vector2(0, -32)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_87ojf")
 autoplay = "default"
 frame_progress = 0.211253
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(8, -16)
+position = Vector2(8, -48)
 color = Color(1, 1, 0.45098, 1)
 energy = 3.0
 range_item_cull_mask = 2

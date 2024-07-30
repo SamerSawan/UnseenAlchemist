@@ -7,7 +7,8 @@ func _ready():
 	Player = get_tree().get_first_node_in_group("player")
 #	respawn()
 #	Player.global_position = get_node('CaveDoor' + str(AudioPlayer.cave_id)).global_position
-	SignalBus.deathzone.connect(respawn)
+#	SignalBus.deathzone.connect(respawn) #deathzone should just emit player_died
+	SignalBus.respawn.connect(respawn)
 
 func respawn():
 	Player.global_position = get_tree().get_first_node_in_group("doors").global_position

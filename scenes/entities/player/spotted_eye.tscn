@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg7gdjmlllix1"]
+[gd_scene load_steps=7 format=3 uid="uid://bg7gdjmlllix1"]
 
 [ext_resource type="Texture2D" uid="uid://c51dsd1ldnrnf" path="res://assets/player/spotted_eye.png" id="1_kxopt"]
+[ext_resource type="Texture2D" uid="uid://cq1pydx8ss7n5" path="res://assets/player/indicators.png" id="2_0imkg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nb35r"]
 light_mode = 1
@@ -47,7 +48,6 @@ _data = {
 [node name="SpottedEye" type="Node2D"]
 
 [node name="Spotted" type="Sprite2D" parent="."]
-visible = false
 self_modulate = Color(1, 0.470588, 0.478431, 1)
 material = SubResource("CanvasItemMaterial_nb35r")
 texture = ExtResource("1_kxopt")
@@ -60,3 +60,6 @@ libraries = {
 }
 
 [node name="Stealthed" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_0imkg")
+hframes = 2
