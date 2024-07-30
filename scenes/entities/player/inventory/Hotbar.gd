@@ -31,8 +31,8 @@ func _process(delta):
 		if currentlyActive >= 7:
 			currentlyActive = 0
 		elif currentlyActive < 0:
-			currentlyActive = 8
-		elif currentlyActive < 8 and currentlyActive > -1:
+			currentlyActive = 7
+		elif currentlyActive < 7 and currentlyActive > -1:
 			currentlyActive += 1
 		slots[currentlyActive].texture_button.button_pressed = true
 		SignalBus.equipped_potion = slots[currentlyActive].item
@@ -43,7 +43,7 @@ func _process(delta):
 			currentlyActive = 0
 		elif currentlyActive < 0:
 			currentlyActive = 7
-		elif currentlyActive < 8 and currentlyActive > -1:
+		elif currentlyActive < 7 and currentlyActive > -1:
 			currentlyActive -= 1
 		slots[currentlyActive].texture_button.button_pressed = true
 		print(slots[currentlyActive].item)

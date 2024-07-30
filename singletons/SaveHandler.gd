@@ -7,7 +7,7 @@ const SAVE_GAME_PATH := "user://savegame.save"
 
 func new_game():
 	if FileAccess.file_exists(SAVE_GAME_PATH):
-		OS.move_to_trash(ProjectSettings.globalize_path(SAVE_GAME_PATH))
+		DirAccess.remove_absolute(SAVE_GAME_PATH)
 	get_tree().change_scene_to_file("res://scenes/Stages/tutorial.tscn")
 	save_game()
 
@@ -24,7 +24,8 @@ func save_game():
 		var node_data = node.call("save")
 		var json_string = JSON.stringify(node_data)
 		save_file.store_line(json_string)
-		
+	
+	print("Game saved")
 
 func load_game():
 	if not FileAccess.file_exists(SAVE_GAME_PATH):
@@ -66,3 +67,5 @@ func load_game():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
 			new_object.set(i, node_data[i])
+			
+	print("Game loaded")

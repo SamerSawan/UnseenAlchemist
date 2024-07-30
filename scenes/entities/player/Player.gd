@@ -216,3 +216,25 @@ func _on_watched_timer_timeout(): # to trigger music
 			spotted_sound.fade_in()
 		else:
 			spotted_sound.fade_out()
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"current_scene" : get_tree().get_current_scene().scene_file_path,
+		"inventory" : serialize_inventory(inventory.items),
+	}
+	return save_dict
+
+func serialize_inventory(slots: Array) -> Array:
+	var serialized_slots = []
+	for slot in slots:
+		var serialized_slot = {
+			"item_name": slot.item_name,
+			"item_texture_path": slot.item.texture.get_path(),
+			"quantity": slot.quantity
+		}
+		serialized_slots.append(serialized_slot)
+	return serialized_slots

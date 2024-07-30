@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://mb5y0m2smln2" path="res://assets/sounds/bassser.ogg" id="4_hgj8d"]
 [ext_resource type="PackedScene" uid="uid://cm6mv5wl8fdk1" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="5_i0v56"]
 
-[node name="mainmenu" type="Control" node_paths=PackedStringArray("startbutton", "optionsbutton", "quitbutton")]
+[node name="mainmenu" type="Control" node_paths=PackedStringArray("continuebutton", "newbutton", "optionsbutton", "quitbutton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sdj0e")
-startbutton = NodePath("VBoxContainer/StartButton")
+continuebutton = NodePath("VBoxContainer/ContinueButton")
+newbutton = NodePath("VBoxContainer/NewButton")
 optionsbutton = NodePath("VBoxContainer/OptionsButton")
 quitbutton = NodePath("VBoxContainer/QuitButton")
 
@@ -36,25 +37,25 @@ theme = ExtResource("2_p5iqj")
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 64
 text = "Continue"
 alignment = 0
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="NewButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../QuitButton")
-text = "Start"
+theme_override_font_sizes/font_size = 64
+text = "New"
 alignment = 0
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Options"
 alignment = 0
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 32
 text = "Quit"
 alignment = 0
 

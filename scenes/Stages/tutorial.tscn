@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://vcekfmi5jp2i"]
+[gd_scene load_steps=39 format=3 uid="uid://vcekfmi5jp2i"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_e70cr"]
 [ext_resource type="PackedScene" uid="uid://cm6mv5wl8fdk1" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="2_vql7n"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://medlkuki3njv" path="res://assets/props/Tree2.png" id="34_hii4m"]
 [ext_resource type="Texture2D" uid="uid://dmic5l6fgd60n" path="res://assets/props/OrangeBush2.png" id="35_t34fl"]
 [ext_resource type="Texture2D" uid="uid://cfpw4qw3cnoto" path="res://assets/props/OrangeTree2.png" id="36_navbp"]
+[ext_resource type="PackedScene" uid="uid://b74hgtvtnf6xu" path="res://scenes/save/save_debugger.tscn" id="37_yn4n6"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_huqcj"]
 
@@ -468,5 +469,7 @@ text = "[center]Try to craft items with
 
 Browse the help menu with [color=green][H][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
+
+[node name="SaveDebugger" parent="." instance=ExtResource("37_yn4n6")]
 
 [editable path="Stuff/LightSource5"]
