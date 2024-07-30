@@ -272,8 +272,8 @@ radius = 5.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l44av"]
 size = Vector2(36, 51)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ahilb"]
-radius = 136.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwd2a"]
+size = Vector2(338.5, 76.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv7p6"]
 size = Vector2(128, 48)
@@ -305,7 +305,8 @@ collision_mask = 8
 
 [node name="ToPlayerRaycast" type="RayCast2D" parent="Raycasts"]
 enabled = false
-collision_mask = 8
+target_position = Vector2(168, -56)
+collision_mask = 9
 
 [node name="GapCalculator" type="RayCast2D" parent="Raycasts"]
 position = Vector2(24, 40)
@@ -351,7 +352,7 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WorldHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_l44av")
 
@@ -359,7 +360,8 @@ shape = SubResource("RectangleShape2D_l44av")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_ahilb")
+position = Vector2(102, -1.75)
+shape = SubResource("RectangleShape2D_qwd2a")
 
 [node name="StealthDetectArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -373,6 +375,6 @@ debug_color = Color(0.960784, 0, 0.501961, 0.419608)
 [connection signal="body_entered" from="PatrolPoints/PP2/PP2Area" to="." method="_on_pp_2_area_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="LoseAggroTimer" to="." method="_on_lose_aggro_timer_timeout"]
-[connection signal="body_entered" from="DetectionArea" to="." method="spotted_player"]
-[connection signal="body_exited" from="DetectionArea" to="." method="lose_aggro"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="StealthDetectArea" to="." method="_on_stealth_detect_area_body_entered"]

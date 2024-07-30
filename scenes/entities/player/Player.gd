@@ -39,6 +39,7 @@ var is_stealthed: bool = true
 var watched: bool = false
 var being_chased: bool = false
 var dying: bool = false
+var is_hidden: bool = false #for hiding in props or behind boxes
 #@export var push_force: float = 80.0
 #states
 var current_state = null

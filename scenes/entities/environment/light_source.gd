@@ -21,10 +21,12 @@ func cast_ray(): #might just signal activate via signalbus? not sure where else 
 		var result = space_state.intersect_ray(query)
 		if result: #hidden behind box
 			player.is_stealthed = true
+			player.is_hidden = true
 			player.stealth_eye.frame = 0
 			player.enter_stealth()
 		else: #in light area, not behind box
 			player.is_stealthed = false
+			player.is_hidden = false
 			player.stealth_eye.frame = 1
 			player.exit_stealth()
 			
