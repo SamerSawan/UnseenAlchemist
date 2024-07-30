@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctstoxgseyc0s"]
+[gd_scene load_steps=4 format=3 uid="uid://ctstoxgseyc0s"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/inventory/inventory.gd" id="1_kq6no"]
 [ext_resource type="Texture2D" uid="uid://cx3v614rc2jmm" path="res://assets/ui/inventory/InventoryBackground.png" id="2_scxwa"]
 [ext_resource type="PackedScene" uid="uid://c4bowaeln1jh1" path="res://scenes/entities/player/inventory/InventorySlot.tscn" id="3_0jgan"]
-[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="3_0uomx"]
 
 [node name="Inventory" type="Control"]
 custom_minimum_size = Vector2(72, 45)
@@ -33,7 +32,6 @@ offset_left = 8.0
 offset_top = 4.0
 offset_right = 64.0
 offset_bottom = 44.0
-theme = ExtResource("3_0uomx")
 columns = 3
 
 [node name="Slot 1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_0jgan")]

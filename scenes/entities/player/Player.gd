@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
 @onready var spotted_eye = $SpottedEye/Spotted
 @onready var stealth_eye = $SpottedEye/Stealthed
+@onready var spotted_sound = $Sound_PlayerWatched
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 

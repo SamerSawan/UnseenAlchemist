@@ -48,7 +48,7 @@ func _ready():
 #	$PP2.visible = false
 	current_patrol_point = Patrol2.position
 	current_destination = current_patrol_point
-	direction = position.direction_to(current_destination.position)
+	direction = position.direction_to(current_destination)
 	SignalBus.is_slept.connect(fell_asleep)
 	SignalBus.is_awake.connect(woke_up)
 	SignalBus.is_slowed.connect(slowed)

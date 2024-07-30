@@ -25,94 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jeu3p")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 74.0
-offset_right = 630.0
-offset_bottom = 530.0
-texture = ExtResource("1_8kmjs")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 23.0
-offset_right = 615.0
-offset_bottom = 420.0
-theme_override_constants/h_separation = 300
-theme_override_constants/v_separation = 100
-columns = 2
-
-[node name="Panel" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Panel8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
-layout_mode = 2
-
-[node name="Potions" type="Node" parent="."]
-
-[node name="DashPotion" type="Sprite2D" parent="Potions"]
-position = Vector2(72, 141)
-scale = Vector2(3, 3)
-texture = ExtResource("3_yeuby")
-
-[node name="NoisePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(72, 248)
-scale = Vector2(3, 3)
-texture = ExtResource("4_w1kjx")
-
-[node name="SlimePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(74, 348)
-scale = Vector2(3, 3)
-texture = ExtResource("5_3l0fn")
-
-[node name="SleepPotion" type="Sprite2D" parent="Potions"]
-position = Vector2(74, 448)
-scale = Vector2(3, 3)
-texture = ExtResource("6_taeqs")
-
-[node name="InvisPotion" type="Sprite2D" parent="Potions"]
-position = Vector2(372, 146)
-scale = Vector2(3, 3)
-texture = ExtResource("7_stfv5")
-
-[node name="SmokePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(374, 249)
-scale = Vector2(3, 3)
-texture = ExtResource("8_dn2o8")
-
-[node name="StatuePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(373, 350)
-scale = Vector2(3, 3)
-texture = ExtResource("9_4cway")
-
-[node name="Sprite2D" type="Sprite2D" parent="Potions"]
-position = Vector2(373, 449)
-scale = Vector2(3, 3)
-texture = ExtResource("10_gt2md")
-
 [node name="Labels" type="Node" parent="."]
 
 [node name="Dash" type="Label" parent="Labels"]
@@ -182,6 +94,7 @@ aggro and chase"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Statue" type="Label" parent="Labels/Statue"]
+layout_mode = 0
 offset_left = -12.0
 offset_top = 97.0
 offset_right = 195.0
@@ -190,3 +103,91 @@ text = "Gives the player high
 strength, allowing 
 them to push objects"
 label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Potions" type="Node" parent="."]
+
+[node name="DashPotion" type="Sprite2D" parent="Potions"]
+position = Vector2(72, 141)
+scale = Vector2(3, 3)
+texture = ExtResource("3_yeuby")
+
+[node name="NoisePotion" type="Sprite2D" parent="Potions"]
+position = Vector2(72, 248)
+scale = Vector2(3, 3)
+texture = ExtResource("4_w1kjx")
+
+[node name="SlimePotion" type="Sprite2D" parent="Potions"]
+position = Vector2(74, 348)
+scale = Vector2(3, 3)
+texture = ExtResource("5_3l0fn")
+
+[node name="SleepPotion" type="Sprite2D" parent="Potions"]
+position = Vector2(74, 448)
+scale = Vector2(3, 3)
+texture = ExtResource("6_taeqs")
+
+[node name="InvisPotion" type="Sprite2D" parent="Potions"]
+position = Vector2(372, 146)
+scale = Vector2(3, 3)
+texture = ExtResource("7_stfv5")
+
+[node name="SmokePotion" type="Sprite2D" parent="Potions"]
+position = Vector2(374, 249)
+scale = Vector2(3, 3)
+texture = ExtResource("8_dn2o8")
+
+[node name="StatuePotion" type="Sprite2D" parent="Potions"]
+position = Vector2(373, 350)
+scale = Vector2(3, 3)
+texture = ExtResource("9_4cway")
+
+[node name="Sprite2D" type="Sprite2D" parent="Potions"]
+position = Vector2(373, 449)
+scale = Vector2(3, 3)
+texture = ExtResource("10_gt2md")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 74.0
+offset_right = 630.0
+offset_bottom = 530.0
+texture = ExtResource("1_8kmjs")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 23.0
+offset_right = 615.0
+offset_bottom = 420.0
+theme_override_constants/h_separation = 300
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="Panel" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
+
+[node name="Panel8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
+layout_mode = 2
