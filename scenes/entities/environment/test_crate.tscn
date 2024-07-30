@@ -39,7 +39,7 @@ texture = SubResource("CanvasTexture_7ebwf")
 light_mask = 3
 scale = Vector2(0.285714, 0.298137)
 occluder = SubResource("OccluderPolygon2D_dvcud")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="Area2D" type="Area2D" parent="TestCrate"]
 collision_layer = 16

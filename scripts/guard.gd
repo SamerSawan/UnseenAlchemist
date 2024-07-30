@@ -10,12 +10,12 @@ extends CharacterBody2D
 @onready var detection_area = $DetectionArea
 @onready var detection_area_shape = $DetectionArea/CollisionShape2D
 
-var speed: float = 2500.0
+var speed = 2500.0 #when returning to patrol state
 
-@export var patrol_speed = 2500.0
-@export var chase_speed = 8000.0 #player shouldnt be able to outrun normally
-@export var jump_strength_x = 2.0
-@export var jump_strength_y = 300.0
+@export var patrol_speed: float = 2500.0 ##very initial speed
+@export var chase_speed = 14000.0 #player shouldnt be able to outrun normally
+@export var jump_strength_x = 2.0 ##for gaps
+@export var jump_strength_y = 300.0 ##for gaps
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -38,7 +38,6 @@ var is_chasing: bool = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-#	patrol_points_setter()
 #	$PP1.visible = false uncomment after testing to hide patrol points
 #	$PP2.visible = false
 	current_patrol_point = Patrol2.position
@@ -55,7 +54,7 @@ func _physics_process(delta):
 	player_detection()
 	player_in_area = detection_area.overlaps_body(player) #scans every frame not just on enter
 	scan_for_player()
-	
+		
 	move_and_slide()
 	
 func gravity(delta):
@@ -71,7 +70,8 @@ func idle():#stand around for a few, unless something changes
 func raycast_business(): #jump over cliffs
 	gap_distance()
 	if WallRaycast.is_colliding() && !is_idle:
-		velocity.y -= 50
+		velocity.y -= 20
+		velocity.x += 5*direction.x #just to stop him from getting stuck on wall in peculiar case
 	if !HoleRaycast.is_colliding() && $GapJumpCD.is_stopped() && gapRaycast.is_colliding(): #hops
 #		gapRaycast.enabled = true
 		$GapJumpCD.start() #to stop forces from constantly applying
@@ -105,9 +105,11 @@ func _on_pp_1_area_body_entered(body):
 		direction = position.direction_to(current_destination)
 
 func move(delta):
-	if !is_idle && HoleRaycast.is_colliding():
-		velocity.x = direction.x*speed*delta
-		
+	if !is_idle && HoleRaycast.is_colliding() && !player.dying:
+		if direction.x < 0:
+			velocity.x = floor(direction.x)*speed*delta
+		elif direction.x > 0: #should already be exclusive but just in case
+			velocity.x = ceil(direction.x)*speed*delta
 func gap_distance(): #increases x jump speed according to gap
 	gapRaycast.enabled = !HoleRaycast.is_colliding()
 	if gapRaycast.is_colliding():
@@ -115,20 +117,27 @@ func gap_distance(): #increases x jump speed according to gap
 		to_cliff = position.distance_to(collision_point)
 
 func flip_sprite():
-	if !is_idle:
-		guard_sprite.flip_h = (round(direction.x) == -1)
-		WallRaycast.target_position.x = 32*(round(direction.x))
-		HoleRaycast.position.x = 14*(round(direction.x))
-		gapRaycast.target_position.x = 160*(round(direction.x))
-		gapRaycast.position.x = 24*(round(direction.x))
-		detection_area_shape.position.x = 102*(round(direction.x))
-		
+	if !is_idle && direction.x != 0 && !player.dying: #it gets fducky when it goes to 0, rounds -0.4 -> 0 rather than -1
+		guard_sprite.flip_h = ((direction.x) < 0)
+		if direction.x > 0: #if positive, round up to 1
+			WallRaycast.target_position.x = 32*(ceil(direction.x)) #ceiling is round up
+			HoleRaycast.position.x = 14*(ceil(direction.x))
+			gapRaycast.target_position.x = 160*(ceil(direction.x))
+			gapRaycast.position.x = 24*(ceil(direction.x))
+			detection_area_shape.position.x = 102*(ceil(direction.x))
+		elif direction.x < 0: #if negative, round down to 0
+			WallRaycast.target_position.x = 32*(floor(direction.x)) #floor is round down
+			HoleRaycast.position.x = 14*(floor(direction.x))
+			gapRaycast.target_position.x = 160*(floor(direction.x))
+			gapRaycast.position.x = 24*(floor(direction.x))
+			detection_area_shape.position.x = 102*(floor(direction.x))
 func _on_idle_timer_timeout(): #to make him idle at patrol points
 	is_idle = false
 
 func spotted_player(): #on area body entered, ACTIVATES CHASE BOOL
 		is_idle = false #break idle on detection
-		guard_sprite.play("chase")
+		if !guard_sprite.animation == "attack":
+			guard_sprite.play("chase") #stop from interrupting attack
 		$LoseAggroTimer.stop() #this WONT trigger the timeout effect, but will reset timer
 		last_patrol_point = current_destination
 		is_chasing = true
@@ -140,11 +149,10 @@ func _on_lose_aggro_timer_timeout(): #stop chasing if LOS broken for too long
 	direction = position.direction_to(last_patrol_point)
 	speed = patrol_speed
 	player.watched = false
-	
 
 func kill_mode(): #THE FINAL STRIKE
 	distance_to_player = (position - player.global_position)
-	if abs(distance_to_player.x) < 40 && abs(distance_to_player.y) < 20:
+	if abs(distance_to_player.x) < 40 && abs(distance_to_player.y) < 20 && !player.dying:
 		guard_sprite.play("attack")
 		SignalBus.player_died.emit()
 		velocity.x = 0
@@ -168,7 +176,7 @@ func _on_detection_area_body_entered(body):
 func _on_detection_area_body_exited(_body):
 	ray_to_player.set_deferred("enabled",false)
 	player_entered = false
-	$LoseAggroTimer.start() #breaks aggro for leaving detection area
+	$LoseAggroTimer.start()
 	
 func player_detection(): #CLEAR LOS/ AGGRO FUNC
 	if player_entered == true: #points raycast to the player
@@ -177,10 +185,12 @@ func player_detection(): #CLEAR LOS/ AGGRO FUNC
 			if !spotted_once:
 				spotted_player() #RUNS ONCE UNLESS THE SITUATION CHANGES
 				spotted_once = true
-			kill_mode()
+				kill_mode()
+
+			else:
+				if spotted_once: #RUNS ONCE UNLESS THE SITUATION CHANGES
+					$LoseAggroTimer.start() #breaks aggro if in area AND in LOS
+					spotted_once = false #the timer keeps starting in the area so it doesnt timeout
+					
 			
 
-		else:
-			if spotted_once: #RUNS ONCE UNLESS THE SITUATION CHANGES
-				$LoseAggroTimer.start() #breaks aggro if in area AND in LOS
-				spotted_once = false 

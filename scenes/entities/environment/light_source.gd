@@ -22,7 +22,7 @@ func cast_ray(): #might just signal activate via signalbus? not sure where else 
 		if result: #hidden behind box
 			player.is_stealthed = true
 			player.is_hidden = true
-			player.stealth_eye.frame = 0
+			player.stealth_eye.frame = 2 #new hidden icon
 			player.enter_stealth()
 		else: #in light area, not behind box
 			player.is_stealthed = false

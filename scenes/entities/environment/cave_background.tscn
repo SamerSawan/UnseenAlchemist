@@ -6,6 +6,7 @@
 layer = -5
 
 [node name="TextureRect" type="TextureRect" parent="."]
+light_mask = 3
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_uh1ie")
