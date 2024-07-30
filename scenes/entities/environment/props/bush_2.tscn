@@ -1,12 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbsfe6hwq3isr"]
+[gd_scene load_steps=6 format=3 uid="uid://dbsfe6hwq3isr"]
 
 [ext_resource type="Texture2D" uid="uid://c8mothtryayf5" path="res://assets/objects/props/bush2.png" id="1_kqq22"]
+[ext_resource type="Texture2D" uid="uid://cjjbil6offpqw" path="res://assets/objects/prop normal maps/bush2_n.png" id="2_dt3t0"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_brr6u"]
+polygon = PackedVector2Array(3.5, 5.3, 1.5, 6.3, 1.5, 7.5, 0.5, 7.5, 0.5, 8.5, 1.7, 8.5, 2.7, 6.5, 6.5, 6.5, 6.5, 9.5, 7.5, 9.5, 7.5, 4.5, 10.5, 4.5, 10.5, 5.5, 11.5, 5.5, 11.5, 7.5, 12.5, 7.5, 12.5, 12.5, 14.5, 12.5, 14.5, 11.5, 20.5, 11.5, 20.5, 14.5, 19.5, 14.5, 19.5, 15.5, 22.5, 15.5, 22.5, 19.5, 20.5, 19.5, 20.5, 20.5, 18.5, 20.5, 18.5, 24, -20.5, 24, -20.5, 22.5, -19.5, 22.5, -19.5, 19.5, -20.5, 19.5, -20.5, 17.5, -22.5, 17.5, -22.5, 14.5, -19.5, 14.5, -19.5, 11.5, -17.5, 11.5, -17.5, 10.5, -14.5, 10.5, -14.5, 11.5, -13.5, 11.5, -13.5, 8.7, -11.5, 7.7, -11.5, 6.5, -10.5, 6.5, -10.5, 5.5, -8.4, 5.5, -9.1, 8.5, -8.5, 8.5, -8.5, 7.5, -6.5, 7.5, -6.5, 4.5, -5.5, 4.5, -5.5, 3.5, -3.5, 3.5, -3.5, 2.5, -1.5, 2.5, -1.5, 1.5, 3.5, 1.5)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e52ca"]
+diffuse_texture = ExtResource("1_kqq22")
+normal_texture = ExtResource("2_dt3t0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooqqa"]
+size = Vector2(23.5, 10.5)
 
 [node name="Bush2" type="Node2D"]
+z_index = 4
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(1, -16)
+occluder = SubResource("OccluderPolygon2D_brr6u")
+occluder_light_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kqq22")
+position = Vector2(1, -16)
+texture = SubResource("CanvasTexture_e52ca")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, -16)
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.75, 16.25)
+shape = SubResource("RectangleShape2D_ooqqa")
