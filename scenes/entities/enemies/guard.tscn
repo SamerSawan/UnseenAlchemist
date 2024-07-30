@@ -283,6 +283,7 @@ z_index = 2
 collision_layer = 4
 collision_mask = 136
 script = ExtResource("1_habcd")
+chase_speed = 15000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 6
