@@ -460,7 +460,7 @@ states/windup/position = Vector2(807, 259)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_47qey"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_bw7lu"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_fxgf3"), "idle", "respawn", SubResource("AnimationNodeStateMachineTransition_62wcy"), "run", "respawn", SubResource("AnimationNodeStateMachineTransition_y2uql"), "respawn", "idle", SubResource("AnimationNodeStateMachineTransition_gn0js"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_ilwtg"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_akyst"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_fdnik"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_n4stb"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_d8q4c"), "throw", "idle", SubResource("AnimationNodeStateMachineTransition_7hcdy"), "windup", "throw", SubResource("AnimationNodeStateMachineTransition_vyssx"), "idle", "windup", SubResource("AnimationNodeStateMachineTransition_ktvw7"), "run", "windup", SubResource("AnimationNodeStateMachineTransition_lge5s"), "jump", "windup", SubResource("AnimationNodeStateMachineTransition_yprd7"), "fall", "windup", SubResource("AnimationNodeStateMachineTransition_xsy5d"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_jh434"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_t7seg"), "idle", "push", SubResource("AnimationNodeStateMachineTransition_g32oo"), "push", "idle", SubResource("AnimationNodeStateMachineTransition_df4to"), "run", "push", SubResource("AnimationNodeStateMachineTransition_w1y4w"), "push", "run", SubResource("AnimationNodeStateMachineTransition_akrdc"), "fall", "push", SubResource("AnimationNodeStateMachineTransition_850k8"), "push", "jump", SubResource("AnimationNodeStateMachineTransition_pvekg"), "windup", "idle", SubResource("AnimationNodeStateMachineTransition_rx7xf")]
 graph_offset = Vector2(-43, 61.4635)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["Persist", "player"]]
 z_index = 5
 collision_mask = 26
 script = ExtResource("1_5jc4u")
@@ -468,6 +468,9 @@ inventory = ExtResource("2_cjjn4")
 SPEED = 200.0
 JUMP_VELOCITY = -350.0
 push_force = 200.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

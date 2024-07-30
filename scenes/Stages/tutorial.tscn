@@ -45,9 +45,6 @@
 position = Vector2(4660, 34)
 collision_mask = 10
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
-current = true
-
 [node name="Cave_Background_Parallax" parent="." instance=ExtResource("2_vql7n")]
 offset = Vector2(0, -60)
 transform = Transform2D(1, 0, 0, 1, 0, -60)
@@ -265,7 +262,7 @@ position = Vector2(4156, 116)
 position = Vector2(4440, 67)
 
 [node name="DEATHZONE" parent="Stuff" instance=ExtResource("31_eqirf")]
-position = Vector2(4921, 126)
+position = Vector2(4918, 172)
 scale = Vector2(0.54, 0.54)
 
 [node name="Bush8" type="Sprite2D" parent="Stuff"]
@@ -375,10 +372,6 @@ offset_top = 29.0
 offset_right = 496.0
 offset_bottom = 78.0
 theme = ExtResource("14_3tiwf")
-theme_override_colors/font_shadow_color = Color(0.470588, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[center][color=green][W] [A] [S] [D][/color] to move.
 
@@ -402,10 +395,6 @@ offset_top = 110.0
 offset_right = 1396.0
 offset_bottom = 159.0
 theme = ExtResource("14_3tiwf")
-theme_override_colors/font_shadow_color = Color(0.470588, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[center][color=magenta]Yarn[/color] is able to [color=green]Push[/color] objects around by running into them.[/center]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
@@ -413,7 +402,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FadingText3" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
 position = Vector2(2290, 5)
-text = NodePath("../PushText")
+text = NodePath("../DarknessSneakText")
 
 [node name="DarknessSneakText" type="RichTextLabel" parent="Text"]
 z_index = 10
@@ -428,10 +417,6 @@ offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_3tiwf")
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[center]While in the [color=green]darkness[/color], 
 [color=magenta]You[/color] are [color=green]unseen[/color].
@@ -439,8 +424,8 @@ text = "[center]While in the [color=green]darkness[/color],
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText4" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
-position = Vector2(3640, 8)
-text = NodePath("../PushText")
+position = Vector2(3637, 63)
+text = NodePath("../IngredientText")
 
 [node name="IngredientText" type="RichTextLabel" parent="Text"]
 z_index = 10
@@ -455,13 +440,33 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_3tiwf")
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[center][color=magenta]You[/color] can collect ingredients by pressing 
 [color=green][E][/color]"
+custom_effects = [SubResource("RichTextEffect_huqcj")]
+
+[node name="FadingText5" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
+position = Vector2(4875, 0)
+text = NodePath("../CraftingText2")
+
+[node name="CraftingText2" type="RichTextLabel" parent="Text"]
+z_index = 10
+anchors_preset = -1
+anchor_left = -0.0407986
+anchor_right = -0.0407986
+anchor_bottom = 0.00154321
+offset_left = 4816.0
+offset_top = -55.0
+offset_right = 5028.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_3tiwf")
+bbcode_enabled = true
+text = "[center]Try to craft items with
+[color=green][C][/color]
+
+Browse the help menu with [color=green][H][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [editable path="Stuff/LightSource5"]
