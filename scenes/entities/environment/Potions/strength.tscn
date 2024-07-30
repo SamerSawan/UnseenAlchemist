@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ie4nyh1o6yyj"]
+
+[node name="Strength" type="CPUParticles2D"]
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 47.32
+gravity = Vector2(0, -50)
+scale_amount_max = 4.0
+color = Color(1, 0.188235, 0.27451, 0.568627)

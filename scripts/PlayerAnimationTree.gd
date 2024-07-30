@@ -1,15 +1,6 @@
 extends AnimationTree
 
-enum {
-	IDLE,
-	RUN,
-	WINDUP,
-	THROW,
-	DIE,
-	JUMP,
-	FALL,
-	PUSH,
-}
+enum {IDLE,RUN,WINDUP,THROW,DIE,JUMP,FALL,PUSH,CLIMB,DRINK,DASH}
 
 var state
 var new_state
@@ -23,4 +14,5 @@ func _ready():
 #func _process(delta):
 #	print(state)
 func change_state():
-	state = player.new_state
+	if state != DIE: #deathzone wont work without this
+		state = player.new_state

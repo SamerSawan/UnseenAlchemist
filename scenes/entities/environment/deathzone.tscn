@@ -6,7 +6,7 @@
 size = Vector2(1184, 66)
 
 [node name="DEATHZONE" type="Area2D" groups=["deathzone"]]
-collision_layer = 0
+collision_layer = 64
 script = ExtResource("1_ew5eg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

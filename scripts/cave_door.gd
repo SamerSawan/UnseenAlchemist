@@ -18,12 +18,14 @@ func _on_area_exited(_area):
 
 
 func _ready():
-	pass
 #	SignalBus.deathzone.connect(respawn)
-#	if is_spawn_point:
-#		Player = get_tree().get_first_node_in_group("player")
-#		Player.global_position = global_position
-
+	respawn()
+	
+func respawn():
+	if is_spawn_point:
+		Player = get_tree().get_first_node_in_group("player")
+		Player.global_position = global_position
+		
 func on_door_interact():
 	if next_level != null:
 		get_tree().change_scene_to_file(next_level)

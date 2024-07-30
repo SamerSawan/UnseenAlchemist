@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxhpaap3y782o"]
+
+[ext_resource type="Texture2D" uid="uid://b73iwu7qb16m6" path="res://assets/ui/inventory/InfoSlot.png" id="1_jvnuv"]
+
+[node name="Panel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(129, 52)
+scale = Vector2(3, 3)
+texture = ExtResource("1_jvnuv")

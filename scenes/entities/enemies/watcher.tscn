@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://guo2iwcancvy"]
+[gd_scene load_steps=39 format=3 uid="uid://guo2iwcancvy"]
 
 [ext_resource type="Texture2D" uid="uid://bmhoxt7dfib1x" path="res://assets/creatures/The-Watcher.png" id="1_gy1gp"]
 [ext_resource type="Script" path="res://scripts/watcher.gd" id="1_mqevc"]
 [ext_resource type="Texture2D" uid="uid://bxm1vssydut7f" path="res://assets/creatures/The-Watcher2.png" id="3_pbsll"]
+[ext_resource type="Texture2D" uid="uid://c465bn30meghl" path="res://assets/creatures/Watcher-Sleeps.png" id="4_3av4c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2ldn"]
 atlas = ExtResource("1_gy1gp")
@@ -84,6 +85,50 @@ region = Rect2(544, 0, 32, 32)
 atlas = ExtResource("3_pbsll")
 region = Rect2(576, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f575k"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65243"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc6ch"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nd3x"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyn87"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6waj"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isojh"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf6u3"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3owl5"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m8it"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu16g"]
+atlas = ExtResource("4_3av4c")
+region = Rect2(320, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_yctv6"]
 animations = [{
 "frames": [{
@@ -150,19 +195,59 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f575k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65243")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc6ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nd3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyn87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6waj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isojh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf6u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3owl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m8it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu16g")
+}],
+"loop": false,
+"name": &"sleep",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hwrs"]
 radius = 167.012
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_008hs"]
+radius = 5.0
 
 [node name="Watcher" type="Node2D"]
 script = ExtResource("1_mqevc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yctv6")
-animation = &"idle"
+animation = &"sleep"
 autoplay = "idle"
-frame_progress = 0.688138
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -173,6 +258,15 @@ debug_color = Color(0.788235, 0.345098, 0.670588, 0.235294)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = false
 collision_mask = 25
+collide_with_areas = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_008hs")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
