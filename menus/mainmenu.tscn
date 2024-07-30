@@ -37,17 +37,20 @@ theme = ExtResource("2_p5iqj")
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 128
 text = "Start"
 alignment = 0
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Options"
 alignment = 0
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 64
 text = "Quit"
 alignment = 0
 

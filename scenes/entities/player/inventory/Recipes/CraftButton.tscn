@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpvwms6l0mkuv"]
+[gd_scene load_steps=6 format=3 uid="uid://dpvwms6l0mkuv"]
 
 [ext_resource type="Texture2D" uid="uid://mo2bewh0tv7y" path="res://assets/ui/inventory/CRAFT BUTTON.png" id="1_h3rh6"]
 [ext_resource type="Texture2D" uid="uid://qclyexgthrj" path="res://assets/ui/inventory/CRAFT BUTTON PRESSED.png" id="2_suuy1"]
-[ext_resource type="FontFile" uid="uid://bgcis10oco2qr" path="res://assets/ui/inventory/Daydream.ttf" id="3_jvnt8"]
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="3_rnypm"]
+[ext_resource type="FontFile" uid="uid://b537mpgf1sy3b" path="res://assets/fonts/alagard.ttf" id="4_73bwo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ifk7l"]
-font = ExtResource("3_jvnt8")
-font_size = 8
+font = ExtResource("4_73bwo")
+font_size = 14
+outline_color = Color(1, 0, 0, 1)
+shadow_color = Color(1, 0, 0, 1)
 
 [node name="CraftButton" type="TextureButton"]
 offset_right = 48.0
@@ -20,5 +23,6 @@ offset_left = 3.0
 offset_top = 5.0
 offset_right = 46.0
 offset_bottom = 19.0
+theme = ExtResource("3_rnypm")
 text = "CRAFT"
 label_settings = SubResource("LabelSettings_ifk7l")
