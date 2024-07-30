@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dhto2nrug8yg2"]
+[gd_scene format=3 uid="uid://dg43t8okoq2v7"]
 
 [node name="Dash" type="CPUParticles2D"]
 amount = 50

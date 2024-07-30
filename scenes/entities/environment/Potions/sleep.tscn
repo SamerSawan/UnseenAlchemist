@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvqg224wv0c0x"]
+[gd_scene load_steps=3 format=3 uid="uid://btgx1s6c45k42"]
 
 [ext_resource type="Script" path="res://scenes/entities/environment/Potions/Sleep.gd" id="1_a2l3c"]
 

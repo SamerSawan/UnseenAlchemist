@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c2v8defy28dlq"]
+[gd_scene format=3 uid="uid://c0wt57ti7reqm"]
 
 [node name="Invis" type="CPUParticles2D"]
 amount = 50

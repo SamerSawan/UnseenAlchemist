@@ -1,4 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpqy5tphabuj1"]
+[gd_scene load_steps=3 format=3 uid="uid://m3ohvha0lmhw"]
+
 
 [ext_resource type="Script" path="res://Slime.gd" id="1_3b51c"]
 

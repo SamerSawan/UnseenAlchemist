@@ -371,6 +371,11 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_iv7p6")
 debug_color = Color(0.960784, 0, 0.501961, 0.419608)
 
+
+[node name="SlowTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
 [connection signal="body_entered" from="PatrolPoints/PP1/PP1Area" to="." method="_on_pp_1_area_body_entered"]
 [connection signal="body_entered" from="PatrolPoints/PP2/PP2Area" to="." method="_on_pp_2_area_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
@@ -378,3 +383,4 @@ debug_color = Color(0.960784, 0, 0.501961, 0.419608)
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="StealthDetectArea" to="." method="_on_stealth_detect_area_body_entered"]
+

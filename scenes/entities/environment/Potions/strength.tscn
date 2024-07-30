@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cks71vrdahclf"]
+[gd_scene format=3 uid="uid://ie4nyh1o6yyj"]
 
 [node name="Strength" type="CPUParticles2D"]
 amount = 50

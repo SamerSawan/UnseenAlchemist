@@ -24,3 +24,16 @@ signal potion_changed
 signal potion_crafted
 var item
 var equipped_potion
+
+
+#potion effects
+signal is_slept
+signal is_awake
+signal is_slowed
+signal not_slowed
+signal activate_strength
+signal deactivate_strength
+signal activate_dash
+signal activate_invis
+signal activate_statue
+signal statue_disabled

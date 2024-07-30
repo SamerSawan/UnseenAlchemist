@@ -5,6 +5,9 @@
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_r1w05"]
 [ext_resource type="PackedScene" uid="uid://s8gie7h8k0ak" path="res://scenes/entities/enemies/guard.tscn" id="2_2ddpk"]
 [ext_resource type="PackedScene" uid="uid://bjusufat4ckyy" path="res://scenes/entities/environment/cave_background.tscn" id="3_jdviq"]
+[ext_resource type="PackedScene" uid="uid://dttbldav6svgj" path="res://scenes/entities/environment/collectables/ClumpOfMoss.tscn" id="5_p16bp"]
+[ext_resource type="PackedScene" uid="uid://be46oejergnpw" path="res://scenes/entities/environment/collectables/VialOfGoo.tscn" id="6_hqel7"]
+[ext_resource type="PackedScene" uid="uid://c6wjmxyt2q7nt" path="res://scenes/entities/environment/collectables/DeadMouse.tscn" id="7_ndl2q"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="5_ad3t8"]
 [ext_resource type="PackedScene" uid="uid://baajoxfci0h7" path="res://scenes/entities/environment/test_crate.tscn" id="6_dmh2n"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="8_ji5xb"]
@@ -51,5 +54,22 @@ position = Vector2(0, 119)
 
 [node name="Bush1" parent="." instance=ExtResource("10_hhoa5")]
 position = Vector2(232, 64)
+
+[node name="ingredients" type="Node" parent="."]
+
+[node name="ClumpOfMoss" parent="ingredients" instance=ExtResource("5_p16bp")]
+position = Vector2(59, 75)
+
+[node name="VialOfGoo" parent="ingredients" instance=ExtResource("6_hqel7")]
+position = Vector2(83, 75)
+
+[node name="VialOfGoo2" parent="ingredients" instance=ExtResource("6_hqel7")]
+position = Vector2(37, 75)
+
+[node name="DeadMouse" parent="ingredients" instance=ExtResource("7_ndl2q")]
+position = Vector2(132, 75)
+
+[node name="DeadMouse2" parent="ingredients" instance=ExtResource("7_ndl2q")]
+position = Vector2(108, 75)
 
 [editable path="Guard"]

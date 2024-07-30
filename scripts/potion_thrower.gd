@@ -12,7 +12,8 @@ func _ready():
 	SignalBus.potion_changed.connect(update_potion)
 	
 func _process(delta):
-	aim_potion(delta)
+	if !player.is_statue:
+		aim_potion(delta)
 #	queue_redraw()
 
 func update_potion():
@@ -39,24 +40,7 @@ func aim_potion(delta): #hold to wind up throw
 #	draw_arc(player.global_position,200,PI,2*PI,100,Color.GREEN,10.0)
 	
 func shoot():
-	match SignalBus.equipped_potion:
-			"InvisPotion":
-				pass
-			"SlimePotion":
-				pass
-			"StatuePotion":
-				pass
-			"SmokePotion":
-				pass
-			"StrengthPotion":
-				pass
-			"NoisePotion":
-				pass
-			"DashPotion":
-				pass
-			"SleepPotion":
-				pass
-	if Input.is_action_just_released("Shoot"): #fire on release
+	if !player.is_statue and Input.is_action_just_released("Shoot"): #fire on release
 		potion_velocity.x *= player.last_direction.x
 		player.change_animation_state(3) #code for throw
 		var potion_instance = potion.instantiate()
