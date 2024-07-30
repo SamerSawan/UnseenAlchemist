@@ -10,6 +10,6 @@ func _ready():
 #	SignalBus.deathzone.connect(respawn) #deathzone should just emit player_died
 	SignalBus.respawn.connect(respawn)
 
-func respawn():
+func respawn(): #NOT ACTIVE JULY 29 9:51PM
 	Player.global_position = get_tree().get_first_node_in_group("doors").global_position
 	Player.respawn_anim()

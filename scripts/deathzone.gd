@@ -2,4 +2,5 @@ extends Area2D
 
 
 func _on_body_entered(_body):
-	SignalBus.emit_signal("player_died") #handled in cave_door since thats the respawn point
+	SignalBus.player_died.emit() #DONT WORK?? BUT GUARD KILL DOES??????
+	print("great googly moogly")

@@ -23,4 +23,5 @@ func _ready():
 #func _process(delta):
 #	print(state)
 func change_state():
-	state = player.new_state
+	if state != DIE: #deathzone wont work without this
+		state = player.new_state

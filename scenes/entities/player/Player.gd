@@ -38,6 +38,7 @@ var is_visible: bool = false
 var is_stealthed: bool = true
 var watched: bool = false
 var being_chased: bool = false
+var dying: bool = false
 #@export var push_force: float = 80.0
 #states
 var current_state = null
@@ -64,9 +65,9 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
-	if inputs_active:
+	if inputs_active && !dying:
 		player_input()
-	change_state(current_state.update(delta))
+		change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
 	box_push()
@@ -113,7 +114,7 @@ func animation_handler():
 	if new_state == WINDUP:
 		inputs_active = false
 	else:
-		inputs_active = true
+		inputs_active = true #very not good 
 	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
@@ -151,6 +152,7 @@ func player_input():
 func respawn_anim(): #needs to be updated
 	velocity = Vector2.ZERO
 	inputs_active = false
+	dying = true #used to stop indicator from showing up on death
 	change_animation_state(DIE)
 	z_index = 10
 
