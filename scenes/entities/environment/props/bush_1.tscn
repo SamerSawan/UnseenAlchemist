@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8a3sn3cgb186"]
+[gd_scene load_steps=7 format=3 uid="uid://c8a3sn3cgb186"]
 
+[ext_resource type="Script" path="res://scripts/objects/hide_in_props.gd" id="1_bd8cb"]
 [ext_resource type="Texture2D" uid="uid://cl2330603axoy" path="res://assets/objects/props/bush1.png" id="1_ifipb"]
 [ext_resource type="Texture2D" uid="uid://bdpfjeommtyme" path="res://assets/objects/prop normal maps/bush1_n.png" id="2_f3g81"]
 
@@ -7,25 +8,29 @@
 diffuse_texture = ExtResource("1_ifipb")
 normal_texture = ExtResource("2_f3g81")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehow7"]
-size = Vector2(14, 25)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vqhbb"]
+cull_mode = 2
 polygon = PackedVector2Array(17.5, -18.5, 16.5, -18.5, 16.5, -17.5, 15.5, -17.5, 15.5, -15.5, 13.5, -15.5, 13.5, -14.5, 11.3, -14.5, 10.3, -12.5, 9.5, -12.5, 9.5, -11.5, 8.5, -11.5, 8.5, -10.5, 7.5, -10.5, 7.5, -7.5, 6.5, -7.5, 6.5, -5.5, 5.5, -5.5, 5.5, -3.5, 4.5, -3.5, 4.5, -0.5, 3.5, -0.5, 3.5, 2.5, 2.5, 2.5, 2.5, 7.5, 3.7, 5.5, 4.5, 5.5, 4.5, 4.5, 5.5, 4.5, 5.5, 3.5, 6.5, 3.5, 6.5, 2.5, 7.5, 2.5, 7.5, 1.5, 10.5, 1.5, 10.5, 0.5, 12.5, 0.5, 12.5, -0.5, 16.5, -0.5, 16.5, 2.5, 14.5, 2.5, 14.5, 4.5, 13.5, 4.5, 13.5, 5.3, 11.5, 6.3, 11.5, 7.5, 10.5, 7.5, 10.5, 9.3, 8.5, 10.3, 8.5, 11.5, 22.3, 11.5, 23.8, 14.5, 20.5, 14.5, 20.5, 15.5, 17.5, 15.5, 17.5, 16.5, 15.5, 16.5, 15.5, 17.5, 14.5, 17.5, 14.5, 24, 10.5, 24, 6.5, 23.5, 6.5, 22.5, 5.3, 22.5, 4.6, 24, 0.5, 24, -2.5, 23.5, -2.5, 22.5, -3.5, 22.5, -3.5, 23.5, -9.5, 23.5, -13.5, 24, -14.5, 23.5, -19.5, 24, -19.5, 21.5, -18.5, 21.5, -18.5, 20.5, -17.5, 20.5, -17.5, 18.5, -19.5, 18.5, -19.5, 19.5, -22.5, 19.5, -22.5, 15.5, -21.3, 15.5, -20.3, 13.5, -17.2, 13.5, -16.7, 12.5, -17.3, 12.5, -18.3, 10.5, -21.5, 10.5, -21.5, 9.3, -23.5, 8.3, -23.5, 6.5, -21.5, 6.5, -21.5, 5.5, -15.5, 5.5, -15.5, 6.5, -12.5, 6.5, -12.5, 7.5, -11.5, 7.5, -11.5, 5.5, -10.5, 5.5, -10.5, -1.5, -9.4, -1.5, -8.4, -5.5, -7.5, -5.5, -7.5, -7.5, -6.3, -7.5, -5.3, -9.5, -4.5, -9.5, -4.5, -11.5, -3.3, -11.5, -2.3, -13.5, -1.5, -13.5, -1.5, -14.5, -0.5, -14.5, -0.5, -15.5, 0.5, -15.5, 0.5, -16.5, 1.5, -16.5, 1.5, -17.5, 3.5, -17.5, 3.5, -18.5, 5.5, -18.5, 5.5, -19.5, 6.5, -19.5, 6.5, -20.5, 10.5, -20.5, 10.5, -21.5, 17.5, -21.5)
 
-[node name="Bush1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehow7"]
+size = Vector2(19, 37.5)
+
+[node name="Bush_1" type="Node2D"]
+light_mask = 3
+z_index = 4
+script = ExtResource("1_bd8cb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 4
+light_mask = 3
 texture = SubResource("CanvasTexture_0f7x6")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_vqhbb")
+occluder_light_mask = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="LightToPlayer" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 10)
+position = Vector2(5, 4)
 shape = SubResource("RectangleShape2D_ehow7")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_vqhbb")
-occluder_light_mask = 2

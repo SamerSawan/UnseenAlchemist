@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://4dcumc7ygdih"]
+
+[ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_l6l17"]
+[ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_hhs2q"]
+[ext_resource type="PackedScene" uid="uid://c8a3sn3cgb186" path="res://scenes/entities/environment/props/bush_1.tscn" id="3_wp4ho"]
+[ext_resource type="PackedScene" uid="uid://baajoxfci0h7" path="res://scenes/entities/environment/test_crate.tscn" id="4_xtnyx"]
+[ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="5_kavtw"]
+[ext_resource type="Texture2D" uid="uid://bepkoem3prrkq" path="res://icon.svg" id="6_wvdj2"]
+[ext_resource type="PackedScene" uid="uid://c7nig7vkr5uag" path="res://scenes/entities/environment/props/spikes.tscn" id="7_uq3su"]
+
+[node name="testing3 the finale" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_l6l17")]
+
+[node name="TileMap" parent="." instance=ExtResource("2_hhs2q")]
+layer_0/tile_data = PackedInt32Array(327659, 1048576, 10, 327660, 1114112, 10, 327661, 720896, 10, 327662, 786432, 10, 327663, 851968, 10, 327664, 917504, 10, 327665, 983040, 10, 327666, 1048576, 10, 327667, 589824, 10, 327668, 655360, 10, 327669, 720896, 10, 327670, 786432, 10, 327671, 851968, 10, 327672, 917504, 10, 327673, 983040, 10, 327674, 1048576, 10, 327675, 1114112, 10, 327676, 589824, 10, 327677, 655360, 10, 327678, 720896, 10, 327679, 786432, 10, 262144, 851968, 10, 262145, 917504, 10, 262146, 983040, 10, 262147, 1048576, 10, 262148, 1114112, 10, 262149, 589824, 10, 262150, 655360, 10, 262151, 720896, 10, 262152, 786432, 10, 262153, 851968, 10, 262154, 917504, 10, 262155, 983040, 10, 262156, 1048576, 10, 262157, 1114112, 10, 262158, 589824, 10, 262159, 655360, 10, 262160, 720896, 10, 262161, 786432, 10, 262162, 851968, 10, 262163, 917504, 10, 262164, 983040, 10, 262165, 1048576, 10, 262166, 1114112, 10, 196622, 589824, 10, 196623, 655360, 10, 196624, 720896, 10, 196625, 786432, 10, 196626, 851968, 10, 196627, 917504, 10, 196628, 983040, 10, 196629, 1048576, 10, 196630, 1114112, 10, 327652, 589824, 10, 327653, 655360, 10, 327654, 720896, 10, 327655, 786432, 10, 327656, 851968, 10, 327657, 917504, 10, 327658, 983040, 10)
+
+[node name="Bush1" parent="." instance=ExtResource("3_wp4ho")]
+position = Vector2(-136, 40)
+
+[node name="Crate" parent="." instance=ExtResource("4_xtnyx")]
+position = Vector2(-224, 40)
+
+[node name="LightSource" parent="." instance=ExtResource("5_kavtw")]
+position = Vector2(-160, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -5
+position = Vector2(3.05176e-05, -40)
+scale = Vector2(6.8125, 3.875)
+texture = ExtResource("6_wvdj2")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.803922, 0.611765, 0.611765, 1)
+energy = 0.8
+blend_mode = 1
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 0
+height = 1.0
+
+[node name="Spikes" parent="." instance=ExtResource("7_uq3su")]
+position = Vector2(192, 40)
+rotation = -3.14159
+
+[editable path="LightSource"]
