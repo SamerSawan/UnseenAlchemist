@@ -12,10 +12,11 @@ var strength = preload("res://scenes/entities/environment/Potions/strength.tscn"
 func _ready():
 	potion_parent = get_tree().get_first_node_in_group("potion_thrower")
 	player_parent = get_tree().get_first_node_in_group("Player")
-	linear_velocity = potion_parent.potion_velocity
+	if !potion_parent.drinkable_potion:
+		linear_velocity = potion_parent.potion_velocity
 	if potion_parent.potion_resource:
-		currentPotion = potion_parent.potion_resource.name
-		match currentPotion:
+		currentPotion = potion_parent.potion_resource.name #transfer name of current potion (?)
+		match currentPotion: #adjust the look of the potion according to current potion
 			"InvisPotion":
 				sprite_2d.frame = 0
 			"SlimePotion":
@@ -34,14 +35,10 @@ func _ready():
 				sprite_2d.frame = 7
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("enemy"):
-		body.lose_hp()
-		body.hp_label_update()
-	
 	var sound_queue = get_node("SoundQueue_PotionShatter")
 	sound_queue.reparent(get_node("/root"), true)
 	sound_queue.play_sound()
-	match currentPotion:
+	match currentPotion: #adjust effect of potion according to equipped potion
 			"InvisPotion":
 				SignalBus.activate_invis.emit()
 			"SlimePotion":
@@ -65,4 +62,5 @@ func _on_area_2d_body_entered(body):
 				potion_parent.potion_container.call_deferred("add_child", sleep_instance)
 				sleep_instance.global_position = global_position
 	queue_free() 
-	
+
+

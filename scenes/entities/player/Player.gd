@@ -136,7 +136,7 @@ func animation_handler():
 		inputs_active = false
 	else:
 		inputs_active = true #very not good 
-	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE): #otherwise it just skips these
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
