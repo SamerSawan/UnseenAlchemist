@@ -8,6 +8,7 @@ extends AudioStreamPlayer2D
 # else, fade volume back in
 
 func fade_in():
+	SignalBus.music_level_fade_out.emit()
 	if !is_playing():
 		set_volume_db(baseline_volume) # make sure to set back to baseline when playing again
 		play()
@@ -17,6 +18,7 @@ func fade_in():
 		set_volume_db(get_volume_db() + 5)
 
 func fade_out():
+	SignalBus.music_level_fade_in.emit()
 	#print("fading out player_watched_music")
 	if get_volume_db() > -50.0:
 		set_volume_db(get_volume_db() - 1)

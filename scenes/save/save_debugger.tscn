@@ -13,11 +13,11 @@ offset_bottom = 651.0
 
 [node name="Save" type="Button" parent="GridContainer"]
 layout_mode = 2
-text = "Load"
+text = "Save"
 
 [node name="Load" type="Button" parent="GridContainer"]
 layout_mode = 2
-text = "Save"
+text = "Load"
 
 [connection signal="pressed" from="GridContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="GridContainer/Load" to="." method="_on_load_pressed"]

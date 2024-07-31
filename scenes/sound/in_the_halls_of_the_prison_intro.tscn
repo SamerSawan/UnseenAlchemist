@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://blidvsjse2oup"]
+
+[ext_resource type="AudioStream" uid="uid://cql8a0udqsbjy" path="res://assets/sounds/in the halls of the prison_intro.ogg" id="1_hutvr"]
+
+[node name="InTheHallsOfThePrison_Intro" type="AudioStreamPlayer"]
+stream = ExtResource("1_hutvr")
+volume_db = -9.0
+autoplay = true
+bus = &"Music"

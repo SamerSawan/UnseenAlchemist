@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="7_p7udu"]
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="8_n23tl"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="9_fyunw"]
+[ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="10_07non"]
+[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="11_nk83b"]
+[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="12_r2d2f"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="10_rod1k"]
 [ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="10_xij4w"]
 
@@ -154,7 +157,17 @@ position = Vector2(958, -131)
 position = Vector2(1030, -131)
 
 [node name="GunpowderPouch3" parent="Ingredients" instance=ExtResource("8_n23tl")]
-position = Vector2(903, -127)
+position = Vector2(1014, -130)
+
+[node name="Bus_CaveReverb" parent="." instance=ExtResource("10_07non")]
+layout = ExtResource("11_nk83b")
+
+[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_r2d2f")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true
+bus = &"Ambience"
 
 [node name="DarknessLight" parent="." instance=ExtResource("10_xij4w")]
 

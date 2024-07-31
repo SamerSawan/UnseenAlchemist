@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="2_ie1u1"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="3_w652m"]
 [ext_resource type="Texture2D" uid="uid://cx3w3auw5o45w" path="res://assets/background/Backround_Prison.png" id="4_igme2"]
+[ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="5_oao3f"]
+[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="6_njeo2"]
+[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="7_5akq1"]
 [ext_resource type="PackedScene" uid="uid://5wfcbq4khtse" path="res://scenes/tilemap/prisontilemapfr.tscn" id="4_p5b8y"]
 [ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="5_j5dus"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="6_h1plh"]
@@ -18,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="12_xyhm4"]
 [ext_resource type="PackedScene" uid="uid://bt28sxy8k434s" path="res://scenes/entities/environment/collectables/MagicalBranch.tscn" id="13_epr7u"]
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="17_n5vy7"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwtmu"]
 texture = ExtResource("1_8s6dt")
@@ -2491,6 +2495,17 @@ position = Vector2(517, 57)
 position = Vector2(624, -204)
 
 [node name="Ingredients" type="Node" parent="."]
+
+
+[node name="Bus_CaveReverb" parent="." instance=ExtResource("5_oao3f")]
+layout = ExtResource("6_njeo2")
+
+[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5akq1")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true
+bus = &"Ambience"
 
 [node name="DeadMouse" parent="Ingredients" instance=ExtResource("11_ffuv2")]
 position = Vector2(577, 66)

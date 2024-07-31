@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bka4lire6w6x2"]
+
+[ext_resource type="Script" path="res://scenes/Stages/escape_cutscene.gd" id="1_jdv8x"]
+[ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="2_oqhcp"]
+[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="3_ydkbo"]
+[ext_resource type="PackedScene" uid="uid://cujrdyphs1xe3" path="res://scenes/sound/cave_ambience.tscn" id="4_c2lua"]
+[ext_resource type="Texture2D" uid="uid://ghxy76pp10gn" path="res://assets/cutscenes/Ending_Cutscene.png" id="5_h48w6"]
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="6_1pnlb"]
+[ext_resource type="PackedScene" uid="uid://b1khe8kvcgb3a" path="res://scenes/sound/bassser.tscn" id="7_xngsi"]
+
+[node name="escape_cutscene" type="CanvasLayer" node_paths=PackedStringArray("sprite", "button")]
+script = ExtResource("1_jdv8x")
+sprite = NodePath("Panel/Sprite2D")
+button = NodePath("Panel/Button")
+
+[node name="Bus_CaveReverb" parent="." instance=ExtResource("2_oqhcp")]
+layout = ExtResource("3_ydkbo")
+
+[node name="CaveAmbience" parent="." instance=ExtResource("4_c2lua")]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = -35.0
+offset_right = 1206.0
+offset_bottom = 705.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(85, -167)
+scale = Vector2(3, 3)
+texture = ExtResource("5_h48w6")
+centered = false
+hframes = 7
+vframes = 6
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 566.0
+offset_right = 1130.0
+offset_bottom = 630.0
+theme = ExtResource("6_1pnlb")
+theme_override_font_sizes/font_size = 64
+text = "Menu"
+
+[node name="bassser" parent="." instance=ExtResource("7_xngsi")]

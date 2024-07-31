@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cio5w4ry0uld6"
+path="res://.godot/imported/in the halls of the prison.ogg-15dbbf5a4bb2b06a8f3d29082b98c44a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/in the halls of the prison.ogg"
+dest_files=["res://.godot/imported/in the halls of the prison.ogg-15dbbf5a4bb2b06a8f3d29082b98c44a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=134.0
+beat_count=0
+bar_beats=4

@@ -7,8 +7,20 @@ var area_active = false
 var player
 
 func _input(event):
-	if area_active and event.is_action_pressed("MoveUp"):
-		on_door_interact()
+	if area_active:
+		print("active")
+		if event.is_action_pressed("ui_accept") or event.is_action_pressed("pickup") or event.is_action_pressed("MoveUp"):
+			on_door_interact()
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("player"):
+		area_active = true
+		print("area active")
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("player"):
+		area_active = false
+		print("area not active")
 
 func _ready():
 #	SignalBus.deathzone.connect(respawn)
@@ -26,13 +38,3 @@ func on_door_interact():
 		
 	else:
 		pass
-
-
-func _on_area_2d_body_entered(body):
-	if body == player:
-		area_active = true
-
-
-func _on_area_2d_body_exited(body):
-	if body == player:
-		area_active = false
