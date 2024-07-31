@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgludg4usq2sp"]
+[gd_scene load_steps=14 format=3 uid="uid://6b3qrmd4oq3p"]
 
 [ext_resource type="Texture2D" uid="uid://cx3v614rc2jmm" path="res://assets/ui/inventory/InventoryBackground.png" id="1_8kmjs"]
 [ext_resource type="Script" path="res://scenes/other/help_menu.gd" id="1_jeu3p"]
-[ext_resource type="PackedScene" uid="uid://cxhpaap3y782o" path="res://scenes/other/InfoSlot.tscn" id="2_cajr3"]
+[ext_resource type="PackedScene" path="res://scenes/other/InfoSlot.tscn" id="2_cajr3"]
 [ext_resource type="Texture2D" uid="uid://blpo6shion4ha" path="res://assets/potions/DashPotion.png" id="3_yeuby"]
 [ext_resource type="FontFile" uid="uid://dmk5oyh6ssftl" path="res://assets/alagard.ttf" id="4_dw0j4"]
 [ext_resource type="Texture2D" uid="uid://c8xsviweo1rl7" path="res://assets/potions/NoisePotion.png" id="4_w1kjx"]
@@ -16,142 +16,21 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4753o"]
 font = ExtResource("4_dw0j4")
 
-[node name="Help Menu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_jeu3p")
 
-[node name="Labels" type="Node" parent="."]
-
-[node name="Dash" type="Label" parent="Labels"]
-offset_left = 99.0
-offset_top = 122.0
-offset_right = 306.0
-offset_bottom = 176.0
-text = "Enables the use of the 
-shift button to dash a
-short distance"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Noise" type="Label" parent="Labels"]
-offset_left = 97.0
-offset_top = 229.0
-offset_right = 304.0
-offset_bottom = 283.0
-text = "Creates a loud noise to 
-distract enemies"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Slime" type="Label" parent="Labels"]
-offset_left = 102.0
-offset_top = 322.0
-offset_right = 309.0
-offset_bottom = 376.0
-text = "Creates a toxic area 
-that slows enemies that 
-pass through it"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Sleep" type="Label" parent="Labels"]
-offset_left = 106.0
-offset_top = 430.0
-offset_right = 313.0
-offset_bottom = 484.0
-text = "Puts enemies to sleep 
-for a short while"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Invis" type="Label" parent="Labels"]
-offset_left = 410.0
-offset_top = 131.0
-offset_right = 617.0
-offset_bottom = 185.0
-text = "Temporarily grants 
-invisibility"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Smoke" type="Label" parent="Labels"]
-offset_left = 410.0
-offset_top = 229.0
-offset_right = 617.0
-offset_bottom = 283.0
-text = "Creates a smokey mist 
-to hide the player"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Statue" type="Label" parent="Labels"]
-offset_left = 407.0
-offset_top = 323.0
-offset_right = 614.0
-offset_bottom = 377.0
-text = "Turns the player into 
-a statue, breaking 
-aggro and chase"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Statue" type="Label" parent="Labels/Statue"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = 97.0
-offset_right = 195.0
-offset_bottom = 169.0
-text = "Gives the player high
-strength, allowing 
-them to push objects"
-label_settings = SubResource("LabelSettings_4753o")
-
-[node name="Potions" type="Node" parent="."]
-
-[node name="DashPotion" type="Sprite2D" parent="Potions"]
-position = Vector2(72, 141)
-scale = Vector2(3, 3)
-texture = ExtResource("3_yeuby")
-
-[node name="NoisePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(72, 248)
-scale = Vector2(3, 3)
-texture = ExtResource("4_w1kjx")
-
-[node name="SlimePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(74, 348)
-scale = Vector2(3, 3)
-texture = ExtResource("5_3l0fn")
-
-[node name="SleepPotion" type="Sprite2D" parent="Potions"]
-position = Vector2(74, 448)
-scale = Vector2(3, 3)
-texture = ExtResource("6_taeqs")
-
-[node name="InvisPotion" type="Sprite2D" parent="Potions"]
-position = Vector2(372, 146)
-scale = Vector2(3, 3)
-texture = ExtResource("7_stfv5")
-
-[node name="SmokePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(374, 249)
-scale = Vector2(3, 3)
-texture = ExtResource("8_dn2o8")
-
-[node name="StatuePotion" type="Sprite2D" parent="Potions"]
-position = Vector2(373, 350)
-scale = Vector2(3, 3)
-texture = ExtResource("9_4cway")
-
-[node name="Sprite2D" type="Sprite2D" parent="Potions"]
-position = Vector2(373, 449)
-scale = Vector2(3, 3)
-texture = ExtResource("10_gt2md")
-
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 74.0
-offset_right = 630.0
-offset_bottom = 530.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -228.0
+offset_right = 315.5
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_8kmjs")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -191,3 +70,120 @@ layout_mode = 2
 
 [node name="Panel8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_cajr3")]
 layout_mode = 2
+
+[node name="Dash" type="Label" parent="NinePatchRect"]
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 307.0
+offset_bottom = 102.0
+text = "Enables the use of the 
+shift button to dash a
+short distance"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Noise" type="Label" parent="NinePatchRect"]
+offset_left = 98.0
+offset_top = 155.0
+offset_right = 305.0
+offset_bottom = 209.0
+text = "Creates a loud noise to 
+distract enemies"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Slime" type="Label" parent="NinePatchRect"]
+offset_left = 103.0
+offset_top = 248.0
+offset_right = 310.0
+offset_bottom = 302.0
+text = "Creates a toxic area 
+that slows enemies that 
+pass through it"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Sleep" type="Label" parent="NinePatchRect"]
+offset_left = 107.0
+offset_top = 356.0
+offset_right = 314.0
+offset_bottom = 410.0
+text = "Puts enemies to sleep 
+for a short while"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Invis" type="Label" parent="NinePatchRect"]
+offset_left = 411.0
+offset_top = 57.0
+offset_right = 618.0
+offset_bottom = 111.0
+text = "Temporarily grants 
+invisibility"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Smoke" type="Label" parent="NinePatchRect"]
+offset_left = 411.0
+offset_top = 155.0
+offset_right = 618.0
+offset_bottom = 209.0
+text = "Creates a smokey mist 
+to hide the player"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Statue" type="Label" parent="NinePatchRect"]
+offset_left = 408.0
+offset_top = 249.0
+offset_right = 615.0
+offset_bottom = 303.0
+text = "Turns the player into 
+a statue, breaking 
+aggro and chase"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="Statue" type="Label" parent="NinePatchRect/Statue"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 97.0
+offset_right = 195.0
+offset_bottom = 169.0
+text = "Gives the player high
+strength, allowing 
+them to push objects"
+label_settings = SubResource("LabelSettings_4753o")
+
+[node name="DashPotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(73, 67)
+scale = Vector2(3, 3)
+texture = ExtResource("3_yeuby")
+
+[node name="NoisePotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(73, 174)
+scale = Vector2(3, 3)
+texture = ExtResource("4_w1kjx")
+
+[node name="SlimePotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(75, 274)
+scale = Vector2(3, 3)
+texture = ExtResource("5_3l0fn")
+
+[node name="SleepPotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(75, 374)
+scale = Vector2(3, 3)
+texture = ExtResource("6_taeqs")
+
+[node name="InvisPotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(373, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("7_stfv5")
+
+[node name="SmokePotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(375, 175)
+scale = Vector2(3, 3)
+texture = ExtResource("8_dn2o8")
+
+[node name="StatuePotion" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(374, 276)
+scale = Vector2(3, 3)
+texture = ExtResource("9_4cway")
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(374, 375)
+scale = Vector2(3, 3)
+texture = ExtResource("10_gt2md")

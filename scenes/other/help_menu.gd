@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 #This script controls if inventory UI is visible
 

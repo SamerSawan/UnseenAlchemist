@@ -88,8 +88,8 @@ func _physics_process(delta):
 		change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
-	if is_strong:
-		box_push()
+	box_push()
+	
 	if !is_statue:
 		move_and_slide()
 #	for i in get_slide_collision_count(): #from the interwebs kind of sucks
@@ -136,7 +136,7 @@ func animation_handler():
 		inputs_active = false
 	else:
 		inputs_active = true #very not good 
-	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE): #otherwise it just skips these
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
@@ -219,9 +219,11 @@ func activate_invis():
 
 func activate_statue():
 	is_statue = true
+	is_hidden = true
+	player_sprite.visible = false
+	$StoneSprite.visible = true
 	$statue_timer.start()
 	$CollisionShape2D.disabled = true
-	is_stealthed = true
 
 func signal_connector():
 	SignalBus.jump_buffer.connect(jump_buffer_func)
@@ -246,11 +248,11 @@ func box_push():
 	if $Raycasts/TopRight.is_colliding() && Input.is_action_pressed("MoveRight"):
 		$Raycasts/TopRight.get_collider().position.x += 1
 		change_animation_state(PUSH)
-#		SignalBus.box_pushing.emit()
+
 	elif $Raycasts/TopLeft.is_colliding() && Input.is_action_pressed("MoveLeft"):
 		$Raycasts/TopLeft.get_collider().position.x -= 1
 		change_animation_state(PUSH)
-#		SignalBus.box_pushing.emit()
+
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
 
@@ -303,7 +305,7 @@ func _on_statue_timer_timeout():
 	is_statue = false
 	$CollisionShape2D.disabled = false
 	is_stealthed = false
-	SignalBus.statue_disabled.emit()
+	
 	
 func running_particles(): #might remove if its costing too much cpu power
 	if is_on_floor() && velocity.x != 0:
