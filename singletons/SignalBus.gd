@@ -22,6 +22,7 @@ signal player_pickup
 signal update_inventory
 signal potion_changed
 signal potion_crafted
+signal potion_used
 var item
 var equipped_potion
 

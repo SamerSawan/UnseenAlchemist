@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://53dt2ato0o1m"]
+
+[ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_rxhbk"]
+[ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_gog0x"]
+[ext_resource type="PackedScene" uid="uid://c6wjmxyt2q7nt" path="res://scenes/entities/environment/collectables/DeadMouse.tscn" id="3_pnanv"]
+[ext_resource type="PackedScene" uid="uid://dttbldav6svgj" path="res://scenes/entities/environment/collectables/ClumpOfMoss.tscn" id="4_innwy"]
+[ext_resource type="PackedScene" uid="uid://bt28sxy8k434s" path="res://scenes/entities/environment/collectables/MagicalBranch.tscn" id="5_e640d"]
+
+[node name="potiontestscene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rxhbk")]
+
+[node name="TileMap" parent="." instance=ExtResource("2_gog0x")]
+layer_0/tile_data = PackedInt32Array(196589, 983040, 10, 196590, 1048576, 10, 196591, 1114112, 10, 196592, 786432, 10, 196593, 851968, 10, 196594, 917504, 10, 196595, 983040, 10, 196596, 1048576, 10, 196597, 1114112, 10, 196598, 589824, 10, 196599, 655360, 10, 196600, 720896, 10, 196601, 786432, 10, 196602, 851968, 10, 196603, 917504, 10, 196604, 983040, 10, 196605, 1048576, 10, 196606, 1114112, 10, 196607, 589824, 10, 131072, 655360, 10, 131073, 720896, 10, 131074, 786432, 10, 131075, 851968, 10, 131076, 917504, 10, 131077, 983040, 10, 131078, 1048576, 10, 131079, 1114112, 10, 131080, 589824, 10, 131081, 655360, 10, 131082, 720896, 10, 131083, 786432, 10, 131084, 851968, 10, 131085, 917504, 10, 131086, 983040, 10, 131087, 1048576, 10, 131088, 1114112, 10, 196616, 589824, 10, 196617, 655360, 10, 196618, 720896, 10, 196619, 786432, 10, 196620, 851968, 10, 196621, 917504, 10, 196622, 983040, 10, 196623, 1048576, 10, 196624, 1114112, 10, 196625, 589824, 10, 196626, 655360, 10, 196627, 720896, 10, 196628, 786432, 10, 196629, 851968, 10, 196630, 917504, 10, 196631, 983040, 10, 196632, 1048576, 10, 196633, 1114112, 10, 131089, 589824, 10, 131090, 655360, 10, 131091, 720896, 10, 131092, 786432, 10, 131093, 851968, 10, 131094, 917504, 10, 131095, 983040, 10, 131096, 1048576, 10, 131097, 1114112, 10, 131098, 589824, 10, 131099, 655360, 10, 131100, 720896, 10, 131101, 786432, 10, 131102, 851968, 10, 131103, 917504, 10, 131104, 983040, 10, 131105, 1048576, 10, 131106, 1114112, 10, 131107, 589824, 10, 131108, 655360, 10, 131109, 720896, 10, 131110, 786432, 10, 131111, 851968, 10, 131112, 917504, 10, 131113, 983040, 10, 131114, 1048576, 10, 131115, 1114112, 10, 196583, 589824, 10, 196584, 655360, 10, 196585, 720896, 10, 196586, 786432, 10, 196587, 851968, 10, 196588, 917504, 10)
+
+[node name="DeadMouse" parent="." instance=ExtResource("3_pnanv")]
+
+[node name="ClumpOfMoss" parent="." instance=ExtResource("4_innwy")]
+
+[node name="MagicalBranch" parent="." instance=ExtResource("5_e640d")]

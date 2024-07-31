@@ -136,7 +136,7 @@ func animation_handler():
 		inputs_active = false
 	else:
 		inputs_active = true #very not good 
-	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE): #otherwise it just skips these
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
@@ -219,9 +219,11 @@ func activate_invis():
 
 func activate_statue():
 	is_statue = true
+	is_hidden = true
+	player_sprite.visible = false
+	$StoneSprite.visible = true
 	$statue_timer.start()
 	$CollisionShape2D.disabled = true
-	is_stealthed = true
 
 func signal_connector():
 	SignalBus.jump_buffer.connect(jump_buffer_func)
@@ -281,7 +283,7 @@ func _on_statue_timer_timeout():
 	is_statue = false
 	$CollisionShape2D.disabled = false
 	is_stealthed = false
-	SignalBus.statue_disabled.emit()
+	
 	
 func running_particles(): #might remove if its costing too much cpu power
 	if is_on_floor() && velocity.x != 0:
