@@ -8,7 +8,7 @@ var item = preload("res://Inventory/inventoryItems/MagicalBranch.tres")
 func _ready():
 	E.visible = false
 
-func _process(delta):
+func _process(_delta):
 	if is_inside:
 		if Input.is_action_just_pressed("pickup"):
 			print("emit signal")
@@ -16,10 +16,10 @@ func _process(delta):
 			SignalBus.player_pickup.emit()
 			queue_free()
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	is_inside = true
 	E.visible = true
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	is_inside = false
 	E.visible = false

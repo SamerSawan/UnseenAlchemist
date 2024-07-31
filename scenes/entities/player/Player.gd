@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var spotted_eye = $SpottedEye/Spotted
 @onready var stealth_eye = $SpottedEye/Stealthed
 @onready var spotted_sound = $Sound_PlayerWatched
+@onready var watcher_particles = $WatcherParticles
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -24,7 +25,7 @@ var dash_input = false
 var inputs_active: bool = true
 
 #player movement
-@export var SPEED: float = 250.0
+@export var SPEED: float = 200.0
 @export var JUMP_VELOCITY:float = -400.0
 const DRAG = 2000
 var last_direction = Vector2.RIGHT
@@ -41,6 +42,7 @@ var watched: bool = false
 var being_chased: bool = false
 var dying: bool = false
 var is_hidden: bool = false #for hiding in props or behind boxes
+var is_invisible: bool = false
 #@export var push_force: float = 80.0
 #states
 var current_state = null
@@ -82,6 +84,7 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
+	print(is_hidden)
 	if inputs_active && !dying and !is_statue:
 		player_input()
 		change_state(current_state.update(delta))
@@ -125,17 +128,19 @@ func get_next_to_wall():
 func animation_handler():
 	if horizontal_direction != 0: #turning
 		player_sprite.flip_h = (horizontal_direction == -1)
+		$StoneSprite.flip_h = (horizontal_direction == -1)
 		throw_indicator.scale.x = -last_direction.x
 		throw_indicator.position.x = 11*horizontal_direction
 		
 	spotted_eye.visible = watched
 	stealth_eye.visible = !spotted_eye.visible #should be one or the other
 	
+
 	if new_state == WINDUP:
 		inputs_active = false
 	else:
 		inputs_active = true #very not good 
-	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK): #otherwise it just skips these
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK)&&(new_state != CLIMB): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
@@ -170,7 +175,9 @@ func player_input():
 		dash_input = false
 	
 func respawn_anim(): #needs to be updated
-	velocity = Vector2.ZERO
+	velocity.x = 0
+	if velocity.y < 0:
+		velocity.y = 0
 	inputs_active = false
 	dying = true #used to stop indicator from showing up on death
 	change_animation_state(DIE)
@@ -202,7 +209,10 @@ func exit_stealth():
 
 func activate_strength():
 	is_strong = true
+	SPEED = 300
+	JUMP_VELOCITY = -440
 	strength.emitting = true
+	
 	$Strength/strength_timer.start()
 
 func activate_dash():
@@ -211,8 +221,8 @@ func activate_dash():
 	$Dash/dash_timer.start()
 
 func activate_invis():
-	$Sprite2D.self_modulate.a = 0.5
-	is_stealthed = true
+	$Sprite2D.self_modulate.a = 0.0
+	is_invisible = true
 	invis.emitting = true
 	$Invis/invis_timer.start()
 
@@ -222,8 +232,15 @@ func activate_statue():
 	player_sprite.visible = false
 	$StoneSprite.visible = true
 	$statue_timer.start()
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 
+func _on_statue_timer_timeout():
+	is_statue = false
+	is_hidden = false
+	player_sprite.visible = true
+	$StoneSprite.visible = false
+	$CollisionShape2D.set_deferred("disabled", false)
+	
 func signal_connector():
 	SignalBus.jump_buffer.connect(jump_buffer_func)
 	SignalBus.coyote_jump.connect(coyote_jump_func)
@@ -257,7 +274,6 @@ func box_push():
 
 
 func _on_watched_timer_timeout(): # to trigger music
-	#print("watched timer proc")
 	if spotted_sound:
 		if watched:
 			spotted_sound.fade_in()
@@ -266,6 +282,8 @@ func _on_watched_timer_timeout(): # to trigger music
 
 func _on_strength_timer_timeout():
 	is_strong = false
+	SPEED = 200
+	JUMP_VELOCITY = -350
 	strength.emitting = false
 
 func _on_dash_timer_timeout():
@@ -274,16 +292,9 @@ func _on_dash_timer_timeout():
 
 func _on_invis_timer_timeout():
 	$Sprite2D.self_modulate.a = 1
-	is_stealthed = false
+	is_invisible = false
 	invis.emitting = false
 
-
-func _on_statue_timer_timeout():
-	is_statue = false
-	$CollisionShape2D.disabled = false
-	is_stealthed = false
-	
-	
 func running_particles(): #might remove if its costing too much cpu power
 	if is_on_floor() && velocity.x != 0:
 		$RunningParticles.emitting = true

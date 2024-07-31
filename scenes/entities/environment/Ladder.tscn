@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbsu4ixsm735f"]
+[gd_scene load_steps=4 format=3 uid="uid://n1tq1nme0ntj"]
 
 [ext_resource type="Texture2D" uid="uid://bu06p4agsu3pk" path="res://scenes/entities/environment/ladder.png" id="1_evl6o"]
 [ext_resource type="Script" path="res://scenes/entities/environment/Ladder.gd" id="2_np8nn"]
@@ -6,11 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdh1w"]
 radius = 16.0
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Ladder" type="Sprite2D"]
 texture = ExtResource("1_evl6o")
 script = ExtResource("2_np8nn")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_pdh1w")

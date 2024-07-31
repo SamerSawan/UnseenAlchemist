@@ -23,6 +23,7 @@ signal update_inventory
 signal potion_changed
 signal potion_crafted
 signal potion_used
+signal close_inventory
 var item
 var equipped_potion
 

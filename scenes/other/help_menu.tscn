@@ -72,6 +72,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Dash" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 48.0
 offset_right = 307.0
@@ -82,6 +83,7 @@ short distance"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Noise" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 98.0
 offset_top = 155.0
 offset_right = 305.0
@@ -91,6 +93,7 @@ distract enemies"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Slime" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 248.0
 offset_right = 310.0
@@ -101,6 +104,7 @@ pass through it"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Sleep" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 107.0
 offset_top = 356.0
 offset_right = 314.0
@@ -110,6 +114,7 @@ for a short while"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Invis" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 411.0
 offset_top = 57.0
 offset_right = 618.0
@@ -119,6 +124,7 @@ invisibility"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Smoke" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 411.0
 offset_top = 155.0
 offset_right = 618.0
@@ -128,6 +134,7 @@ to hide the player"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Statue" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 408.0
 offset_top = 249.0
 offset_right = 615.0

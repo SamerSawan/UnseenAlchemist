@@ -276,7 +276,7 @@ size = Vector2(36, 51)
 size = Vector2(338.5, 76.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv7p6"]
-size = Vector2(128, 48)
+size = Vector2(96, 48)
 
 [node name="Guard" type="CharacterBody2D"]
 z_index = 5

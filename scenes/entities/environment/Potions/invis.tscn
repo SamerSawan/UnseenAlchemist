@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://c0wt57ti7reqm"]
+[gd_scene format=3 uid="uid://10ce0pcki171"]
 
 [node name="Invis" type="CPUParticles2D"]
-amount = 50
+amount = 5
+lifetime = 0.5
 emission_shape = 1
 emission_sphere_radius = 47.32
 gravity = Vector2(0, -50)

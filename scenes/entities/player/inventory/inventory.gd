@@ -10,6 +10,7 @@ var is_open = false
 
 func _ready():
 	SignalBus.update_inventory.connect(update_slots)
+	SignalBus.close_inventory.connect(menu_closed)
 	update_slots()
 	close()
 
@@ -17,7 +18,7 @@ func update_slots():
 	for i in range(min(inventory.items.size(), slots.size())):
 		slots[i].update(inventory.items[i])
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("OpenCrafting"):
 		if is_open:
 			close()
@@ -31,3 +32,6 @@ func close():
 func open():
 	visible = true
 	is_open = true
+
+func menu_closed():
+	close()

@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmckeysxp67ji"]
+
+[ext_resource type="Texture2D" uid="uid://cx3w3auw5o45w" path="res://assets/background/Backround_Prison.png" id="1_pu7g7"]
+
+[node name="GridContainer" type="GridContainer"]
+light_mask = 3
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="bg1" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(177, -164)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg2" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(497, -163)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg3" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(817, -162)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg4" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(1136, -162)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg5" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(1450, -160)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg6" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(175, -484)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg7" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(495, -481)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg8" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(814, -482)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg9" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(1131, -481)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg10" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(1449, -479)
+texture = ExtResource("1_pu7g7")
+
+[node name="bg11" type="Sprite2D" parent="."]
+light_mask = 3
+z_index = -1
+position = Vector2(-146, -484)
+texture = ExtResource("1_pu7g7")

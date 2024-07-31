@@ -26,7 +26,7 @@ var hotbar = preload("res://Inventory/HotBar.tres")
 func _ready():
 	close()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("OpenCrafting"):
 		if is_open:
 			close()
@@ -159,6 +159,7 @@ func _on_craft_button_pressed():
 			hotbar.insert(item)
 			SignalBus.potion_crafted.emit()
 			close()
+			SignalBus.close_inventory.emit()
 		else:
 			inventory.insert(ingr1)
 	

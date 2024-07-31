@@ -26,8 +26,8 @@ func remove(item: InventoryItem):
 	else:
 		itemslots[0].quantity -= 1
 		if itemslots[0].quantity <= 0:
-			print(itemslots[0])
 			itemslots[0].item = null
-			itemslots[0].quantity = 0
+			itemslots[0].quantity = 0 #IS NULL, not updating properly to equipped potion
+			SignalBus.update_inventory.emit()
 		return true
 	return false

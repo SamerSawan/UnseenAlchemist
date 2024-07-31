@@ -8,7 +8,7 @@ func _ready():
 	$Area2D.body_entered.connect(_on_area_2d_body_entered)
 	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	hide_behind()
 	
 func hide_behind(): #last condition for light scenario
@@ -16,11 +16,11 @@ func hide_behind(): #last condition for light scenario
 		player.stealth_eye.frame = 2
 		player.is_hidden = true
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	player_entered = true
 	
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	player_entered = false
 	player.stealth_eye.frame = 0
-	player.is_hidden = true
+	player.is_hidden = false
 

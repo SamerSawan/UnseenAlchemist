@@ -3,9 +3,11 @@ extends Node2D
 var player
 var player_entered #toggle raycast tracking
 var is_sleep = false
-@onready var animated_sprite_2d = $AnimatedSprite2D
+var spotted_once: bool = false
 
-@onready var ray_to_player = $RayCast2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var ray_to_player = $StaticBody2D/RayCast2D
+@onready var killtimer = $KillTimer
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -30,17 +32,29 @@ func _on_detection_area_body_entered(body):
 		ray_to_player.set_deferred("enabled",true)
 		player_entered = true
 
-func _on_detection_area_body_exited(_body):
-	ray_to_player.set_deferred("enabled",false)
-	player_entered = false
-	player.watched = false
+func _on_detection_area_body_exited(body):
+	if body.name == "Player":
+		ray_to_player.set_deferred("enabled",false)
+		player_entered = false
+		player.watched = false
+		killtimer.stop()
+		player.watcher_particles.emitting = false
 	
 func player_detection():
 	if player_entered == true and !is_sleep and !player.is_statue: #points raycast to the player
 		ray_to_player.set_target_position(player.global_position - ray_to_player.global_position)
-		if ray_to_player.is_colliding() && ray_to_player.get_collider() == player: #checks if first object hit is player
-			player.watched = true
-			#print("yep... thats him") #ideally, this part will warn enemies
-			#or do whatever the watcher does when it detects the player
+		if ray_to_player.is_colliding() && ray_to_player.get_collider() == player && !player.is_invisible: #checks if first object hit is player
+			if !spotted_once:
+				spotted_once = true
+				player.watched = true
+				killtimer.start()
+				player.watcher_particles.emitting = true
 		else:
-			player.watched = false
+			if spotted_once:
+				spotted_once = false
+				killtimer.stop()
+				player.watched = false
+				player.watcher_particles.emitting = false
+
+func _on_kill_timer_timeout():
+	SignalBus.player_died.emit()
