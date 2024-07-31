@@ -239,7 +239,8 @@ animations = [{
 radius = 167.012
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_008hs"]
-radius = 5.0
+radius = 18.0
+height = 42.0
 
 [sub_resource type="Gradient" id="Gradient_61vp3"]
 offsets = PackedFloat32Array(0.53617, 1)
@@ -266,14 +267,13 @@ collide_with_areas = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
-collision_mask = 129
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_008hs")
 
 [node name="KillTimer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

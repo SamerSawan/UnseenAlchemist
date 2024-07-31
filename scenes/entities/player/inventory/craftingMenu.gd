@@ -159,6 +159,7 @@ func _on_craft_button_pressed():
 			hotbar.insert(item)
 			SignalBus.potion_crafted.emit()
 			close()
+			SignalBus.close_inventory.emit()
 		else:
 			inventory.insert(ingr1)
 	

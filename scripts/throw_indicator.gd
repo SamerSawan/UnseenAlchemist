@@ -12,7 +12,7 @@ func _physics_process(_delta):#might be easier on the processing
 
 func rotate_stick():
 	rotation_degrees = potion_thrower.indicator_rotator #for cancel situations below
-	if rotation_degrees < 21:
-		visible = false
-	else:
+	if potion_thrower.is_aiming:
 		visible = true
+	else:
+		visible = false

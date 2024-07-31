@@ -53,6 +53,7 @@ func _ready():
 	SignalBus.is_slowed.connect(slowed)
 	SignalBus.not_slowed.connect(not_slowed)
 	SignalBus.activate_statue.connect(player_statued)
+	SignalBus.activate_invis.connect(player_statued)
 	direction = position.direction_to(current_destination)
 	
 func _physics_process(delta):
@@ -195,14 +196,14 @@ func kill_mode(): #THE FINAL STRIKE
 		
 		#realized this makes boxes useless so commented out for now
 func _on_stealth_detect_area_body_entered(body): #THE CLOSE HITBOX
-	if body == player && player.is_stealthed && !player.is_hidden: #check stealth
+	if body == player && (player.is_stealthed || player.is_invisible) && !player.is_hidden: #check stealth
 		player_entered = true
 		ray_to_player.set_deferred("enabled",true)
 
 
 func scan_for_player():
 	if player_in_area:
-		if (!player.is_stealthed || is_chasing): #should only apply to player
+		if (!player.is_stealthed || is_chasing) && !player.is_invisible: #should only apply to player
 			ray_to_player.set_deferred("enabled",true)
 			player_entered = true
 			

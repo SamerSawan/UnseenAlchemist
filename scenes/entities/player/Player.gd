@@ -26,7 +26,7 @@ var dash_input = false
 var inputs_active: bool = true
 
 #player movement
-@export var SPEED: float = 250.0
+@export var SPEED: float = 200.0
 @export var JUMP_VELOCITY:float = -400.0
 const DRAG = 2000
 var last_direction = Vector2.RIGHT
@@ -43,6 +43,7 @@ var watched: bool = false
 var being_chased: bool = false
 var dying: bool = false
 var is_hidden: bool = false #for hiding in props or behind boxes
+var is_invisible: bool = false
 #@export var push_force: float = 80.0
 #states
 var current_state = null
@@ -134,6 +135,7 @@ func animation_handler():
 	spotted_eye.visible = watched
 	stealth_eye.visible = !spotted_eye.visible #should be one or the other
 	
+
 	if new_state == WINDUP:
 		inputs_active = false
 	else:
@@ -205,7 +207,10 @@ func exit_stealth():
 
 func activate_strength():
 	is_strong = true
+	SPEED = 300
+	JUMP_VELOCITY = -425
 	strength.emitting = true
+	
 	$Strength/strength_timer.start()
 
 func activate_dash():
@@ -214,8 +219,8 @@ func activate_dash():
 	$Dash/dash_timer.start()
 
 func activate_invis():
-	$Sprite2D.self_modulate.a = 0.5
-	is_stealthed = true
+	$Sprite2D.self_modulate.a = 0.0
+	is_invisible = true
 	invis.emitting = true
 	$Invis/invis_timer.start()
 
@@ -296,6 +301,8 @@ func serialize_inventory(slots: Array) -> Array:
 
 func _on_strength_timer_timeout():
 	is_strong = false
+	SPEED = 200
+	JUMP_VELOCITY = -350
 	strength.emitting = false
 
 func _on_dash_timer_timeout():
@@ -304,13 +311,9 @@ func _on_dash_timer_timeout():
 
 func _on_invis_timer_timeout():
 	$Sprite2D.self_modulate.a = 1
-	is_stealthed = false
+	is_invisible = false
 	invis.emitting = false
 
-
-	
-	
-	
 func running_particles(): #might remove if its costing too much cpu power
 	if is_on_floor() && velocity.x != 0:
 		$RunningParticles.emitting = true
