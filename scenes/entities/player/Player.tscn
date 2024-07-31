@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cicy1oxqu8qll" path="res://scenes/entities/player/JUMP.tscn" id="3_qxsd6"]
 [ext_resource type="Script" path="res://scenes/entities/player/STATES.gd" id="3_tsau4"]
 [ext_resource type="PackedScene" uid="uid://fgu6pqitahmu" path="res://scenes/entities/player/IDLE.tscn" id="4_1wwnh"]
-[ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="5_88pcj"]
+[ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="5_xr5lo"]
 [ext_resource type="PackedScene" uid="uid://c8jlmtm4vskkr" path="res://scenes/entities/player/MOVE.tscn" id="5_yne2w"]
 [ext_resource type="Texture2D" uid="uid://efgk1ki67i12" path="res://assets/player/stone.png" id="7_ahyw1"]
 [ext_resource type="PackedScene" uid="uid://dbt8rn6n0th8w" path="res://scenes/entities/player/FALL.tscn" id="7_lh8u6"]
@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
 [ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
 [ext_resource type="AudioStream" uid="uid://ccsf6besv3uoc" path="res://assets/sounds/player_push.ogg" id="23_w5smx"]
-[ext_resource type="PackedScene" uid="uid://ie4nyh1o6yyj" path="res://scenes/entities/environment/Potions/strength.tscn" id="23_wnod0"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/strength.tscn" id="23_wnod0"]
 [ext_resource type="AudioStream" uid="uid://bvqh4xt7mseaa" path="res://assets/sounds/jester boy.ogg" id="24_ek6vj"]
 [ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/dash.tscn" id="24_uxo1w"]
 [ext_resource type="PackedScene" uid="uid://10ce0pcki171" path="res://scenes/entities/environment/Potions/invis.tscn" id="25_mf8wk"]
@@ -47,6 +47,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_vynr6"]
+resource_name = "climb"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [130, 131]
 }
 
 [sub_resource type="Animation" id="Animation_cbwow"]
@@ -315,40 +332,6 @@ tracks/0/keys = {
 "values": [79, 80, 81, 82]
 }
 
-[sub_resource type="Animation" id="Animation_73ybj"]
-resource_name = "drink"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [143, 144, 145, 146, 147, 148]
-}
-
-[sub_resource type="Animation" id="Animation_vynr6"]
-resource_name = "climb"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [130, 131]
-}
-
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jchmi"]
 _data = {
 "RESET": SubResource("Animation_2vhf1"),
@@ -611,12 +594,11 @@ offset_bottom = -88.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Hotbar" parent="." instance=ExtResource("5_7ncgb")]
-z_index = 10
-offset_left = -104.0
-offset_top = 152.0
-offset_right = -104.0
-offset_bottom = 152.0
+[node name="Hotbar" parent="." instance=ExtResource("5_xr5lo")]
+offset_left = -110.0
+offset_top = 136.0
+offset_right = -110.0
+offset_bottom = 136.0
 
 [node name="Help Menu" parent="." instance=ExtResource("28_5l8cq")]
 

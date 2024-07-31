@@ -84,7 +84,6 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
-	print(is_hidden)
 	if inputs_active && !dying and !is_statue:
 		player_input()
 		change_state(current_state.update(delta))

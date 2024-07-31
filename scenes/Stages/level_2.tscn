@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnpa1iyl1trxi"]
+[gd_scene load_steps=15 format=3 uid="uid://bnpa1iyl1trxi"]
 
 [ext_resource type="PackedScene" uid="uid://dxl184axei2b" path="res://scenes/tilemap/prison_tile_map.tscn" id="1_q0268"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_3qwtu"]
@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="8_n23tl"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="9_fyunw"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="10_07non"]
-[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="11_nk83b"]
-[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="12_r2d2f"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="10_rod1k"]
 [ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="10_xij4w"]
+[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="11_nk83b"]
+[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="12_r2d2f"]
+[ext_resource type="PackedScene" path="res://scenes/sound/in_the_halls_of_the_prison.tscn" id="14_tucly"]
 
 [node name="level_2" type="Node2D"]
 
@@ -174,3 +175,6 @@ bus = &"Ambience"
 [node name="CaveDoor" parent="." instance=ExtResource("10_rod1k")]
 position = Vector2(1538, -20)
 next_level = "res://scenes/Stages/level_3.tscn"
+
+[node name="InTheHallsOfThePrison" parent="." instance=ExtResource("14_tucly")]
+autoplay = false

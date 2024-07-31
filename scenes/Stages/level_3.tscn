@@ -1,15 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwmamy18oy44c"]
+[gd_scene load_steps=26 format=3 uid="uid://bwmamy18oy44c"]
 
 [ext_resource type="Texture2D" uid="uid://c3ixvhhvdtrnw" path="res://assets/tilemaps/Cave-Tileset.png" id="1_8s6dt"]
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="2_ie1u1"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="3_w652m"]
 [ext_resource type="Texture2D" uid="uid://cx3w3auw5o45w" path="res://assets/background/Backround_Prison.png" id="4_igme2"]
-[ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="5_oao3f"]
-[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="6_njeo2"]
-[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="7_5akq1"]
 [ext_resource type="PackedScene" uid="uid://5wfcbq4khtse" path="res://scenes/tilemap/prisontilemapfr.tscn" id="4_p5b8y"]
 [ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="5_j5dus"]
+[ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="5_oao3f"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="6_h1plh"]
+[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="6_njeo2"]
+[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="7_5akq1"]
 [ext_resource type="PackedScene" uid="uid://n1tq1nme0ntj" path="res://scenes/entities/environment/Ladder.tscn" id="7_rsrbj"]
 [ext_resource type="PackedScene" uid="uid://c6h5ii6auaj76" path="res://scenes/entities/environment/props/rock.tscn" id="8_vhm3f"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="9_3wxel"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="12_xyhm4"]
 [ext_resource type="PackedScene" uid="uid://bt28sxy8k434s" path="res://scenes/entities/environment/collectables/MagicalBranch.tscn" id="13_epr7u"]
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="17_n5vy7"]
-
+[ext_resource type="PackedScene" path="res://scenes/sound/in_the_halls_of_the_prison.tscn" id="22_82hnn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwtmu"]
 texture = ExtResource("1_8s6dt")
@@ -2441,10 +2441,10 @@ position = Vector2(570, -216)
 position = Vector2(57, -251)
 
 [node name="LightSource4" parent="Props" instance=ExtResource("6_h1plh")]
-position = Vector2(796, -331)
+position = Vector2(784, -365)
 
 [node name="LightSource5" parent="Props" instance=ExtResource("6_h1plh")]
-position = Vector2(960, -96)
+position = Vector2(980, -116)
 
 [node name="Sprite2D" parent="Props" instance=ExtResource("7_rsrbj")]
 position = Vector2(928, -24)
@@ -2496,17 +2496,6 @@ position = Vector2(624, -204)
 
 [node name="Ingredients" type="Node" parent="."]
 
-
-[node name="Bus_CaveReverb" parent="." instance=ExtResource("5_oao3f")]
-layout = ExtResource("6_njeo2")
-
-[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_5akq1")
-volume_db = -10.0
-pitch_scale = 0.8
-autoplay = true
-bus = &"Ambience"
-
 [node name="DeadMouse" parent="Ingredients" instance=ExtResource("11_ffuv2")]
 position = Vector2(577, 66)
 
@@ -2519,6 +2508,16 @@ position = Vector2(56, -15)
 [node name="MagicalBranch" parent="Ingredients" instance=ExtResource("13_epr7u")]
 position = Vector2(184, -14)
 
+[node name="Bus_CaveReverb" parent="." instance=ExtResource("5_oao3f")]
+layout = ExtResource("6_njeo2")
+
+[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5akq1")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true
+bus = &"Ambience"
+
 [node name="DarknessLight" parent="." instance=ExtResource("5_j5dus")]
 
 [node name="Guard2" parent="." instance=ExtResource("10_8ulse")]
@@ -2528,7 +2527,7 @@ position = Vector2(472, -216)
 position = Vector2(344, -192)
 
 [node name="PP2" parent="Guard2/PatrolPoints" index="1"]
-position = Vector2(720, -192)
+position = Vector2(779, -209)
 
 [node name="Watcher" parent="." instance=ExtResource("17_n5vy7")]
 position = Vector2(578, 63)
@@ -2541,6 +2540,9 @@ position = Vector2(434, -23)
 
 [node name="PP2" parent="Guard/PatrolPoints" index="1"]
 position = Vector2(796, -25)
+
+[node name="InTheHallsOfThePrison" parent="." instance=ExtResource("22_82hnn")]
+autoplay = false
 
 [editable path="Guard2"]
 [editable path="Guard"]

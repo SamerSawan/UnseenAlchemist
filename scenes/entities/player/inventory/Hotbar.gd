@@ -12,6 +12,7 @@ func _ready():
 	SignalBus.update_inventory.connect(update_slots)
 	SignalBus.potion_crafted.connect(firstPotionCrafted)
 	SignalBus.potion_used.connect(update_slots)
+	SignalBus.player_died.connect(reset)
 	slots[0].texture_button.button_pressed = true
 	update_slots()
 
@@ -52,6 +53,7 @@ func _process(_delta):
 		print(SignalBus.equipped_potion)
 		SignalBus.potion_changed.emit()
 		
-
+func reset():
+	var inventory: Inv = preload("res://Inventory/HotBar.tres")
 
 
