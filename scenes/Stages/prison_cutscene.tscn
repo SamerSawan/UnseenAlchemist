@@ -1,29 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ogpkrg5r5ps2"]
+[gd_scene load_steps=7 format=3 uid="uid://ogpkrg5r5ps2"]
 
 [ext_resource type="Script" path="res://scenes/Stages/prison_cutscene.gd" id="1_0dton"]
 [ext_resource type="Texture2D" uid="uid://duhggqultdpf" path="res://assets/cutscenes/Opening_Cutscene.png" id="2_2hajj"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="3_krmj8"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="4_s1iin"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="5_q2ogt"]
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="6_ofm6x"]
 
-[node name="prison_cutscene" type="CanvasLayer" node_paths=PackedStringArray("sprite")]
+[node name="prison_cutscene" type="CanvasLayer" node_paths=PackedStringArray("sprite", "button", "black_color")]
 script = ExtResource("1_0dton")
-sprite = NodePath("Sprite2D")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -29.0
-offset_top = -35.0
-offset_right = 1206.0
-offset_bottom = 705.0
-color = Color(0, 0, 0, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(98, 5)
-scale = Vector2(3, 2)
-texture = ExtResource("2_2hajj")
-centered = false
-hframes = 5
-vframes = 5
+sprite = NodePath("Panel/Sprite2D")
+button = NodePath("Panel/Button")
+black_color = NodePath("")
 
 [node name="Bus_CaveReverb" parent="." instance=ExtResource("3_krmj8")]
 layout = ExtResource("4_s1iin")
@@ -34,3 +22,33 @@ volume_db = -10.0
 pitch_scale = 0.8
 autoplay = true
 bus = &"Ambience"
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = -35.0
+offset_right = 1206.0
+offset_bottom = 705.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(98, 5)
+scale = Vector2(3, 2)
+texture = ExtResource("2_2hajj")
+centered = false
+hframes = 5
+vframes = 5
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 566.0
+offset_right = 1130.0
+offset_bottom = 630.0
+theme = ExtResource("6_ofm6x")
+theme_override_font_sizes/font_size = 64
+text = "Skip"
