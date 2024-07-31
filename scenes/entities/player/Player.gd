@@ -140,7 +140,7 @@ func animation_handler():
 		inputs_active = false
 	else:
 		inputs_active = true #very not good 
-	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK): #otherwise it just skips these
+	if (new_state != WINDUP) && (new_state != THROW) && (new_state != PUSH) && (new_state != DIE)&&(new_state != DRINK)&&(new_state != CLIMB): #otherwise it just skips these
 		if (velocity.x != 0 && is_on_floor()):
 			change_animation_state(RUN)
 		if is_on_floor() && velocity.x == 0:
@@ -175,7 +175,9 @@ func player_input():
 		dash_input = false
 	
 func respawn_anim(): #needs to be updated
-	velocity = Vector2.ZERO
+	velocity.x = 0
+	if velocity.y < 0:
+		velocity.y = 0
 	inputs_active = false
 	dying = true #used to stop indicator from showing up on death
 	change_animation_state(DIE)

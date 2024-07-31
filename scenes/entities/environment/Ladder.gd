@@ -12,10 +12,11 @@ func _process(delta):
 			player.velocity.y = -200 * Input.get_axis("MoveDown", "MoveUp")
 			player.gravity_value = 0
 
+
 func _on_area_2d_body_entered(body):
-	if body.name == "Player":
+	if body == player:
 		ladder = true
-		player.new_state = 8 #switch to climb anim
+#		player.change_animation_state(8) #switch to climb anim #cant get it to work
 
 func _on_area_2d_body_exited(body):
 	ladder = false

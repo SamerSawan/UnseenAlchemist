@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var potion_container = $potion_container
-@export var potion_velocity: Vector2 = Vector2(500,-200)
+@export var potion_velocity: Vector2 = Vector2(500,-100)
 var potion = preload("res://scenes/entities/player/potion.tscn")
 var hotbar = preload("res://Inventory/HotBar.tres")
 var player
@@ -34,14 +34,14 @@ func aim_potion(delta): #hold to wind up throw
 	if Input.is_action_pressed("Shoot") && player.is_on_floor() && player.velocity.x == 0:
 		if Input.is_action_pressed("MoveRight") || Input.is_action_pressed("MoveLeft") || Input.is_action_pressed("Jump"):
 			player.change_animation_state(0) #cancel throw
-			potion_velocity = Vector2(500,-200) #reset initial throw speeds on cancel
+			potion_velocity = Vector2(500,-100) #reset initial throw speeds on cancel
 			indicator_rotator = 20*player.last_direction.x
 			is_aiming = false
 		elif potion_velocity.x > 0 && potion_velocity.y > -500: #charge up throw
 			if Input.is_action_just_pressed("Shoot"): #to properly reset the indicator's position
 				indicator_rotator = -20*player.last_direction.x
 			potion_velocity.x -= (150 * delta) #decrease x velocity, increase y velocity
-			potion_velocity.y -= (200 * delta)
+			potion_velocity.y -= (201 * delta)
 			indicator_rotator -= 46*delta * player.last_direction.x #winds up while charging (guessed value)
 			player.change_animation_state(2) #code for windup
 			is_aiming = true
@@ -56,7 +56,7 @@ func drink():
 		potion_container.add_child(potion_instance)
 		potion_instance.global_position = $Marker2D.global_position
 		indicator_rotator = -20*player.last_direction.x
-		potion_velocity = Vector2(500,-200)
+		potion_velocity = Vector2(500,-100)
 
 func shoot():
 	if !player.is_statue and Input.is_action_just_released("Shoot"): #fire on release
@@ -67,5 +67,5 @@ func shoot():
 		potion_container.add_child(potion_instance)
 		potion_instance.global_position = $Marker2D.global_position #spawn on player
 		indicator_rotator = -20*player.last_direction.x
-		potion_velocity = Vector2(500,-200) #reset initial throw speeds after every throw
+		potion_velocity = Vector2(500,-100) #reset initial throw speeds after every throw
 		is_aiming = false

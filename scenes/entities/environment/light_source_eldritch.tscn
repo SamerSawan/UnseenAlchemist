@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwnnmiicxkimy"]
+
+[ext_resource type="Script" path="res://scenes/entities/environment/light_source.gd" id="1_amna1"]
+[ext_resource type="Texture2D" uid="uid://cgpuroa4kq3ad" path="res://assets/objects/Lantern.png" id="2_7mqlt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxf4l"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjavv"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf8u5"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xji0o"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw678"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dnjg"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqxtl"]
+atlas = ExtResource("2_7mqlt")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87ojf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxf4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjavv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf8u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xji0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw678")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dnjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqxtl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_me0v6"]
+offsets = PackedFloat32Array(0, 0.709677)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1fpoi"]
+gradient = SubResource("Gradient_me0v6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m32ew"]
+radius = 500.0
+
+[node name="LightSource" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_amna1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+position = Vector2(0, -32)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_87ojf")
+autoplay = "default"
+frame_progress = 0.211253
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(8, -48)
+color = Color(1, 1, 0.45098, 1)
+energy = 3.0
+range_layer_min = -10
+range_layer_max = 20
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_1fpoi")
+texture_scale = 20.0
+height = 100.0
+
+[node name="DetectionArea" type="Area2D" parent="."]
+light_mask = 0
+collision_layer = 256
+
+[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
+light_mask = 0
+shape = SubResource("CircleShape2D_m32ew")
+debug_color = Color(0.482353, 0.588235, 0, 0.419608)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(4, 4)
+target_position = Vector2(-268, -8)
+collision_mask = 25
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

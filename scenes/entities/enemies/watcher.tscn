@@ -239,12 +239,12 @@ animations = [{
 radius = 167.012
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_008hs"]
-radius = 18.0
-height = 42.0
+radius = 14.0
+height = 34.0
 
 [sub_resource type="Gradient" id="Gradient_61vp3"]
 offsets = PackedFloat32Array(0.53617, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0.979279, 0.00938511, 1, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.999988, 0.526105, 1, 1)
 
 [node name="Watcher" type="Node2D"]
 script = ExtResource("1_mqevc")
@@ -255,23 +255,26 @@ animation = &"sleep"
 autoplay = "idle"
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+light_mask = 0
 shape = SubResource("CircleShape2D_4hwrs")
 debug_color = Color(0.788235, 0.345098, 0.670588, 0.235294)
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-enabled = false
-collision_mask = 25
-collide_with_areas = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, 0)
+position = Vector2(-1, -2)
 shape = SubResource("CapsuleShape2D_008hs")
+
+[node name="RayCast2D" type="RayCast2D" parent="StaticBody2D"]
+enabled = false
+collision_mask = 25
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="KillTimer" type="Timer" parent="."]
 one_shot = true
@@ -284,8 +287,8 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 200.0
 initial_velocity_max = 200.0
-scale_amount_min = 1.5
-scale_amount_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_61vp3")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -537,7 +537,7 @@ advance_expression = "state == CLIMB"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1o03s"]
 states/climb/node = SubResource("AnimationNodeAnimation_lmbwx")
-states/climb/position = Vector2(459, -64.5365)
+states/climb/position = Vector2(732, -41.5365)
 states/death/node = SubResource("AnimationNodeAnimation_rtlix")
 states/death/position = Vector2(89, 292.464)
 states/fall/node = SubResource("AnimationNodeAnimation_tk1mj")
@@ -555,7 +555,7 @@ states/throw/position = Vector2(1013, 160)
 states/windup/node = SubResource("AnimationNodeAnimation_xj810")
 states/windup/position = Vector2(807, 259)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_47qey"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_bw7lu"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_fxgf3"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_ilwtg"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_akyst"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_fdnik"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_n4stb"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_d8q4c"), "throw", "idle", SubResource("AnimationNodeStateMachineTransition_7hcdy"), "windup", "throw", SubResource("AnimationNodeStateMachineTransition_vyssx"), "idle", "windup", SubResource("AnimationNodeStateMachineTransition_ktvw7"), "run", "windup", SubResource("AnimationNodeStateMachineTransition_lge5s"), "jump", "windup", SubResource("AnimationNodeStateMachineTransition_yprd7"), "fall", "windup", SubResource("AnimationNodeStateMachineTransition_xsy5d"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_jh434"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_t7seg"), "idle", "push", SubResource("AnimationNodeStateMachineTransition_g32oo"), "push", "idle", SubResource("AnimationNodeStateMachineTransition_df4to"), "run", "push", SubResource("AnimationNodeStateMachineTransition_w1y4w"), "push", "run", SubResource("AnimationNodeStateMachineTransition_akrdc"), "fall", "push", SubResource("AnimationNodeStateMachineTransition_850k8"), "push", "jump", SubResource("AnimationNodeStateMachineTransition_pvekg"), "windup", "idle", SubResource("AnimationNodeStateMachineTransition_rx7xf"), "windup", "death", SubResource("AnimationNodeStateMachineTransition_ln4j6"), "throw", "death", SubResource("AnimationNodeStateMachineTransition_scos1"), "run", "death", SubResource("AnimationNodeStateMachineTransition_ejq4r"), "fall", "death", SubResource("AnimationNodeStateMachineTransition_pvwmu"), "jump", "death", SubResource("AnimationNodeStateMachineTransition_qyfk1"), "push", "death", SubResource("AnimationNodeStateMachineTransition_gtwha"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_5j274"), "idle", "throw", SubResource("AnimationNodeStateMachineTransition_8pcx2"), "run", "throw", SubResource("AnimationNodeStateMachineTransition_u3wew"), "climb", "idle", SubResource("AnimationNodeStateMachineTransition_48i3d"), "idle", "climb", SubResource("AnimationNodeStateMachineTransition_pgoxe"), "climb", "death", SubResource("AnimationNodeStateMachineTransition_t1c57"), "run", "climb", SubResource("AnimationNodeStateMachineTransition_0o216"), "push", "climb", SubResource("AnimationNodeStateMachineTransition_widy6"), "jump", "climb", SubResource("AnimationNodeStateMachineTransition_n5nb4"), "fall", "climb", SubResource("AnimationNodeStateMachineTransition_pxiow")]
-graph_offset = Vector2(7, -8.5365)
+graph_offset = Vector2(24, -88.5365)
 
 [sub_resource type="Gradient" id="Gradient_biein"]
 offsets = PackedFloat32Array(0, 0.00425532, 1)
@@ -569,6 +569,7 @@ inventory = ExtResource("2_r7m5n")
 JUMP_VELOCITY = -350.0
 
 [node name="Inventory" parent="." instance=ExtResource("15_pa6kt")]
+visible = false
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
@@ -581,6 +582,8 @@ offset_right = 184.0
 offset_bottom = -43.0
 
 [node name="CraftingMenu" parent="." instance=ExtResource("16_4k25x")]
+visible = false
+z_index = 10
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -592,6 +595,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Hotbar" parent="." instance=ExtResource("5_7ncgb")]
+visible = false
+z_index = 10
 offset_left = -104.0
 offset_top = 152.0
 offset_right = -104.0

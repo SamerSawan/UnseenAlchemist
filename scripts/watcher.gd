@@ -6,7 +6,7 @@ var is_sleep = false
 var spotted_once: bool = false
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var ray_to_player = $RayCast2D
+@onready var ray_to_player = $StaticBody2D/RayCast2D
 @onready var killtimer = $KillTimer
 
 func _ready():
