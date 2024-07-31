@@ -28,7 +28,7 @@ func update_potion(): #two of the if statements of all time
 			drinkable_potion = true
 		elif (potion_resource.name == "SlimePotion")||(potion_resource.name == "SmokePotion")||(potion_resource.name == "NoisePotion")||(potion_resource.name == "SleepPotion"):
 			drinkable_potion = false
-		
+	
 
 func aim_potion(delta): #hold to wind up throw 
 	if Input.is_action_pressed("Shoot") && player.is_on_floor():
@@ -49,8 +49,8 @@ func aim_potion(delta): #hold to wind up throw
 func drink():
 	if Input.is_action_just_pressed("Shoot") && player.is_on_floor(): #THROWS STRAIGHT DOWN
 		player.change_animation_state(3)
-		hotbar.remove(potion_resource)
 		var potion_instance = potion.instantiate()
+		hotbar.remove(potion_resource)
 		potion_container.add_child(potion_instance)
 		potion_instance.global_position = $Marker2D.global_position
 		potion_velocity = Vector2(400,-200)

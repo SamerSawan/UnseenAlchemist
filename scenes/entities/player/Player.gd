@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var spotted_eye = $SpottedEye/Spotted
 @onready var stealth_eye = $SpottedEye/Stealthed
 @onready var spotted_sound = $Sound_PlayerWatched
+@onready var watcher_particles = $WatcherParticles
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -126,6 +127,7 @@ func get_next_to_wall():
 func animation_handler():
 	if horizontal_direction != 0: #turning
 		player_sprite.flip_h = (horizontal_direction == -1)
+		$StoneSprite.flip_h = (horizontal_direction == -1)
 		throw_indicator.scale.x = -last_direction.x
 		throw_indicator.position.x = 11*horizontal_direction
 		
@@ -223,8 +225,14 @@ func activate_statue():
 	player_sprite.visible = false
 	$StoneSprite.visible = true
 	$statue_timer.start()
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 
+func _on_statue_timer_timeout():
+	is_statue = false
+	player_sprite.visible = true
+	$StoneSprite.visible = false
+	$CollisionShape2D.set_deferred("disabled", false)
+	
 func signal_connector():
 	SignalBus.jump_buffer.connect(jump_buffer_func)
 	SignalBus.coyote_jump.connect(coyote_jump_func)
@@ -258,7 +266,6 @@ func box_push():
 
 
 func _on_watched_timer_timeout(): # to trigger music
-	#print("watched timer proc")
 	if spotted_sound:
 		if watched:
 			spotted_sound.fade_in()
@@ -301,10 +308,7 @@ func _on_invis_timer_timeout():
 	invis.emitting = false
 
 
-func _on_statue_timer_timeout():
-	is_statue = false
-	$CollisionShape2D.disabled = false
-	is_stealthed = false
+	
 	
 	
 func running_particles(): #might remove if its costing too much cpu power

@@ -39,7 +39,7 @@ func _on_detection_area_body_exited(body):
 #	player_entered == false
 
 func player_detection(): #its just so much easier than cast_ray()
-	if player_entered == true: #points raycast to the player IS BEING CALLED
+	if player_entered == true && !player.is_statue: #points raycast to the player IS BEING CALLED
 		ray_to_player.set_target_position(player.global_position - ray_to_player.global_position)
 		if ray_to_player.is_colliding(): #collides with box area, not the player
 			player.is_stealthed = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhc4atemrly51"]
+[gd_scene load_steps=16 format=3 uid="uid://bhc4atemrly51"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_37g35"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="1_f173j"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="8_ji5xb"]
 [ext_resource type="PackedScene" uid="uid://cvhp56nm1f2au" path="res://scenes/entities/environment/deathzone.tscn" id="9_jfuyq"]
 [ext_resource type="PackedScene" uid="uid://c8a3sn3cgb186" path="res://scenes/entities/environment/props/bush_1.tscn" id="10_hhoa5"]
+[ext_resource type="PackedScene" uid="uid://bt28sxy8k434s" path="res://scenes/entities/environment/collectables/MagicalBranch.tscn" id="13_vkkjp"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="14_6gwo8"]
+[ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="14_cnepn"]
 
 [node name="GuardPlayground" type="Node2D"]
 script = ExtResource("1_r1w05")
@@ -38,13 +40,13 @@ rotation = 0.0189524
 position = Vector2(24, -8)
 
 [node name="LightSource2" parent="." instance=ExtResource("5_ad3t8")]
-position = Vector2(264, -240)
+position = Vector2(272, 32)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("6_dmh2n")]
 position = Vector2(88, 64)
 
 [node name="CaveDoor" parent="." instance=ExtResource("8_ji5xb")]
-position = Vector2(360, 64)
+position = Vector2(96, -112)
 is_spawn_point = true
 
 [node name="DEATHZONE" parent="." instance=ExtResource("9_jfuyq")]
@@ -56,21 +58,28 @@ position = Vector2(232, 64)
 [node name="ingredients" type="Node" parent="."]
 
 [node name="ClumpOfMoss" parent="ingredients" instance=ExtResource("5_p16bp")]
-position = Vector2(59, 75)
+position = Vector2(-26, -56)
 
 [node name="VialOfGoo" parent="ingredients" instance=ExtResource("6_hqel7")]
-position = Vector2(83, 75)
+position = Vector2(-2, -56)
 
 [node name="VialOfGoo2" parent="ingredients" instance=ExtResource("6_hqel7")]
-position = Vector2(37, 75)
+position = Vector2(-48, -56)
 
 [node name="DeadMouse" parent="ingredients" instance=ExtResource("7_ndl2q")]
-position = Vector2(132, 75)
+position = Vector2(47, -56)
 
 [node name="DeadMouse2" parent="ingredients" instance=ExtResource("7_ndl2q")]
-position = Vector2(108, 75)
+position = Vector2(23, -56)
+
+[node name="MagicalBranch" parent="ingredients" instance=ExtResource("13_vkkjp")]
+position = Vector2(40, -72)
+
+[node name="GunpowderPouch" parent="ingredients" instance=ExtResource("14_cnepn")]
+position = Vector2(8, -72)
 
 [node name="Barrel" parent="." instance=ExtResource("14_6gwo8")]
 position = Vector2(288, 64)
 
 [editable path="Guard"]
+[editable path="Bush1"]

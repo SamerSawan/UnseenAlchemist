@@ -29,7 +29,6 @@ var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player_in_area: bool = false
 var spotted_once: bool = false
 var player_entered: bool = false
-var player_los: bool = false #line of sight
 var direction
 var current_destination: Vector2
 var current_patrol_point: Vector2
@@ -53,6 +52,7 @@ func _ready():
 	SignalBus.is_awake.connect(woke_up)
 	SignalBus.is_slowed.connect(slowed)
 	SignalBus.not_slowed.connect(not_slowed)
+	SignalBus.activate_statue.connect(player_statued)
 	direction = position.direction_to(current_destination)
 	
 func _physics_process(delta):
@@ -98,6 +98,13 @@ func idle():#stand around for a few, unless something changes
 	velocity.x = 0
 	is_idle = true
 	guard_sprite.play("idle")
+	
+func de_aggro():
+	guard_sprite.play("walk")
+	is_chasing = false
+	direction = position.direction_to(last_patrol_point)
+	speed = patrol_speed
+	player.watched = false
 	
 func raycast_business(): #jump over cliffs
 	gap_distance()
@@ -177,11 +184,7 @@ func spotted_player(): #on area body entered, ACTIVATES CHASE BOOL
 
 
 func _on_lose_aggro_timer_timeout(): #stop chasing if LOS broken for too long
-	guard_sprite.play("walk")
-	is_chasing = false
-	direction = position.direction_to(last_patrol_point)
-	speed = patrol_speed
-	player.watched = false
+	de_aggro()
 
 func kill_mode(): #THE FINAL STRIKE
 	distance_to_player = (position - player.global_position)
@@ -203,7 +206,7 @@ func scan_for_player():
 			ray_to_player.set_deferred("enabled",true)
 			player_entered = true
 			
-func _on_detection_area_body_entered(body):
+func _on_detection_area_body_entered(_body):
 	pass
 
 func _on_detection_area_body_exited(_body):
@@ -230,4 +233,7 @@ func player_detection(): #CLEAR LOS/ AGGRO FUNC
 					spotted_once = false #the timer keeps starting in the area so it doesnt timeout
 					
 			
-
+func player_statued():
+	player_entered = false
+	de_aggro()
+	

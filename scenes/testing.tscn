@@ -1,4 +1,5 @@
-[gd_scene load_steps=23 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=24 format=3 uid="uid://cw4gkchggdpib"]
+
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="3_rcuuh"]
@@ -21,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://chsw1qos2tgs" path="res://scenes/entities/environment/props/bush_3.tscn" id="18_kw6vc"]
 [ext_resource type="PackedScene" uid="uid://gs21mlt4ildj" path="res://scenes/entities/environment/props/bush_4.tscn" id="19_tpnks"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="20_4svre"]
-[ext_resource type="PackedScene" uid="uid://cbsu4ixsm735f" path="res://scenes/entities/environment/Ladder.tscn" id="23_kwkvh"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Ladder.tscn" id="23_kwkvh"]
 
 [node name="Testing" type="Node2D"]
 

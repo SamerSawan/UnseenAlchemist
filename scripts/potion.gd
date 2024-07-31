@@ -33,8 +33,8 @@ func _ready():
 				sprite_2d.frame = 6
 			"SleepPotion":
 				sprite_2d.frame = 7
-
-func _on_area_2d_body_entered(body):
+	SignalBus.potion_changed.emit()
+func _on_area_2d_body_entered(_body):
 	var sound_queue = get_node("SoundQueue_PotionShatter")
 	sound_queue.reparent(get_node("/root"), true)
 	sound_queue.play_sound()

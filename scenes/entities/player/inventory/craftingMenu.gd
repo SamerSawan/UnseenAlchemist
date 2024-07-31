@@ -26,7 +26,7 @@ var hotbar = preload("res://Inventory/HotBar.tres")
 func _ready():
 	close()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("OpenCrafting"):
 		if is_open:
 			close()

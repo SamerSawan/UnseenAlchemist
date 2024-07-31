@@ -16,7 +16,7 @@ func enter_state():
 	dashing = true
 	DashDuration_timer.start(dash_duration)
 	if Player.movement_input != Vector2.ZERO:
-		dash_direction = Player.movement_input
+		dash_direction = Player.movement_input*Vector2(1,-1)
 	else:
 		dash_direction = Player.last_direction
 	Player.velocity = dash_direction.normalized() * dash_speed

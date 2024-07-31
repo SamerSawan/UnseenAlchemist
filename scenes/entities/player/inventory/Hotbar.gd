@@ -18,7 +18,8 @@ func _ready():
 func update_slots():
 	for i in range(min(inventory.items.size(), slots.size())):
 		slots[i].update(inventory.items[i])
-
+	SignalBus.equipped_potion = slots[currentlyActive].item
+	
 func firstPotionCrafted():
 	if isFirstPotion:
 		SignalBus.equipped_potion = slots[currentlyActive].item
@@ -26,7 +27,7 @@ func firstPotionCrafted():
 	isFirstPotion = false
 	
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ScrollDown"):
 		slots[currentlyActive].texture_button.button_pressed = false
 		if currentlyActive >= 7:
@@ -47,8 +48,8 @@ func _process(delta):
 		elif currentlyActive < 8 and currentlyActive > -1:
 			currentlyActive -= 1
 		slots[currentlyActive].texture_button.button_pressed = true
-		print(slots[currentlyActive].item)
 		SignalBus.equipped_potion = slots[currentlyActive].item
+		print(SignalBus.equipped_potion)
 		SignalBus.potion_changed.emit()
 		
 

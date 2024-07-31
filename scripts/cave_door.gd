@@ -7,7 +7,7 @@ var area_active = false
 var Player
 
 func _input(event):
-	if area_active and event.is_action_pressed("ui_accept"):
+	if area_active and event.is_action_pressed("MoveUp"):
 		on_door_interact()
 
 func _on_area_entered(_area):
