@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=23 format=3 uid="uid://cw4gkchggdpib"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
@@ -29,7 +29,7 @@
 position = Vector2(232, -32)
 collision_mask = 10
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+[node name="AudioListener2D2" type="AudioListener2D" parent="Player"]
 current = true
 
 [node name="TileMap" parent="." instance=ExtResource("2_m7350")]
@@ -63,8 +63,6 @@ position = Vector2(464, -40)
 position = Vector2(420, -282)
 
 [node name="Ingredients" type="Node" parent="."]
-[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
-position = Vector2(-85, 39)
 
 [node name="MagicalBranch" parent="Ingredients" instance=ExtResource("10_yx511")]
 position = Vector2(-66, 36)
@@ -80,6 +78,9 @@ position = Vector2(9, 37)
 
 [node name="GunpowderPouch" parent="Ingredients" instance=ExtResource("13_j5ded")]
 position = Vector2(38, 37)
+
+[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
+position = Vector2(-85, 39)
 
 [node name="SoundManager" parent="." instance=ExtResource("10_52htw")]
 

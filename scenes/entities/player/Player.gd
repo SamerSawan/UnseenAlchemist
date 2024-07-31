@@ -88,9 +88,8 @@ func _physics_process(delta):
 		change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
-	#if is_strong:
-		#box_push()
 	box_push()
+	
 	if !is_statue:
 		move_and_slide()
 #	for i in get_slide_collision_count(): #from the interwebs kind of sucks
@@ -247,11 +246,11 @@ func box_push():
 	if $Raycasts/TopRight.is_colliding() && Input.is_action_pressed("MoveRight"):
 		$Raycasts/TopRight.get_collider().position.x += 1
 		change_animation_state(PUSH)
-#		SignalBus.box_pushing.emit()
+
 	elif $Raycasts/TopLeft.is_colliding() && Input.is_action_pressed("MoveLeft"):
 		$Raycasts/TopLeft.get_collider().position.x -= 1
 		change_animation_state(PUSH)
-#		SignalBus.box_pushing.emit()
+
 	elif new_state != WINDUP:
 		change_animation_state(IDLE)
 

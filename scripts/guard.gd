@@ -163,6 +163,7 @@ func flip_sprite():
 			gapRaycast.target_position.x = 160*(floor(direction.x))
 			gapRaycast.position.x = 24*(floor(direction.x))
 			detection_area_shape.position.x = 102*(floor(direction.x))
+			
 func _on_idle_timer_timeout(): #to make him idle at patrol points
 	is_idle = false
 
@@ -210,18 +211,6 @@ func _on_detection_area_body_exited(_body):
 	player_entered = false
 	$LoseAggroTimer.start()
 	
-
-func patrol_points_setter(): #this broke for no reason so here's a function
-	var PP1globalP = $PP1.global_position
-	var PP2globalP = $PP2.global_position
-	$PP1.top_level = true #stop the patrol points
-	$PP2.top_level = true #from moving with parent
-	await get_tree().create_timer(0.1)
-	$PP1.global_position = PP1globalP
-	$PP2.global_position = PP2globalP #this is genuinely mind boggling
-	#becoming top_level ruins positioning, so we're saving them first
-
-
 func _on_slow_timer_timeout():
 	is_slowed = false
 	not_slowed()
