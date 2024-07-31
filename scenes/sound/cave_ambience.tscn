@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cujrdyphs1xe3"]
+
+[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="1_cvoms"]
+
+[node name="CaveAmbience" type="AudioStreamPlayer"]
+stream = ExtResource("1_cvoms")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true
+bus = &"Ambience"

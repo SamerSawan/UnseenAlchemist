@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3yrbnmh8urxg"]
+
+[ext_resource type="AudioStream" uid="uid://cio5w4ry0uld6" path="res://assets/sounds/in the halls of the prison.ogg" id="1_yih6l"]
+
+[sub_resource type="GDScript" id="GDScript_qougo"]
+script/source = "extends AudioStreamPlayer
+
+var numbers = [0, 0, -0.1, 0.1]
+var baseline_volume
+
+func _ready():
+	baseline_volume = volume_db
+	
+	finished.connect(_on_finished)
+	_on_finished()
+	SignalBus.music_level_fade_in.connect(fade_in)
+	SignalBus.music_level_fade_out.connect(fade_out)
+	
+func _on_finished():
+	randomize()
+	pitch_scale = pitch_scale + get_random_number()
+	play()
+
+func get_random_number():
+	var index = randi() % numbers.size()
+	return numbers[index]
+
+func fade_in():
+	if !is_playing():
+		set_volume_db(baseline_volume) # make sure to set back to baseline when playing again
+		play()
+		#print(\"watched music playing\")
+	#print(\"fading in player_watched_music\")
+	if get_volume_db() < baseline_volume:
+		set_volume_db(get_volume_db() + 1)
+
+func fade_out():
+	#print(\"fading out player_watched_music\")
+	if get_volume_db() > -50.0:
+		set_volume_db(get_volume_db() - 5)
+	else:
+		if is_playing():
+			stop()
+			#print(\"player_watched_music stopped\")
+"
+
+[node name="InTheHallsOfThePrison" type="AudioStreamPlayer"]
+stream = ExtResource("1_yih6l")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = SubResource("GDScript_qougo")

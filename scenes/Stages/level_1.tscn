@@ -1,18 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://y6dek8sd6uje"]
+[gd_scene load_steps=20 format=3 uid="uid://y6dek8sd6uje"]
 
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="1_bbp3v"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_3qbmo"]
 [ext_resource type="Texture2D" uid="uid://cx3w3auw5o45w" path="res://assets/background/Backround_Prison.png" id="3_ju1wt"]
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="4_m5mpd"]
+[ext_resource type="PackedScene" uid="uid://s0yk2e1iq2ss" path="res://scenes/text/fading_text.tscn" id="5_vcix3"]
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="6_4vgxt"]
 [ext_resource type="Texture2D" uid="uid://bckfwfmdpvts0" path="res://assets/props/Environmental-Props.png" id="6_6jatc"]
+[ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="6_dvi7r"]
 [ext_resource type="PackedScene" uid="uid://cyqxs041qy6s1" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="6_skc4k"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="7_pvn1q"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="7_tasii"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="9_pghxm"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="10_owi87"]
-[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="11_vyfw6"]
+[ext_resource type="PackedScene" uid="uid://cujrdyphs1xe3" path="res://scenes/sound/cave_ambience.tscn" id="12_w54uy"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="13_d3uwg"]
+[ext_resource type="PackedScene" uid="uid://c3yrbnmh8urxg" path="res://scenes/sound/in_the_halls_of_the_prison.tscn" id="14_cj5e0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcf2m"]
 texture = ExtResource("1_bbp3v")
@@ -1133,6 +1136,8 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 21
 sources/2 = SubResource("TileSetAtlasSource_bcf2m")
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_huqcj"]
+
 [node name="level_1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1210,6 +1215,29 @@ position = Vector2(1019, -132)
 
 [node name="Node" type="Node" parent="."]
 
+[node name="FadingText7" parent="Node" node_paths=PackedStringArray("text") instance=ExtResource("5_vcix3")]
+position = Vector2(170, -65)
+scale = Vector2(0.769894, 1.06469)
+text = NodePath("../OhGodsText4")
+
+[node name="OhGodsText4" type="RichTextLabel" parent="Node"]
+z_index = 10
+anchors_preset = -1
+anchor_left = -0.0407986
+anchor_right = -0.0407986
+anchor_bottom = 0.00154321
+offset_left = 68.0
+offset_top = -111.0
+offset_right = 346.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_dvi7r")
+bbcode_enabled = true
+text = "[center][color=green][/color]Oh gods, you've been trapped!
+GET OUT WHILE YOU STILL CAN..."
+custom_effects = [SubResource("RichTextEffect_huqcj")]
+
 [node name="Sprite2D" type="Sprite2D" parent="Node"]
 position = Vector2(303, -92)
 texture = ExtResource("6_6jatc")
@@ -1261,13 +1289,11 @@ position = Vector2(535, -19)
 [node name="Bus_CaveReverb" parent="." instance=ExtResource("9_pghxm")]
 layout = ExtResource("10_owi87")
 
-[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_vyfw6")
-volume_db = -10.0
-pitch_scale = 0.8
-autoplay = true
-bus = &"Ambience"
+[node name="CaveAmbience" parent="." instance=ExtResource("12_w54uy")]
 
 [node name="CaveDoor" parent="." instance=ExtResource("13_d3uwg")]
 position = Vector2(1557, -20)
 next_level = "res://scenes/Stages/level_2.tscn"
+
+[node name="InTheHallsOfThePrison" parent="." instance=ExtResource("14_cj5e0")]
+autoplay = false

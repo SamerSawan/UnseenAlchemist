@@ -38,3 +38,6 @@ signal activate_dash
 signal activate_invis
 signal activate_statue
 signal statue_disabled
+
+signal music_level_fade_in
+signal music_level_fade_out
