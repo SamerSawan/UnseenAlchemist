@@ -88,8 +88,9 @@ func _physics_process(delta):
 		change_state(current_state.update(delta))
 	
 #	$Label.text = str(current_state.get_name())
-	if is_strong:
-		box_push()
+	#if is_strong:
+		#box_push()
+	box_push()
 	if !is_statue:
 		move_and_slide()
 #	for i in get_slide_collision_count(): #from the interwebs kind of sucks
@@ -263,28 +264,6 @@ func _on_watched_timer_timeout(): # to trigger music
 		else:
 			spotted_sound.fade_out()
 
-func save():
-	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
-		"pos_x" : position.x, # Vector2 is not supported by JSON
-		"pos_y" : position.y,
-		"current_scene" : get_tree().get_current_scene().scene_file_path,
-		"inventory" : serialize_inventory(inventory.items),
-	}
-	return save_dict
-
-func serialize_inventory(slots: Array) -> Array:
-	var serialized_slots = []
-	for slot in slots:
-		var serialized_slot = {
-			"item_name": slot.item_name,
-			"item_texture_path": slot.item.texture.get_path(),
-			"quantity": slot.quantity
-		}
-		serialized_slots.append(serialized_slot)
-	return serialized_slots
-
 func _on_strength_timer_timeout():
 	is_strong = false
 	strength.emitting = false
@@ -312,3 +291,29 @@ func running_particles(): #might remove if its costing too much cpu power
 		$RunningParticles.emitting = false
 
 
+
+
+
+
+# save shit for json that doesnt work
+
+#func save():
+#	var save_dict = {
+#		"filename" : get_scene_file_path(),
+#		"parent" : get_parent().get_path(),
+#		
+#		"current_scene" : get_tree().get_current_scene().scene_file_path,
+#		"inventory" : serialize_inventory(inventory.items),
+#	}
+#	return save_dict
+
+#func serialize_inventory(slots: Array) -> Array:
+#	var serialized_slots = []
+#	for slot in slots:
+#		var serialized_slot = {
+#			"item_name": slot.item.name,
+#			"item_texture_path": slot.item.texture.get_path(),
+#			"quantity": slot.quantity
+#		}
+#		serialized_slots.append(serialized_slot)
+#	return serialized_slots

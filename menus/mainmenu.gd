@@ -6,29 +6,30 @@ extends Control
 @export var quitbutton : Node
 
 func _ready():
-	continuebutton.pressed.connect(_on_continue_button_pressed)
+#	continuebutton.pressed.connect(_on_continue_button_pressed)
 	newbutton.pressed.connect(_on_new_button_pressed)
-	optionsbutton.pressed.connect(_on_options_button_pressed)
+#	optionsbutton.pressed.connect(_on_options_button_pressed)
 	quitbutton.pressed.connect(_on_quit_button_pressed)
 	
 	newbutton.grab_focus() # for keyboard or controller
 	
-	if !FileAccess.file_exists(SaveHandler.SAVE_GAME_PATH):
-		continuebutton.visible = false
+#	if !FileAccess.file_exists(SaveHandler.SAVE_GAME_PATH):
+#		continuebutton.visible = false
 
-func _on_continue_button_pressed():
-	SaveHandler.call("load_game")
+#func _on_continue_button_pressed():
+#	SaveHandler.call("load_game")
 
 func _on_new_button_pressed():
 	SaveHandler.call("new_game")
 	pass
 
 
-func _on_options_button_pressed():
-	var options = load("res://menus/options.tscn").instance()
-	if options:
-		get_tree().current_scene.add_child(options)
-	pass
+#func _on_options_button_pressed():
+#	if ResourceLoader.exists("res://menus/options.tscn"):
+#		var options = load("res://menus/options.tscn").instance()
+#		if options:
+#			get_tree().current_scene.add_child(options)
+#	pass
 
 func _on_quit_button_pressed():
 	get_tree().quit()

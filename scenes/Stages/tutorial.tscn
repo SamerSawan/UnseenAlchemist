@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://vcekfmi5jp2i"]
+[gd_scene load_steps=40 format=3 uid="uid://vcekfmi5jp2i"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_e70cr"]
 [ext_resource type="PackedScene" uid="uid://cm6mv5wl8fdk1" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="2_vql7n"]
@@ -37,13 +37,14 @@
 [ext_resource type="Texture2D" uid="uid://dmic5l6fgd60n" path="res://assets/props/OrangeBush2.png" id="35_t34fl"]
 [ext_resource type="Texture2D" uid="uid://cfpw4qw3cnoto" path="res://assets/props/OrangeTree2.png" id="36_navbp"]
 [ext_resource type="PackedScene" uid="uid://b74hgtvtnf6xu" path="res://scenes/save/save_debugger.tscn" id="37_yn4n6"]
+[ext_resource type="PackedScene" uid="uid://cyqxs041qy6s1" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="38_rnd3i"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_huqcj"]
 
 [node name="tutorial" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_e70cr")]
-position = Vector2(4660, 34)
+position = Vector2(4671, 5)
 collision_mask = 10
 
 [node name="Cave_Background_Parallax" parent="." instance=ExtResource("2_vql7n")]
@@ -77,7 +78,7 @@ texture = ExtResource("5_ln1hw")
 [node name="Bus_CaveReverb" parent="." instance=ExtResource("7_xx7w1")]
 layout = ExtResource("8_ge3u3")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_nscxh")
 volume_db = -10.0
 pitch_scale = 0.8
@@ -218,6 +219,12 @@ texture = ExtResource("23_v4a4p")
 [node name="Guard" parent="Stuff" instance=ExtResource("10_4jism")]
 position = Vector2(2582, 32)
 
+[node name="PP1" parent="Stuff/Guard/PatrolPoints" index="0"]
+position = Vector2(2549, 57)
+
+[node name="PP2" parent="Stuff/Guard/PatrolPoints" index="1"]
+position = Vector2(2914, 59)
+
 [node name="GunpowderPouch" parent="Stuff" instance=ExtResource("29_dbi7w")]
 position = Vector2(3639, 127)
 
@@ -239,10 +246,11 @@ rotation = 0.387221
 visible = false
 
 [node name="DetectionArea" parent="Stuff/LightSource5" index="2"]
-visible = false
+scale = Vector2(1e-05, 1e-05)
 
 [node name="LightSource6" parent="Stuff" instance=ExtResource("12_mb5yo")]
 position = Vector2(2811, -39)
+scale = Vector2(0.15, 0.15)
 
 [node name="LightSource7" parent="Stuff" instance=ExtResource("12_mb5yo")]
 position = Vector2(3582, 77.9999)
@@ -411,17 +419,16 @@ anchors_preset = -1
 anchor_left = -0.0407986
 anchor_right = -0.0407986
 anchor_bottom = 0.00154321
-offset_left = 2236.0
-offset_top = -26.0
-offset_right = 2438.0
-offset_bottom = 23.0
+offset_left = 2186.0
+offset_top = -29.0
+offset_right = 2477.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_3tiwf")
 bbcode_enabled = true
-text = "[center]While in the [color=green]darkness[/color], 
-[color=magenta]You[/color] are [color=green]unseen[/color].
- Sneak past the guard.[/center]"
+text = "[center]While in the [color=green]darkness[/color] [color=magenta]you[/color] are [color=green]unseen[/color], but don't get too [color=red]close[/color]!
+Use the crate to jump past the guard.[/center]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText4" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
@@ -447,7 +454,7 @@ text = "[center][color=magenta]You[/color] can collect ingredients by pressing
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText5" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
-position = Vector2(4875, 0)
+position = Vector2(4840, 1)
 text = NodePath("../CraftingText2")
 
 [node name="CraftingText2" type="RichTextLabel" parent="Text"]
@@ -456,10 +463,10 @@ anchors_preset = -1
 anchor_left = -0.0407986
 anchor_right = -0.0407986
 anchor_bottom = 0.00154321
-offset_left = 4816.0
-offset_top = -55.0
+offset_left = 4808.0
+offset_top = -56.0
 offset_right = 5028.0
-offset_bottom = 23.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_3tiwf")
@@ -471,5 +478,19 @@ Browse the help menu with [color=green][H][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="SaveDebugger" parent="." instance=ExtResource("37_yn4n6")]
+visible = false
 
+[node name="Pedestal" parent="." instance=ExtResource("38_rnd3i")]
+position = Vector2(3639, 136)
+
+[node name="Pedestal2" parent="." instance=ExtResource("38_rnd3i")]
+position = Vector2(4156, 120)
+
+[node name="Pedestal3" parent="." instance=ExtResource("38_rnd3i")]
+position = Vector2(4439, 72)
+
+[node name="Crate" parent="." instance=ExtResource("13_6vbeu")]
+position = Vector2(2509, 51)
+
+[editable path="Stuff/Guard"]
 [editable path="Stuff/LightSource5"]

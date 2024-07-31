@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://y6dek8sd6uje"]
+[gd_scene load_steps=14 format=3 uid="uid://y6dek8sd6uje"]
 
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="1_bbp3v"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_3qbmo"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bckfwfmdpvts0" path="res://assets/props/Environmental-Props.png" id="6_6jatc"]
 [ext_resource type="PackedScene" uid="uid://cyqxs041qy6s1" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="6_skc4k"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="7_pvn1q"]
+[ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="9_pghxm"]
+[ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="10_owi87"]
+[ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="11_vyfw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcf2m"]
 texture = ExtResource("1_bbp3v")
@@ -1255,3 +1258,13 @@ position = Vector2(514, -19)
 
 [node name="DarkShroom2" parent="Ingredients" instance=ExtResource("7_pvn1q")]
 position = Vector2(535, -19)
+
+[node name="Bus_CaveReverb" parent="." instance=ExtResource("9_pghxm")]
+layout = ExtResource("10_owi87")
+
+[node name="CaveAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vyfw6")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true
+bus = &"Ambience"

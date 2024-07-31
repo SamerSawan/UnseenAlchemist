@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 SignalBus="*res://singletons/SignalBus.gd"
 SoundManager="*res://scenes/sound/SoundManager.tscn"
 AudioPlayer="*res://scripts/audio_player.gd"
-ConfigFileHandler="*res://singletons/ConfigFileHandler.gd"
 SaveHandler="*res://singletons/SaveHandler.gd"
 
 [display]
