@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://y6dek8sd6uje"]
+[gd_scene load_steps=12 format=3 uid="uid://cs28qsgrdtusx"]
 
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="1_bbp3v"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_3qbmo"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="4_m5mpd"]
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="6_4vgxt"]
 [ext_resource type="Texture2D" uid="uid://bckfwfmdpvts0" path="res://assets/props/Environmental-Props.png" id="6_6jatc"]
-[ext_resource type="PackedScene" uid="uid://cyqxs041qy6s1" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="6_skc4k"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="6_skc4k"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="7_pvn1q"]
+[ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="9_0fmrd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcf2m"]
 texture = ExtResource("1_bbp3v")
@@ -1255,3 +1256,5 @@ position = Vector2(514, -19)
 
 [node name="DarkShroom2" parent="Ingredients" instance=ExtResource("7_pvn1q")]
 position = Vector2(535, -19)
+
+[node name="DarknessLight" parent="." instance=ExtResource("9_0fmrd")]

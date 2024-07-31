@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0do87f8yx7yx"]
+[gd_scene load_steps=9 format=3 uid="uid://bwmamy18oy44c"]
 
 [ext_resource type="Texture2D" uid="uid://c3ixvhhvdtrnw" path="res://assets/tilemaps/Cave-Tileset.png" id="1_8s6dt"]
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="2_ie1u1"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="3_w652m"]
 [ext_resource type="Texture2D" uid="uid://cx3w3auw5o45w" path="res://assets/background/Backround_Prison.png" id="4_igme2"]
+[ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="5_j5dus"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwtmu"]
 texture = ExtResource("1_8s6dt")
@@ -2321,7 +2322,7 @@ physics_layer_0/collision_mask = 21
 sources/2 = SubResource("TileSetAtlasSource_bcf2m")
 sources/0 = SubResource("TileSetAtlasSource_nwtmu")
 
-[node name="level_2" type="Node2D"]
+[node name="level_3" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4ccqn")
@@ -2402,3 +2403,5 @@ texture = ExtResource("4_igme2")
 [node name="Props" type="Node" parent="."]
 
 [node name="Ingredients" type="Node" parent="."]
+
+[node name="DarknessLight" parent="." instance=ExtResource("5_j5dus")]

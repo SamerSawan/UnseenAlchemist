@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c6fpwwldgr3nn"]
+
+[node name="DarknessLight" type="DirectionalLight2D"]
+color = Color(0.803922, 0.611765, 0.611765, 1)
+energy = 0.8
+blend_mode = 1
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 0
+height = 1.0
