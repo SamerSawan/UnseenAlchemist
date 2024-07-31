@@ -595,7 +595,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Hotbar" parent="." instance=ExtResource("5_7ncgb")]
-visible = false
 z_index = 10
 offset_left = -104.0
 offset_top = 152.0

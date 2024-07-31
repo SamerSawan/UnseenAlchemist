@@ -85,6 +85,7 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
+	print(is_hidden)
 	if inputs_active && !dying and !is_statue:
 		player_input()
 		change_state(current_state.update(delta))
@@ -210,7 +211,7 @@ func exit_stealth():
 func activate_strength():
 	is_strong = true
 	SPEED = 300
-	JUMP_VELOCITY = -425
+	JUMP_VELOCITY = -440
 	strength.emitting = true
 	
 	$Strength/strength_timer.start()
@@ -236,6 +237,7 @@ func activate_statue():
 
 func _on_statue_timer_timeout():
 	is_statue = false
+	is_hidden = false
 	player_sprite.visible = true
 	$StoneSprite.visible = false
 	$CollisionShape2D.set_deferred("disabled", false)

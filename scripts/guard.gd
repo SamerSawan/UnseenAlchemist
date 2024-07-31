@@ -103,7 +103,7 @@ func idle():#stand around for a few, unless something changes
 func de_aggro():
 	guard_sprite.play("walk")
 	is_chasing = false
-	direction = position.direction_to(last_patrol_point)
+	direction = position.direction_to(current_destination)
 	speed = patrol_speed
 	player.watched = false
 	

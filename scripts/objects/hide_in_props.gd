@@ -22,5 +22,5 @@ func _on_area_2d_body_entered(_body):
 func _on_area_2d_body_exited(_body):
 	player_entered = false
 	player.stealth_eye.frame = 0
-	player.is_hidden = true
+	player.is_hidden = false
 
