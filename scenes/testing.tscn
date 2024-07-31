@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cw4gkchggdpib"]
+[gd_scene load_steps=24 format=3 uid="uid://cw4gkchggdpib"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_1jdum"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_m7350"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://chsw1qos2tgs" path="res://scenes/entities/environment/props/bush_3.tscn" id="18_kw6vc"]
 [ext_resource type="PackedScene" uid="uid://gs21mlt4ildj" path="res://scenes/entities/environment/props/bush_4.tscn" id="19_tpnks"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="20_4svre"]
+[ext_resource type="PackedScene" uid="uid://cbsu4ixsm735f" path="res://scenes/entities/environment/Ladder.tscn" id="23_kwkvh"]
 
 [node name="Testing" type="Node2D"]
 
@@ -29,7 +30,7 @@
 position = Vector2(232, -32)
 collision_mask = 10
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+[node name="AudioListener2D2" type="AudioListener2D" parent="Player"]
 current = true
 
 [node name="TileMap" parent="." instance=ExtResource("2_m7350")]
@@ -63,8 +64,6 @@ position = Vector2(464, -40)
 position = Vector2(420, -282)
 
 [node name="Ingredients" type="Node" parent="."]
-[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
-position = Vector2(-85, 39)
 
 [node name="MagicalBranch" parent="Ingredients" instance=ExtResource("10_yx511")]
 position = Vector2(-66, 36)
@@ -80,6 +79,9 @@ position = Vector2(9, 37)
 
 [node name="GunpowderPouch" parent="Ingredients" instance=ExtResource("13_j5ded")]
 position = Vector2(38, 37)
+
+[node name="DarkShroom" parent="." instance=ExtResource("12_1tvkj")]
+position = Vector2(-85, 39)
 
 [node name="SoundManager" parent="." instance=ExtResource("10_52htw")]
 
@@ -129,3 +131,9 @@ position = Vector2(168, 24)
 
 [node name="Bush5" parent="." instance=ExtResource("18_kw6vc")]
 position = Vector2(-40, 40)
+
+[node name="Sprite2D" parent="." instance=ExtResource("23_kwkvh")]
+position = Vector2(85, -49)
+
+[node name="Sprite2D2" parent="." instance=ExtResource("23_kwkvh")]
+position = Vector2(85, -79)
