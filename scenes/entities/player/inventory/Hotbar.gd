@@ -11,6 +11,7 @@ var isFirstPotion = true
 func _ready():
 	SignalBus.update_inventory.connect(update_slots)
 	SignalBus.potion_crafted.connect(firstPotionCrafted)
+	SignalBus.potion_used.connect(update_slots)
 	slots[0].texture_button.button_pressed = true
 	update_slots()
 
