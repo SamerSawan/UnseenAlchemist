@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmhar6jccqpy8"]
+[gd_scene load_steps=8 format=3 uid="uid://dmhar6jccqpy8"]
 
 [ext_resource type="Script" path="res://menus/mainmenu.gd" id="1_sdj0e"]
 [ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="2_p5iqj"]
 [ext_resource type="AudioStream" uid="uid://mb5y0m2smln2" path="res://assets/sounds/bassser.ogg" id="4_hgj8d"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="5_0cim3"]
-[ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="5_gocsx"]
 [ext_resource type="PackedScene" uid="uid://cm6mv5wl8fdk1" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="5_i0v56"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="6_mwfxh"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="7_winyf"]
@@ -26,6 +25,16 @@ quitbutton = NodePath("VBoxContainer/QuitButton")
 offset = Vector2(0, 800)
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 800)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 55.0
+offset_top = 412.0
+offset_right = 746.0
+offset_bottom = 492.0
+theme = ExtResource("2_p5iqj")
+theme_override_font_sizes/normal_font_size = 84
+text = "Unseen Alchemist"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -80,6 +89,4 @@ pitch_scale = 0.8
 autoplay = true
 bus = &"Ambience"
 
-[node name="Player" parent="." instance=ExtResource("5_gocsx")]
-position = Vector2(567, 309)
-motion_mode = 1
+[node name="Sprite2D" type="Sprite2D" parent="."]

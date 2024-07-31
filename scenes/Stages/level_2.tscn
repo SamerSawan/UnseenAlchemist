@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4nw42l4ukx50"]
+[gd_scene load_steps=17 format=3 uid="uid://d4nw42l4ukx50"]
 
 [ext_resource type="Texture2D" uid="uid://c3ixvhhvdtrnw" path="res://assets/tilemaps/Cave-Tileset.png" id="1_ffg5k"]
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="1_qxqfh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="10_07non"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="11_nk83b"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="12_r2d2f"]
+[ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="13_ohm4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwtmu"]
 texture = ExtResource("1_ffg5k")
@@ -2485,3 +2486,7 @@ volume_db = -10.0
 pitch_scale = 0.8
 autoplay = true
 bus = &"Ambience"
+
+[node name="CaveDoor" parent="." instance=ExtResource("13_ohm4y")]
+position = Vector2(1556, -20)
+next_level = "res://scenes/Stages/level_3.tscn"

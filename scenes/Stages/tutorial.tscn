@@ -46,10 +46,6 @@
 [node name="tutorial" type="Node2D"]
 metadata/_edit_vertical_guides_ = []
 
-[node name="Player" parent="." instance=ExtResource("1_e70cr")]
-position = Vector2(122, -413)
-collision_mask = 10
-
 [node name="Cave_Background_Parallax" parent="." instance=ExtResource("2_vql7n")]
 offset = Vector2(0, -60)
 transform = Transform2D(1, 0, 0, 1, 0, -60)
@@ -380,17 +376,17 @@ z_index = 10
 anchors_preset = -1
 anchor_left = -0.125868
 anchor_top = -0.112654
-anchor_right = -0.122396
+anchor_right = -0.121528
 anchor_bottom = -0.112654
-offset_left = 294.0
-offset_top = 29.0
-offset_right = 496.0
-offset_bottom = 78.0
+offset_left = 288.0
+offset_top = 27.0
+offset_right = 490.0
+offset_bottom = 76.0
 theme = ExtResource("14_3tiwf")
 bbcode_enabled = true
-text = "[center][color=green][W] [A] [S] [D][/color] to move.
+text = "[center][color=green][ w ] [ a ] [ s ] [ d ][/color] to move.
 
-[color=green][Space][/color] to jump.[/center]"
+[color=green][ space ][/color] to jump.[/center]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 metadata/_edit_use_anchors_ = true
 
@@ -448,16 +444,18 @@ anchors_preset = -1
 anchor_left = -0.0407986
 anchor_right = -0.0407986
 anchor_bottom = 0.00154321
-offset_left = 3582.0
-offset_top = -14.0
-offset_right = 3786.0
-offset_bottom = 38.0
+offset_left = 3547.0
+offset_top = -59.0
+offset_right = 3853.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_3tiwf")
 bbcode_enabled = true
-text = "[center][color=magenta]You[/color] can collect ingredients by pressing 
-[color=green][E][/color]"
+text = "[center][color=magenta]Yarn[/color] can collect ingredients by pressing 
+[color=green][ e ][/color]
+And don't forget to check your [color=green]inventory[/color] every once in awhile!
+[color=green][ i ][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText5" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
@@ -479,10 +477,10 @@ grow_vertical = 2
 theme = ExtResource("14_3tiwf")
 bbcode_enabled = true
 text = "[center]Try to craft a smoke potion with:
-[color=green][C][/color]
+[color=green][ c ][/color]
 
 Browse the recipe menu with:
-[color=green][H][/color]"
+[color=green][ h ][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText6" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
@@ -495,16 +493,38 @@ anchors_preset = -1
 anchor_left = -0.0407986
 anchor_right = -0.0407986
 anchor_bottom = 0.00154321
-offset_left = 4791.0
-offset_top = -49.0
-offset_right = 5038.0
-offset_bottom = 42.0
+offset_left = 4771.0
+offset_top = -40.0
+offset_right = 5049.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_3tiwf")
 bbcode_enabled = true
 text = "[center][color=green][/color]
-Enjoy the next level!"
+Don't get caught by the Watcher..."
+custom_effects = [SubResource("RichTextEffect_huqcj")]
+
+[node name="FadingText7" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
+position = Vector2(5041, 2)
+scale = Vector2(0.689894, 1.06469)
+text = NodePath("../CraftingText2")
+
+[node name="NextLevelText4" type="RichTextLabel" parent="Text"]
+z_index = 10
+anchors_preset = -1
+anchor_left = -0.0407986
+anchor_right = -0.0407986
+anchor_bottom = 0.00154321
+offset_left = 4949.0
+offset_top = -7.0
+offset_right = 5227.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_3tiwf")
+bbcode_enabled = true
+text = "[center][color=green][E][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="SaveDebugger" parent="." instance=ExtResource("37_yn4n6")]
@@ -527,6 +547,13 @@ position = Vector2(2319, 55)
 
 [node name="Rock" parent="." instance=ExtResource("40_32l8c")]
 position = Vector2(2172, 55)
+
+[node name="CaveDoor" parent="." instance=ExtResource("11_rpxe0")]
+position = Vector2(5041, 29)
+next_level = "res://scenes/Stages/prison_cutscene.tscn"
+
+[node name="Player" parent="." instance=ExtResource("1_e70cr")]
+position = Vector2(4859, 2)
 
 [editable path="Stuff/Guard"]
 [editable path="Stuff/LightSource5"]

@@ -7,11 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="5_q2ogt"]
 [ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="6_ofm6x"]
 
-[node name="prison_cutscene" type="CanvasLayer" node_paths=PackedStringArray("sprite", "button", "black_color")]
+[node name="prison_cutscene" type="CanvasLayer" node_paths=PackedStringArray("sprite", "button")]
 script = ExtResource("1_0dton")
 sprite = NodePath("Panel/Sprite2D")
 button = NodePath("Panel/Button")
-black_color = NodePath("")
 
 [node name="Bus_CaveReverb" parent="." instance=ExtResource("3_krmj8")]
 layout = ExtResource("4_s1iin")
