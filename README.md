@@ -1,3 +1,5 @@
+Submission: https://bappleboi.itch.io/unseen-alchemist
+
 # Contribution Guidelines
 
 1. Make a branch titled after the feature you are implementing
