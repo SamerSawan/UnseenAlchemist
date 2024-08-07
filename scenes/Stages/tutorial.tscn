@@ -1,13 +1,13 @@
 [gd_scene load_steps=42 format=3 uid="uid://vcekfmi5jp2i"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_e70cr"]
-[ext_resource type="PackedScene" uid="uid://cm6mv5wl8fdk1" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="2_vql7n"]
+[ext_resource type="PackedScene" uid="uid://cgmbwm3uwfh02" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="2_vql7n"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="3_cjc3t"]
 [ext_resource type="PackedScene" uid="uid://bjusufat4ckyy" path="res://scenes/entities/environment/cave_background.tscn" id="4_u3wyh"]
 [ext_resource type="Texture2D" uid="uid://bkd6uxi25cj26" path="res://assets/props/Rock6.png" id="5_ln1hw"]
 [ext_resource type="PackedScene" uid="uid://56scp0c1nx7i" path="res://scenes/sound/SoundManager.tscn" id="6_bo1jr"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="7_xx7w1"]
-[ext_resource type="PackedScene" uid="uid://cujrdyphs1xe3" path="res://scenes/sound/cave_ambience.tscn" id="8_81lsm"]
+[ext_resource type="PackedScene" path="res://scenes/sound/cave_ambience.tscn" id="8_81lsm"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="8_ge3u3"]
 [ext_resource type="PackedScene" uid="uid://s8gie7h8k0ak" path="res://scenes/entities/enemies/guard.tscn" id="10_4jism"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="11_rpxe0"]
@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://dmic5l6fgd60n" path="res://assets/props/OrangeBush2.png" id="35_t34fl"]
 [ext_resource type="Texture2D" uid="uid://cfpw4qw3cnoto" path="res://assets/props/OrangeTree2.png" id="36_navbp"]
 [ext_resource type="PackedScene" uid="uid://b74hgtvtnf6xu" path="res://scenes/save/save_debugger.tscn" id="37_yn4n6"]
-[ext_resource type="PackedScene" uid="uid://cyqxs041qy6s1" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="38_rnd3i"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="38_rnd3i"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="39_0cbvn"]
 [ext_resource type="PackedScene" uid="uid://c6h5ii6auaj76" path="res://scenes/entities/environment/props/rock.tscn" id="40_32l8c"]
 
@@ -214,13 +214,13 @@ texture = ExtResource("23_v4a4p")
 position = Vector2(2493, 38)
 
 [node name="PP1" parent="Stuff/Guard/PatrolPoints" index="0"]
-position = Vector2(2173, 54)
+position = Vector2(2079, 55)
 
 [node name="PP2" parent="Stuff/Guard/PatrolPoints" index="1"]
-position = Vector2(2593, 35)
+position = Vector2(2511, 57)
 
 [node name="PP2Area" parent="Stuff/Guard/PatrolPoints/PP2" index="0"]
-position = Vector2(-700.004, -80.0001)
+position = Vector2(80, -260)
 
 [node name="GunpowderPouch" parent="Stuff" instance=ExtResource("29_dbi7w")]
 position = Vector2(3639, 127)
@@ -260,9 +260,6 @@ position = Vector2(3688, 70)
 z_index = -20
 position = Vector2(1404, -48)
 scale = Vector2(4, 4)
-
-[node name="DarkShroom" parent="Stuff" instance=ExtResource("28_4of30")]
-position = Vector2(4156, 116)
 
 [node name="DarkShroom2" parent="Stuff" instance=ExtResource("28_4of30")]
 position = Vector2(4440, 67)
@@ -450,7 +447,7 @@ bbcode_enabled = true
 text = "[center][color=magenta]Yarn[/color] can collect ingredients by pressing 
 [color=green][ e ][/color]
 And don't forget to check your [color=green]inventory[/color] every once in awhile!
-[color=green][ i ][/color]"
+[color=green][ c ][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText5" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
@@ -464,7 +461,7 @@ anchor_left = -0.0407986
 anchor_right = -0.0407986
 anchor_bottom = 0.00154321
 offset_left = 4396.0
-offset_top = -40.0
+offset_top = -82.0
 offset_right = 4643.0
 offset_bottom = 51.0
 grow_horizontal = 2
@@ -475,7 +472,10 @@ text = "[center]Try to craft a smoke potion with:
 [color=green][ c ][/color]
 
 Browse the recipe menu with:
-[color=green][ h ][/color]"
+[color=green][ h ][/color]
+
+Throw potions with:
+[color=green][ LeftClick ][/color]"
 custom_effects = [SubResource("RichTextEffect_huqcj")]
 
 [node name="FadingText6" parent="Text" node_paths=PackedStringArray("text") instance=ExtResource("28_2pr6p")]
@@ -528,9 +528,6 @@ visible = false
 [node name="Pedestal" parent="." instance=ExtResource("38_rnd3i")]
 position = Vector2(3639, 136)
 
-[node name="Pedestal2" parent="." instance=ExtResource("38_rnd3i")]
-position = Vector2(4156, 120)
-
 [node name="Pedestal3" parent="." instance=ExtResource("38_rnd3i")]
 position = Vector2(4439, 72)
 
@@ -544,11 +541,14 @@ position = Vector2(2319, 55)
 position = Vector2(2172, 55)
 
 [node name="CaveDoor" parent="." instance=ExtResource("11_rpxe0")]
-position = Vector2(5041, 29)
+position = Vector2(5042, 29)
 next_level = "res://scenes/Stages/prison_cutscene.tscn"
 
 [node name="Player" parent="." instance=ExtResource("1_e70cr")]
-position = Vector2(4859, 2)
+position = Vector2(-14, 24)
+
+[node name="GunpowderPouch" parent="." instance=ExtResource("29_dbi7w")]
+position = Vector2(4414, 63)
 
 [editable path="Stuff/Guard"]
 [editable path="Stuff/LightSource5"]

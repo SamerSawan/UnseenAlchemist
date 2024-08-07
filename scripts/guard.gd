@@ -40,11 +40,11 @@ var distance_to_player
 #"states"
 var is_idle: bool = false
 var is_chasing: bool = false
-
+var is_asleep: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-#	$PP1.visible = false uncomment after testing to hide patrol points
-#	$PP2.visible = false
+	$PatrolPoints/PP1.visible = false #uncomment after testing to hide patrol points
+	$PatrolPoints/PP2.visible = false
 	current_patrol_point = Patrol2.position
 	current_destination = current_patrol_point
 	direction = position.direction_to(current_destination)
@@ -238,3 +238,6 @@ func player_statued():
 	player_entered = false
 	de_aggro()
 	
+	
+func _on_sleep_timer_timeout():
+	is_asleep = false

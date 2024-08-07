@@ -23,6 +23,12 @@ layer_0/tile_data = PackedInt32Array(196589, 983040, 10, 196590, 1048576, 10, 19
 
 [node name="DeadMouse3" parent="." instance=ExtResource("3_pnanv")]
 
+[node name="DeadMouse4" parent="." instance=ExtResource("3_pnanv")]
+
+[node name="DeadMouse5" parent="." instance=ExtResource("3_pnanv")]
+
+[node name="DeadMouse6" parent="." instance=ExtResource("3_pnanv")]
+
 [node name="DeadMouse2" parent="." instance=ExtResource("3_pnanv")]
 
 [node name="ClumpOfMoss" parent="." instance=ExtResource("4_innwy")]
@@ -54,6 +60,12 @@ layer_0/tile_data = PackedInt32Array(196589, 983040, 10, 196590, 1048576, 10, 19
 [node name="GunpowderPouch2" parent="." instance=ExtResource("8_wlhyb")]
 
 [node name="GunpowderPouch3" parent="." instance=ExtResource("8_wlhyb")]
+
+[node name="GunpowderPouch4" parent="." instance=ExtResource("8_wlhyb")]
+
+[node name="GunpowderPouch5" parent="." instance=ExtResource("8_wlhyb")]
+
+[node name="GunpowderPouch6" parent="." instance=ExtResource("8_wlhyb")]
 
 [node name="Watcher" parent="." instance=ExtResource("9_njfhx")]
 position = Vector2(272, -64)

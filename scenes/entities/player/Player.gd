@@ -2,15 +2,15 @@ extends CharacterBody2D
 
 @onready var player_sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer
-@onready var throw_indicator = $ThrowIndicator
-@onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
+#@onready var throw_indicator = $ThrowIndicator legacy code, now have mouse aiming
+#@onready var throw_indicator_sprite = $ThrowIndicator/Sprite2D
 @onready var spotted_eye = $SpottedEye/Spotted
 @onready var stealth_eye = $SpottedEye/Stealthed
 @onready var spotted_sound = $Sound_PlayerWatched
 @onready var watcher_particles = $WatcherParticles
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+var hotbar: Inv = preload("res://Inventory/HotBar.tres")
 #Inventory Related
 @export var inventory: Inv
 
@@ -128,8 +128,6 @@ func animation_handler():
 	if horizontal_direction != 0: #turning
 		player_sprite.flip_h = (horizontal_direction == -1)
 		$StoneSprite.flip_h = (horizontal_direction == -1)
-		throw_indicator.scale.x = -last_direction.x
-		throw_indicator.position.x = 11*horizontal_direction
 		
 	spotted_eye.visible = watched
 	stealth_eye.visible = !spotted_eye.visible #should be one or the other
@@ -179,6 +177,8 @@ func respawn_anim(): #needs to be updated
 		velocity.y = 0
 	inputs_active = false
 	dying = true #used to stop indicator from showing up on death
+	hotbar.remove_all()
+	inventory.remove_all()
 	change_animation_state(DIE)
 	z_index = 10
 
@@ -226,12 +226,13 @@ func activate_invis():
 	$Invis/invis_timer.start()
 
 func activate_statue():
-	is_statue = true
-	is_hidden = true
-	player_sprite.visible = false
-	$StoneSprite.visible = true
-	$statue_timer.start()
-	$CollisionShape2D.set_deferred("disabled", true)
+	if !dying:
+		is_statue = true
+		is_hidden = true
+		player_sprite.visible = false
+		$StoneSprite.visible = true
+		$statue_timer.start()
+		$CollisionShape2D.set_deferred("disabled", true)
 
 func _on_statue_timer_timeout():
 	is_statue = false
@@ -251,6 +252,7 @@ func signal_connector():
 	SignalBus.activate_invis.connect(activate_invis)
 	SignalBus.activate_statue.connect(activate_statue)
 	SignalBus.player_died.connect(respawn_anim)
+	SignalBus.inventory_reset.connect(new_stage)
 
 func _on_animation_tree_animation_finished(anim_name): #or it won't switch back to idle
 	if new_state == THROW: #i literally have no idea how this is working
@@ -284,7 +286,7 @@ func _on_strength_timer_timeout():
 	SPEED = 200
 	JUMP_VELOCITY = -350
 	strength.emitting = false
-
+	
 func _on_dash_timer_timeout():
 	dash_enabled = false
 	dash.emitting = false
@@ -300,10 +302,9 @@ func running_particles(): #might remove if its costing too much cpu power
 	else:
 		$RunningParticles.emitting = false
 
-
-
-
-
+func new_stage(): #call to reset inventory and potions
+	hotbar.remove_all()
+	inventory.remove_all()
 
 # save shit for json that doesnt work
 

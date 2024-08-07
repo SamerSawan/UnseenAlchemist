@@ -28,10 +28,12 @@ func _process(_delta):
 func close():
 	visible = false
 	is_open = false
-
+	SignalBus.craft_menu_visibility_changed.emit()
+	
 func open():
 	visible = true
 	is_open = true
-
+	SignalBus.craft_menu_visibility_changed.emit()
+	
 func menu_closed():
 	close()

@@ -160,6 +160,8 @@ func _on_craft_button_pressed():
 			SignalBus.potion_crafted.emit()
 			close()
 			SignalBus.close_inventory.emit()
+			SignalBus.potion_changed.emit() #UPDATES INV PROPERLY FROM THROWER (fixes scroll bug)
+
 		else:
 			inventory.insert(ingr1)
 	

@@ -7,7 +7,7 @@
 size = Vector2(30, 32)
 
 [node name="CaveDoor" type="Node2D" groups=["doors"]]
-z_index = -5
+z_index = 1
 script = ExtResource("1_qor6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

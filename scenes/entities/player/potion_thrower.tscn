@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cer781hwett3f"]
+[gd_scene load_steps=3 format=3 uid="uid://cer781hwett3f"]
 
 [ext_resource type="Script" path="res://scripts/potion_thrower.gd" id="1_mb72h"]
+[ext_resource type="PackedScene" uid="uid://2aopwp32y34v" path="res://scenes/other/arc_test.tscn" id="2_apjue"]
 
 [node name="potion_thrower" type="Node2D" groups=["potion_thrower"]]
 script = ExtResource("1_mb72h")
@@ -8,3 +9,5 @@ script = ExtResource("1_mb72h")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="potion_container" type="Node" parent="."]
+
+[node name="ThrowArc" parent="." instance=ExtResource("2_apjue")]

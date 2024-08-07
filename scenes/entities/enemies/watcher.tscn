@@ -236,7 +236,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hwrs"]
-radius = 167.012
+radius = 157.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_008hs"]
 radius = 14.0
@@ -277,6 +277,7 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="KillTimer" type="Timer" parent="."]
+wait_time = 1.2
 one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

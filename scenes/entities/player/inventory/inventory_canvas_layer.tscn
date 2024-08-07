@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://drnoekibvv0u5"]
+
+[ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="1_pxvcx"]
+[ext_resource type="PackedScene" uid="uid://cs1hpgf26oh3h" path="res://scenes/entities/player/inventory/craftingMenu.tscn" id="2_d74lt"]
+[ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory/inventory.tscn" id="3_3gvwd"]
+
+[node name="InventoryLayer" type="CanvasLayer"]
+
+[node name="Hotbar" parent="." instance=ExtResource("1_pxvcx")]
+
+[node name="CraftingMenu" parent="." instance=ExtResource("2_d74lt")]
+
+[node name="Inventory" parent="." instance=ExtResource("3_3gvwd")]

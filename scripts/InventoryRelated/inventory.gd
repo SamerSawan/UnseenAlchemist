@@ -31,3 +31,10 @@ func remove(item: InventoryItem):
 			SignalBus.update_inventory.emit()
 		return true
 	return false
+
+func remove_all():
+	for slot in items:
+		if slot.item:
+			for i in range(slot.quantity):
+				remove(slot.item)
+	return

@@ -24,9 +24,12 @@ signal potion_changed
 signal potion_crafted
 signal potion_used
 signal close_inventory
+signal inventory_reset
+signal craft_menu_visibility_changed
+signal update_drinkability
 var item
 var equipped_potion
-
+#the signals are all kinds of messed up, defo some dupes that serve the same purpose
 
 #potion effects
 signal is_slept

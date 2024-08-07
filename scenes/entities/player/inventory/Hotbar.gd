@@ -40,6 +40,7 @@ func _process(_delta):
 		slots[currentlyActive].texture_button.button_pressed = true
 		SignalBus.equipped_potion = slots[currentlyActive].item
 		SignalBus.potion_changed.emit()
+		SignalBus.update_drinkability.emit() #update the trajectory visibility
 	if Input.is_action_just_pressed("ScrollUp"):
 		slots[currentlyActive].texture_button.button_pressed = false
 		if currentlyActive > 7:
@@ -50,8 +51,8 @@ func _process(_delta):
 			currentlyActive -= 1
 		slots[currentlyActive].texture_button.button_pressed = true
 		SignalBus.equipped_potion = slots[currentlyActive].item
-		print(SignalBus.equipped_potion)
 		SignalBus.potion_changed.emit()
+		SignalBus.update_drinkability.emit()
 		
 func reset():
 	var inventory: Inv = preload("res://Inventory/HotBar.tres")

@@ -10,7 +10,7 @@ func _ready():
 
 func _process(_delta):
 	if is_inside:
-		if Input.is_action_just_pressed("pickup"):
+		if Input.is_action_pressed("pickup"):
 			print("emit signal")
 			SignalBus.item = item
 			SignalBus.player_pickup.emit()

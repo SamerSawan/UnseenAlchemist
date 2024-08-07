@@ -8,6 +8,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yace"]
 
 [node name="GunpowderPouch" type="Area2D"]
+light_mask = 3
+z_index = 8
 collision_layer = 32
 script = ExtResource("1_xnwdw")
 
@@ -18,7 +20,8 @@ texture = ExtResource("2_65fss")
 shape = SubResource("CircleShape2D_0yace")
 
 [node name="E_button" type="Sprite2D" parent="."]
-position = Vector2(0, -25)
+z_index = 20
+position = Vector2(0, -32)
 texture = ExtResource("3_3w2i6")
 
 [node name="Pedestal" parent="." instance=ExtResource("4_lffuu")]

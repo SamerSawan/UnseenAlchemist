@@ -13,7 +13,6 @@ func _ready():
 	button.pressed.connect(_on_button_pressed)
 
 func _on_timer_timeout():
-	print("timeout")
 	if sprite.frame < 49 - 1:
 		sprite.frame += 1
 	else:

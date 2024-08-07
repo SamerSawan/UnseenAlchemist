@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg4upu0uj084m"]
+[gd_scene load_steps=6 format=3 uid="uid://cg4upu0uj084m"]
 
 [ext_resource type="Script" path="res://scenes/entities/environment/collectables/DarkShroom.gd" id="1_yn7al"]
 [ext_resource type="Texture2D" uid="uid://b060stqmhdl7x" path="res://assets/props/potionIngredients/DarkShroom.png" id="2_0r4ku"]
 [ext_resource type="Texture2D" uid="uid://com6o8bmu7h3p" path="res://assets/ui/E_button.png" id="3_2r6il"]
+[ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="4_id5th"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yace"]
 
 [node name="DarkShroom" type="Area2D"]
+light_mask = 3
+z_index = 8
 collision_layer = 32
 script = ExtResource("1_yn7al")
 
@@ -17,8 +20,12 @@ texture = ExtResource("2_0r4ku")
 shape = SubResource("CircleShape2D_0yace")
 
 [node name="E_button" type="Sprite2D" parent="."]
-position = Vector2(0, -25)
+z_index = 20
+position = Vector2(0, -32)
 texture = ExtResource("3_2r6il")
+
+[node name="Pedestal" parent="." instance=ExtResource("4_id5th")]
+position = Vector2(0, 8)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]

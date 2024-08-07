@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm6mv5wl8fdk1"]
+[gd_scene load_steps=2 format=3 uid="uid://cgmbwm3uwfh02"]
 
 [ext_resource type="Texture2D" uid="uid://ddnegbx8trk0" path="res://assets/background/Backround_Cave_Exit.png" id="1_supw0"]
 
@@ -6,6 +6,7 @@
 scroll_base_scale = Vector2(0.1, 1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+light_mask = 3
 position = Vector2(160, -480)
 motion_scale = Vector2(0.1, 0.3)
 motion_mirroring = Vector2(640, 320)

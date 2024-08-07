@@ -89,7 +89,8 @@ offset_top = 155.0
 offset_right = 305.0
 offset_bottom = 209.0
 text = "Creates a loud noise to 
-distract enemies"
+distract enemies [NOT
+IMPLEMENTED]"
 label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Slime" type="Label" parent="NinePatchRect"]
@@ -109,7 +110,7 @@ offset_left = 107.0
 offset_top = 356.0
 offset_right = 314.0
 offset_bottom = 410.0
-text = "Puts enemies to sleep 
+text = "Puts watchers to sleep 
 for a short while"
 label_settings = SubResource("LabelSettings_4753o")
 
@@ -146,14 +147,13 @@ label_settings = SubResource("LabelSettings_4753o")
 
 [node name="Statue" type="Label" parent="NinePatchRect/Statue"]
 layout_mode = 0
-offset_left = -12.0
+offset_left = -13.5
 offset_top = 97.0
-offset_right = 195.0
+offset_right = 171.5
 offset_bottom = 169.0
-text = "Gives the player high
-strength, allowing 
-them to push objects"
+text = "Grants Strength, increasing movespeed and jump height briefly"
 label_settings = SubResource("LabelSettings_4753o")
+autowrap_mode = 2
 
 [node name="DashPotion" type="Sprite2D" parent="NinePatchRect"]
 position = Vector2(73, 67)
