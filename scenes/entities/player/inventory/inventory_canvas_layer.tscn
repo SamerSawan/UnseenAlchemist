@@ -7,7 +7,24 @@
 [node name="InventoryLayer" type="CanvasLayer"]
 
 [node name="Hotbar" parent="." instance=ExtResource("1_pxvcx")]
+offset_left = 356.0
+offset_top = 536.0
+offset_right = 356.0
+offset_bottom = 536.0
+scale = Vector2(2, 2)
 
 [node name="CraftingMenu" parent="." instance=ExtResource("2_d74lt")]
+offset_left = 360.0
+offset_top = 112.0
+offset_right = -576.0
+offset_bottom = -364.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Inventory" parent="." instance=ExtResource("3_3gvwd")]
+offset_left = 792.0
+offset_top = 120.0
+offset_right = -288.0
+offset_bottom = -483.0
+scale = Vector2(2, 2)

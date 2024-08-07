@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://bthegg25om5do"]
+
+[ext_resource type="PackedScene" uid="uid://cgmbwm3uwfh02" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="1_meeon"]
+[ext_resource type="FontFile" uid="uid://b537mpgf1sy3b" path="res://assets/fonts/alagard.ttf" id="2_d0r1f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3j5f"]
+font = ExtResource("2_d0r1f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_13ddr"]
+font = ExtResource("2_d0r1f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2kkj"]
+font = ExtResource("2_d0r1f")
+
+[node name="LevelSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cave_Background_Parallax" parent="." instance=ExtResource("1_meeon")]
+offset = Vector2(0, 800)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 800)
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 256.0
+offset_right = 539.063
+offset_bottom = 287.0
+scale = Vector2(2, 2)
+placeholder_text = "booey"
+
+[node name="TakeMeToText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 272.0
+offset_right = 314.0
+offset_bottom = 295.0
+scale = Vector2(2, 2)
+text = "Take me to level :"
+label_settings = SubResource("LabelSettings_f3j5f")
+
+[node name="LevelSelectText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 136.0
+offset_right = 535.0
+offset_bottom = 159.0
+scale = Vector2(2, 2)
+text = "Level Selector"
+label_settings = SubResource("LabelSettings_13ddr")
+
+[node name="UpTo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 320.0
+offset_right = 527.0
+offset_bottom = 343.0
+scale = Vector2(2, 2)
+text = "(Up to: )"
+label_settings = SubResource("LabelSettings_k2kkj")
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.45679
+anchor_right = 0.275819
+anchor_bottom = 0.506568
+offset_left = 208.0
+offset_top = 152.0
+offset_right = 208.256
+offset_bottom = 151.744
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_d0r1f")
+text = "Return to main menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfirmStage" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.347222
+anchor_top = 0.17284
+anchor_right = 0.397569
+anchor_bottom = 0.209877
+offset_left = 208.0
+offset_top = 152.0
+offset_right = 216.0
+offset_bottom = 160.0
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_d0r1f")
+text = "Proceed"
+metadata/_edit_use_anchors_ = true

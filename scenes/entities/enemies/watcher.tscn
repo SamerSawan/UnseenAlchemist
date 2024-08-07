@@ -250,12 +250,14 @@ colors = PackedColorArray(0, 0, 0, 0, 0.999988, 0.526105, 1, 1)
 script = ExtResource("1_mqevc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 3
 sprite_frames = SubResource("SpriteFrames_yctv6")
 animation = &"sleep"
 autoplay = "idle"
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 light_mask = 0

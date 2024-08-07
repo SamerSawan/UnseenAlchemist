@@ -1,12 +1,12 @@
-[gd_scene load_steps=97 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=95 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Resource" uid="uid://pkj61idi5eya" path="res://Inventory/player_inventory.tres" id="2_r7m5n"]
 [ext_resource type="Texture2D" uid="uid://c0hrt3gm12mvt" path="res://assets/player/PlayerSheetJuly30.png" id="3_5boqq"]
 [ext_resource type="PackedScene" uid="uid://cicy1oxqu8qll" path="res://scenes/entities/player/JUMP.tscn" id="3_qxsd6"]
+[ext_resource type="PackedScene" uid="uid://drnoekibvv0u5" path="res://scenes/entities/player/inventory/inventory_canvas_layer.tscn" id="3_rn1wq"]
 [ext_resource type="Script" path="res://scenes/entities/player/STATES.gd" id="3_tsau4"]
 [ext_resource type="PackedScene" uid="uid://fgu6pqitahmu" path="res://scenes/entities/player/IDLE.tscn" id="4_1wwnh"]
-[ext_resource type="PackedScene" uid="uid://capcmvqrt02sa" path="res://scenes/entities/player/inventory/Hotbar.tscn" id="5_xr5lo"]
 [ext_resource type="PackedScene" uid="uid://c8jlmtm4vskkr" path="res://scenes/entities/player/MOVE.tscn" id="5_yne2w"]
 [ext_resource type="Texture2D" uid="uid://efgk1ki67i12" path="res://assets/player/stone.png" id="7_ahyw1"]
 [ext_resource type="PackedScene" uid="uid://dbt8rn6n0th8w" path="res://scenes/entities/player/FALL.tscn" id="7_lh8u6"]
@@ -17,8 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bg7gdjmlllix1" path="res://scenes/entities/player/spotted_eye.tscn" id="13_kxmew"]
 [ext_resource type="PackedScene" uid="uid://bs1ed3rk410d3" path="res://scenes/sound/SoundQueue.tscn" id="14_w5etk"]
 [ext_resource type="AudioStream" uid="uid://b782od5m0606f" path="res://assets/sounds/player_walk.ogg" id="15_6b1gi"]
-[ext_resource type="PackedScene" uid="uid://ctstoxgseyc0s" path="res://scenes/entities/player/inventory/inventory.tscn" id="15_pa6kt"]
-[ext_resource type="PackedScene" uid="uid://cs1hpgf26oh3h" path="res://scenes/entities/player/inventory/craftingMenu.tscn" id="16_4k25x"]
 [ext_resource type="AudioStream" uid="uid://cf3p3dbfyhjj" path="res://assets/sounds/potion_throw.ogg" id="16_rrhkj"]
 [ext_resource type="AudioStream" uid="uid://c8ntjg7y8t1t5" path="res://assets/sounds/player_jump.ogg" id="17_y0c4b"]
 [ext_resource type="AudioStream" uid="uid://exdivyxw30y3" path="res://assets/sounds/player_land.ogg" id="18_gscrw"]
@@ -567,38 +565,7 @@ script = ExtResource("1_5jc4u")
 inventory = ExtResource("2_r7m5n")
 JUMP_VELOCITY = -350.0
 
-[node name="Inventory" parent="." instance=ExtResource("15_pa6kt")]
-visible = false
-z_index = 10
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 112.0
-offset_top = -88.0
-offset_right = 184.0
-offset_bottom = -43.0
-
-[node name="CraftingMenu" parent="." instance=ExtResource("16_4k25x")]
-visible = false
-z_index = 10
-anchors_preset = 14
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -88.0
-offset_right = -104.0
-offset_bottom = -88.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Hotbar" parent="." instance=ExtResource("5_xr5lo")]
-z_index = 10
-offset_left = -110.0
-offset_top = 136.0
-offset_right = -110.0
-offset_bottom = 136.0
+[node name="InventoryLayer" parent="." instance=ExtResource("3_rn1wq")]
 
 [node name="Help Menu" parent="." instance=ExtResource("28_5l8cq")]
 

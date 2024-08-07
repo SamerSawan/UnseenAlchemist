@@ -158,8 +158,8 @@ func _on_craft_button_pressed():
 		if inventory.remove(ingr2):
 			hotbar.insert(item)
 			SignalBus.potion_crafted.emit()
-			close()
-			SignalBus.close_inventory.emit()
+#			close()
+#			SignalBus.close_inventory.emit()
 			SignalBus.potion_changed.emit() #UPDATES INV PROPERLY FROM THROWER (fixes scroll bug)
 
 		else:

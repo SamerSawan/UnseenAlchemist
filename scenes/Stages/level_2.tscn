@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bnpa1iyl1trxi"]
+[gd_scene load_steps=19 format=3 uid="uid://bnpa1iyl1trxi"]
 
 [ext_resource type="PackedScene" uid="uid://dxl184axei2b" path="res://scenes/tilemap/prison_tile_map.tscn" id="1_q0268"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_sxbgc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="4_15o6e"]
 [ext_resource type="Texture2D" uid="uid://bckfwfmdpvts0" path="res://assets/props/Environmental-Props.png" id="6_3vfni"]
 [ext_resource type="PackedScene" path="res://scenes/entities/environment/Potions/pedestal.tscn" id="7_p7udu"]
+[ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="8_mld0e"]
 [ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="8_n23tl"]
 [ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="9_fyunw"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="10_07non"]
@@ -33,76 +34,98 @@ position = Vector2(58, -29)
 [node name="background" type="Node" parent="."]
 
 [node name="GridContainer" type="GridContainer" parent="."]
+light_mask = 3
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 3
+metadata/_edit_lock_ = true
 
 [node name="bg1" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(177, -164)
 texture = ExtResource("3_smlxh")
 
 [node name="bg13" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(161, 147)
 texture = ExtResource("3_smlxh")
 
 [node name="bg14" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(786, 139)
 texture = ExtResource("3_smlxh")
 
+[node name="bg15" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
+z_index = -1
+position = Vector2(1155, 155)
+texture = ExtResource("3_smlxh")
+
 [node name="bg2" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(497, -163)
 texture = ExtResource("3_smlxh")
 
 [node name="bg3" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(817, -162)
 texture = ExtResource("3_smlxh")
 
 [node name="bg4" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(1136, -162)
 texture = ExtResource("3_smlxh")
 
 [node name="bg5" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(1450, -160)
 texture = ExtResource("3_smlxh")
 
 [node name="bg6" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(175, -484)
 texture = ExtResource("3_smlxh")
 
 [node name="bg7" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(495, -481)
 texture = ExtResource("3_smlxh")
 
 [node name="bg8" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(814, -482)
 texture = ExtResource("3_smlxh")
 
 [node name="bg9" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(1131, -481)
 texture = ExtResource("3_smlxh")
 
 [node name="bg10" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(1449, -479)
 texture = ExtResource("3_smlxh")
 
 [node name="bg11" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(-146, -484)
 texture = ExtResource("3_smlxh")
 
 [node name="bg12" type="Sprite2D" parent="GridContainer"]
+light_mask = 3
 z_index = -1
 position = Vector2(460.25, 156)
 scale = Vector2(1.11094, 1)
@@ -138,6 +161,18 @@ frame = 5
 position = Vector2(466, 40)
 texture = ExtResource("6_3vfni")
 hframes = 8
+
+[node name="LightSource" parent="Props" instance=ExtResource("8_mld0e")]
+position = Vector2(236, -93)
+
+[node name="LightSource2" parent="Props" instance=ExtResource("8_mld0e")]
+position = Vector2(689, -117)
+
+[node name="LightSource3" parent="Props" instance=ExtResource("8_mld0e")]
+position = Vector2(1103, -69)
+
+[node name="LightSource4" parent="Props" instance=ExtResource("8_mld0e")]
+position = Vector2(1530, -88)
 
 [node name="Ingredients" type="Node" parent="."]
 
