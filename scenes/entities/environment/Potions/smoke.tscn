@@ -6,6 +6,7 @@
 radius = 41.0488
 
 [node name="Smoke" type="CPUParticles2D"]
+light_mask = 3
 z_index = 7
 amount = 500
 emission_shape = 1

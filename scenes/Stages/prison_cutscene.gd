@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var sprite : Sprite2D
 @export var button : Button
 
-var scene : String = "res://scenes/Stages/level_1.tscn"
+var scene : String = "res://scenes/Levels/level_1.tscn"
 
 func _ready():
 	var timer = Timer.new()

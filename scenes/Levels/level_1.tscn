@@ -1271,7 +1271,7 @@ autoplay = false
 [node name="CaveDoor" parent="." instance=ExtResource("10_uf7lb")]
 light_mask = 3
 position = Vector2(1325, -20)
-next_level = "res://scenes/Stages/level_2.tscn"
+next_level = "res://scenes/Levels/level_2.tscn"
 
 [node name="lights" type="Node" parent="."]
 

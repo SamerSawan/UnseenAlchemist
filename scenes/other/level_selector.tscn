@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bthegg25om5do"]
+[gd_scene load_steps=7 format=3 uid="uid://bthegg25om5do"]
 
+[ext_resource type="Script" path="res://scripts/level_selector.gd" id="1_2eurc"]
 [ext_resource type="PackedScene" uid="uid://cgmbwm3uwfh02" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="1_meeon"]
 [ext_resource type="FontFile" uid="uid://b537mpgf1sy3b" path="res://assets/fonts/alagard.ttf" id="2_d0r1f"]
 
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2eurc")
 
 [node name="Cave_Background_Parallax" parent="." instance=ExtResource("1_meeon")]
 offset = Vector2(0, 800)
@@ -95,3 +97,6 @@ scale = Vector2(2, 2)
 theme_override_fonts/font = ExtResource("2_d0r1f")
 text = "Proceed"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ConfirmStage" to="." method="_on_confirm_stage_pressed"]
