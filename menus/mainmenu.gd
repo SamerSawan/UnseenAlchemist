@@ -10,7 +10,7 @@ func _ready():
 	newbutton.pressed.connect(_on_new_button_pressed)
 #	optionsbutton.pressed.connect(_on_options_button_pressed)
 	quitbutton.pressed.connect(_on_quit_button_pressed)
-	
+	SignalBus.start_main_music.emit()
 	newbutton.grab_focus() # for keyboard or controller
 	
 #	if !FileAccess.file_exists(SaveHandler.SAVE_GAME_PATH):

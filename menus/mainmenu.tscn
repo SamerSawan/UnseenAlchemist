@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmhar6jccqpy8"]
+[gd_scene load_steps=7 format=3 uid="uid://dmhar6jccqpy8"]
 
 [ext_resource type="Script" path="res://menus/mainmenu.gd" id="1_sdj0e"]
 [ext_resource type="Theme" uid="uid://del6w51wv8dxs" path="res://scenes/text/floating_text.tres" id="2_p5iqj"]
-[ext_resource type="PackedScene" path="res://scenes/sound/bassser.tscn" id="4_lx4rv"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="5_0cim3"]
 [ext_resource type="PackedScene" uid="uid://cgmbwm3uwfh02" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="5_i0v56"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="6_mwfxh"]
@@ -79,9 +78,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 alignment = 0
-
-[node name="bassser" parent="." instance=ExtResource("4_lx4rv")]
-volume_db = -2.0
 
 [node name="Bus_CaveReverb" parent="." instance=ExtResource("5_0cim3")]
 layout = ExtResource("6_mwfxh")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bwmamy18oy44c"]
+[gd_scene load_steps=28 format=3 uid="uid://bwmamy18oy44c"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_whlyv"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_e5qve"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="21_a5byd"]
 [ext_resource type="PackedScene" uid="uid://s8gie7h8k0ak" path="res://scenes/entities/enemies/guard.tscn" id="22_x35xd"]
 [ext_resource type="PackedScene" uid="uid://guo2iwcancvy" path="res://scenes/entities/enemies/watcher.tscn" id="23_4rqre"]
-[ext_resource type="PackedScene" path="res://scenes/sound/in_the_halls_of_the_prison.tscn" id="24_scn67"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="25_ign60"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwtmu"]
@@ -2559,9 +2558,6 @@ position = Vector2(434, -23)
 
 [node name="PP2" parent="Guard/PatrolPoints" index="1"]
 position = Vector2(832, -24)
-
-[node name="InTheHallsOfThePrison" parent="." instance=ExtResource("24_scn67")]
-autoplay = false
 
 [node name="CaveDoor" parent="." instance=ExtResource("25_ign60")]
 position = Vector2(112, -192)

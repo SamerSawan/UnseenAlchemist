@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1khe8kvcgb3a"]
+[gd_scene load_steps=2 format=3 uid="uid://10p8bd8ga36c"]
 
 [ext_resource type="AudioStream" uid="uid://mb5y0m2smln2" path="res://assets/sounds/bassser.ogg" id="1_q22o3"]
 
-[node name="bassser" type="AudioStreamPlayer2D"]
+[node name="bassser" type="AudioStreamPlayer"]
 stream = ExtResource("1_q22o3")
+volume_db = -2.0
 autoplay = true
 bus = &"Music"

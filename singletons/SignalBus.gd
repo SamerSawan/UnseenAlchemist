@@ -16,6 +16,10 @@ signal anim_state_change
 signal shoot_anim_windup
 signal shoot_anim_throw
 
+#music stuff
+signal stop_main_music #for entering/leaving main menu screens
+signal start_main_music
+signal play_level_music
 
 #inventory related
 signal player_pickup

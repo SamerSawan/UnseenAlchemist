@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cs28qsgrdtusx"]
+[gd_scene load_steps=22 format=3 uid="uid://cs28qsgrdtusx"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_0lmge"]
 [ext_resource type="Texture2D" uid="uid://boufw21bwarqm" path="res://assets/tilemaps/Prison-Tileset.png" id="1_bbp3v"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="10_uf7lb"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="12_r1tpj"]
 [ext_resource type="PackedScene" path="res://scenes/sound/cave_ambience.tscn" id="12_w54uy"]
-[ext_resource type="PackedScene" path="res://scenes/sound/in_the_halls_of_the_prison.tscn" id="14_cj5e0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcf2m"]
 texture = ExtResource("1_bbp3v")
@@ -1262,9 +1261,6 @@ position = Vector2(535, -19)
 layout = ExtResource("10_owi87")
 
 [node name="CaveAmbience" parent="." instance=ExtResource("12_w54uy")]
-
-[node name="InTheHallsOfThePrison" parent="." instance=ExtResource("14_cj5e0")]
-autoplay = false
 
 [node name="DarknessLight" parent="." instance=ExtResource("9_0fmrd")]
 

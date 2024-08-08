@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://vcekfmi5jp2i"]
+[gd_scene load_steps=43 format=3 uid="uid://vcekfmi5jp2i"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_e70cr"]
+[ext_resource type="Script" path="res://scenes/Stages/tutorial.gd" id="1_mmffi"]
 [ext_resource type="PackedScene" uid="uid://cgmbwm3uwfh02" path="res://scenes/entities/environment/Cave_Background_Parallax.tscn" id="2_vql7n"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="3_cjc3t"]
 [ext_resource type="PackedScene" uid="uid://bjusufat4ckyy" path="res://scenes/entities/environment/cave_background.tscn" id="4_u3wyh"]
@@ -44,6 +45,7 @@
 [sub_resource type="RichTextEffect" id="RichTextEffect_huqcj"]
 
 [node name="tutorial" type="Node2D"]
+script = ExtResource("1_mmffi")
 metadata/_edit_vertical_guides_ = []
 
 [node name="Cave_Background_Parallax" parent="." instance=ExtResource("2_vql7n")]

@@ -11,6 +11,7 @@ func _ready():
 	timer.start(.41)
 	timer.timeout.connect(_on_timer_timeout)
 	button.pressed.connect(_on_button_pressed)
+	SignalBus.stop_main_music.emit()
 
 func _on_timer_timeout():
 	if sprite.frame < 23:

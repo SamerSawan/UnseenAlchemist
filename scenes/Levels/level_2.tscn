@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bnpa1iyl1trxi"]
+[gd_scene load_steps=18 format=3 uid="uid://bnpa1iyl1trxi"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_h51v0"]
 [ext_resource type="PackedScene" uid="uid://dxl184axei2b" path="res://scenes/tilemap/prison_tile_map.tscn" id="2_1udgw"]
@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="14_p1poi"]
 [ext_resource type="PackedScene" uid="uid://c6fpwwldgr3nn" path="res://scenes/entities/environment/AmbientLight.tscn" id="15_pkmlb"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="16_wsxsi"]
-[ext_resource type="PackedScene" path="res://scenes/sound/in_the_halls_of_the_prison.tscn" id="17_k0uco"]
 [ext_resource type="PackedScene" uid="uid://cvhp56nm1f2au" path="res://scenes/entities/environment/deathzone.tscn" id="18_u8sn4"]
 
 [node name="level_2" type="Node2D"]
@@ -227,9 +226,6 @@ bus = &"Ambience"
 [node name="CaveDoor" parent="." instance=ExtResource("16_wsxsi")]
 position = Vector2(1538, -20)
 next_level = "res://scenes/Levels/level_3.tscn"
-
-[node name="InTheHallsOfThePrison" parent="." instance=ExtResource("17_k0uco")]
-autoplay = false
 
 [node name="DEATHZONE" parent="." instance=ExtResource("18_u8sn4")]
 position = Vector2(584, 315)

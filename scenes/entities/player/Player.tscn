@@ -640,7 +640,7 @@ target_position = Vector2(0, 30)
 collision_mask = 0
 
 [node name="JumpBuffer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]
@@ -702,10 +702,8 @@ volume_db = -6.0
 pitch_scale = 0.9
 bus = &"SFX"
 
-[node name="Sound_PlayerWatched" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound_PlayerWatched" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_ek6vj")
-volume_db = 4.0
-bus = &"Music"
 script = ExtResource("25_v4vho")
 
 [node name="Strength" parent="." instance=ExtResource("23_wnod0")]
