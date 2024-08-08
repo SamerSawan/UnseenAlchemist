@@ -1267,7 +1267,7 @@ layout = ExtResource("10_owi87")
 [node name="CaveDoor" parent="." instance=ExtResource("10_uf7lb")]
 light_mask = 3
 position = Vector2(1325, -20)
-next_level = "res://scenes/Levels/level_2.tscn"
+next_level = "res://scenes/Levels/level_1_1.tscn"
 
 [node name="lights" type="Node" parent="."]
 

@@ -225,7 +225,7 @@ bus = &"Ambience"
 
 [node name="CaveDoor" parent="." instance=ExtResource("16_wsxsi")]
 position = Vector2(1538, -20)
-next_level = "res://scenes/Levels/level_3.tscn"
+next_level = "res://scenes/Levels/level_1_2.tscn"
 
 [node name="DEATHZONE" parent="." instance=ExtResource("18_u8sn4")]
 position = Vector2(584, 315)
