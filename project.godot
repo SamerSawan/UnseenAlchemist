@@ -133,7 +133,7 @@ RightClick={
 2d_physics/layer_7="deathzone"
 2d_physics/layer_8="potion"
 2d_physics/layer_9="lightsource"
-2d_physics/layer_10="Layer 10"
+2d_physics/layer_10="smoke"
 
 [rendering]
 

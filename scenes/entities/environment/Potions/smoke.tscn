@@ -3,24 +3,25 @@
 [ext_resource type="Script" path="res://scenes/entities/environment/Potions/smoke.gd" id="1_rx27j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_81xde"]
-radius = 41.0488
+radius = 72.0
 
 [node name="Smoke" type="CPUParticles2D"]
 light_mask = 3
 z_index = 7
 amount = 500
 emission_shape = 1
-emission_sphere_radius = 47.32
+emission_sphere_radius = 70.0
 gravity = Vector2(0, -50)
 scale_amount_max = 4.0
 color = Color(0.560784, 0.560784, 0.560784, 0.568627)
 script = ExtResource("1_rx27j")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 528
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_81xde")
+debug_color = Color(0, 0.780392, 0.909804, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

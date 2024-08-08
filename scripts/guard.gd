@@ -115,6 +115,7 @@ func de_aggro():
 		direction = position.direction_to(stationary_patrol_point)
 	speed = patrol_speed
 	player.watched = false
+	print("bitch ass de_aggro played")
 
 func raycast_business(): #jump over cliffs
 	gap_distance()
@@ -214,18 +215,21 @@ func _on_stealth_detect_area_body_entered(body): #THE CLOSE HITBOX
 
 
 func scan_for_player():
-	if player_in_area:
+	if player_in_area: #constantly scans big area for player
 		if (!player.is_stealthed || is_chasing) && !player.is_invisible: #should only apply to player
 			ray_to_player.set_deferred("enabled",true)
 			player_entered = true
-			
+		elif !is_chasing:
+			ray_to_player.set_deferred("enabled",false)
+
 func _on_detection_area_body_entered(_body):
 	pass
 
 func _on_detection_area_body_exited(_body):
 	ray_to_player.set_deferred("enabled",false)
 	player_entered = false
-	$LoseAggroTimer.start()
+	if is_chasing: #stop from unnecessarily running de-aggro
+		$LoseAggroTimer.start()
 	
 func _on_slow_timer_timeout():
 	is_slowed = false

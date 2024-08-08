@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cishf0wnf3det"]
+[gd_scene load_steps=18 format=3 uid="uid://cishf0wnf3det"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_kojvp"]
 [ext_resource type="PackedScene" uid="uid://5wfcbq4khtse" path="res://scenes/tilemap/prisontilemapfr.tscn" id="3_0tcs8"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bckfwfmdpvts0" path="res://assets/props/Environmental-Props.png" id="7_yckou"]
 [ext_resource type="PackedScene" uid="uid://n1tq1nme0ntj" path="res://scenes/entities/environment/Ladder.tscn" id="8_2hj41"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="8_vvdin"]
+[ext_resource type="PackedScene" uid="uid://dwhis5agai45w" path="res://scenes/entities/environment/collectables/GunpowderPouch.tscn" id="10_d4u6b"]
+[ext_resource type="PackedScene" uid="uid://cg4upu0uj084m" path="res://scenes/entities/environment/collectables/DarkShroom.tscn" id="11_hdkld"]
 [ext_resource type="PackedScene" uid="uid://cnyofc2iqx0nx" path="res://scenes/sound/bus_cave_reverb.tscn" id="12_vfnwk"]
 [ext_resource type="AudioBusLayout" uid="uid://dj2qsp6w6kf5t" path="res://CaveReverb.tres" id="13_8mk1h"]
 [ext_resource type="AudioStream" uid="uid://capxhcqx0ytyp" path="res://assets/sounds/cave_ambience_1.ogg" id="14_bl8l5"]
@@ -163,16 +165,7 @@ texture = ExtResource("7_yckou")
 hframes = 8
 
 [node name="LightSource" parent="Props" instance=ExtResource("8_vvdin")]
-position = Vector2(211, -117)
-
-[node name="LightSource2" parent="Props" instance=ExtResource("8_vvdin")]
-position = Vector2(689, -117)
-
-[node name="LightSource3" parent="Props" instance=ExtResource("8_vvdin")]
-position = Vector2(1103, -69)
-
-[node name="LightSource4" parent="Props" instance=ExtResource("8_vvdin")]
-position = Vector2(1530, -88)
+position = Vector2(200, -72)
 
 [node name="Ladder" parent="Props" instance=ExtResource("8_2hj41")]
 position = Vector2(384, -16)
@@ -190,6 +183,12 @@ position = Vector2(384, -112)
 position = Vector2(384, -144)
 
 [node name="Ingredients" type="Node" parent="."]
+
+[node name="GunpowderPouch" parent="Ingredients" instance=ExtResource("10_d4u6b")]
+position = Vector2(64, -16)
+
+[node name="DarkShroom" parent="Ingredients" instance=ExtResource("11_hdkld")]
+position = Vector2(88, -16)
 
 [node name="Bus_CaveReverb" parent="." instance=ExtResource("12_vfnwk")]
 layout = ExtResource("13_8mk1h")
@@ -212,4 +211,12 @@ position = Vector2(584, 315)
 scale = Vector2(2.70465, 1.12777)
 
 [node name="Guard" parent="." instance=ExtResource("15_x0nue")]
-position = Vector2(536, -40)
+position = Vector2(592, -32)
+jump_strength_y = 250.0
+is_stationary = true
+
+[node name="PP2" parent="Guard/PatrolPoints" index="1"]
+position = Vector2(536, -24)
+
+[editable path="Props/LightSource"]
+[editable path="Guard"]
