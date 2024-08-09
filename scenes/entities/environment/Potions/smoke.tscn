@@ -16,10 +16,10 @@ scale_amount_max = 4.0
 color = Color(0.560784, 0.560784, 0.560784, 0.568627)
 script = ExtResource("1_rx27j")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="SmokeArea" type="Area2D" parent="."]
 collision_layer = 528
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmokeArea"]
 shape = SubResource("CircleShape2D_81xde")
 debug_color = Color(0, 0.780392, 0.909804, 0.419608)
 
@@ -27,6 +27,6 @@ debug_color = Color(0, 0.780392, 0.909804, 0.419608)
 wait_time = 5.0
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="SmokeArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="SmokeArea" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

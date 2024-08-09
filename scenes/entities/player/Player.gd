@@ -87,6 +87,7 @@ func _process(_delta):
 	animation_handler()
 	
 func _physics_process(delta):
+	print(is_hidden)
 	if inputs_active && !dying and !is_statue:
 		player_input()
 		change_state(current_state.update(delta))
@@ -197,7 +198,7 @@ func coyote_jump_func(): #couldnt find anywhere in states, putting it here
 	coyote_jump = true
 
 func player_pickup_func():
-	print(SignalBus.item.name)
+#	print(SignalBus.item.name)
 	inventory.insert(SignalBus.item)
 
 func _on_coyote_timer_timeout():

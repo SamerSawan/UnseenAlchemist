@@ -28,6 +28,7 @@ var speed = 2500.0 #when returning to patrol state
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #dont ask why there's so many
+var player_in_stealth_hitbox: bool = false
 var player_in_area: bool = false
 var spotted_once: bool = false
 var player_entered: bool = false
@@ -68,6 +69,7 @@ func _physics_process(delta):
 	chase()
 	player_detection()
 	player_in_area = detection_area.overlaps_body(player) #scans every frame not just on enter
+	player_in_stealth_hitbox = $StealthDetectArea.overlaps_body(player)
 	scan_for_player()
 		
 	move_and_slide()
@@ -201,16 +203,13 @@ func _on_lose_aggro_timer_timeout(): #stop chasing if LOS broken for too long
 
 func kill_mode(): #THE FINAL STRIKE
 	distance_to_player = (position - player.global_position)
-	if abs(distance_to_player.x) < 40 && abs(distance_to_player.y) < 20 && !player.dying:
+	if abs(distance_to_player.x) < 40 && abs(distance_to_player.y) < 31 && !player.dying:
 		guard_sprite.play("attack")
 		SignalBus.player_died.emit()
 		velocity.x = 0
-		
-		#realized this makes boxes useless so commented out for now
-func _on_stealth_detect_area_body_entered(body): #THE CLOSE HITBOX
-	if body == player && (player.is_stealthed || player.is_invisible) && !player.is_hidden: #check stealth
-		player_entered = true
-		ray_to_player.set_deferred("enabled",true)
+
+func _on_stealth_detect_area_body_entered(body): #THE CLOSE HITBOX, which i also want to update
+	pass
 
 
 func scan_for_player():
@@ -220,6 +219,12 @@ func scan_for_player():
 			player_entered = true
 		elif !is_chasing:
 			ray_to_player.set_deferred("enabled",false)
+	if player_in_stealth_hitbox:
+		if !player.is_hidden: #check true stealth
+			player_entered = true
+			ray_to_player.set_deferred("enabled",true)
+			spotted_player() #the guard couldnt kill a player inside of a smoke
+			kill_mode()  #so these changes aim to combat that
 
 func _on_detection_area_body_entered(_body):
 	pass

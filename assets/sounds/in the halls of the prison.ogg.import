@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/in the halls of the prison.ogg-15dbbf5a4bb2b0
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=134.0
 beat_count=0
