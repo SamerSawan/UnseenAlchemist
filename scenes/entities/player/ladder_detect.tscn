@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbi0um1aor32r"]
+
+[ext_resource type="Script" path="res://scripts/playerstuff/ladder_detect.gd" id="1_d2b0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31w7r"]
+size = Vector2(16, 30)
+
+[node name="LadderDetect" type="Area2D"]
+collision_layer = 0
+collision_mask = 1024
+script = ExtResource("1_d2b0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_31w7r")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="JumpCooldown" type="Timer" parent="."]
+wait_time = 0.26
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

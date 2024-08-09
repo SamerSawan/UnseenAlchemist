@@ -43,6 +43,7 @@ var being_chased: bool = false
 var dying: bool = false
 var is_hidden: bool = false #for hiding in props or behind boxes
 var is_invisible: bool = false
+var pushing_box: bool = false
 #@export var push_force: float = 80.0
 #states
 var current_state = null
@@ -267,13 +268,16 @@ func _on_animation_tree_animation_finished(anim_name): #or it won't switch back 
 func box_push():
 	if $Raycasts/TopRight.is_colliding() && Input.is_action_pressed("MoveRight"):
 		$Raycasts/TopRight.get_collider().position.x += 1
+		pushing_box = true
 		change_animation_state(PUSH)
 
 	elif $Raycasts/TopLeft.is_colliding() && Input.is_action_pressed("MoveLeft"):
 		$Raycasts/TopLeft.get_collider().position.x -= 1
+		pushing_box = true
 		change_animation_state(PUSH)
 
-	elif new_state != WINDUP:
+	elif pushing_box:
+		pushing_box = false
 		change_animation_state(IDLE)
 
 

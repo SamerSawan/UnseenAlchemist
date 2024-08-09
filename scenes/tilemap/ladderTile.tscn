@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfkcxffid5ykb"]
+
+[ext_resource type="Texture2D" uid="uid://bu06p4agsu3pk" path="res://scenes/entities/environment/ladder.png" id="1_07fss"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s08fn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8u11b"]
+texture = ExtResource("1_07fss")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, -4, 8, 8, 8, 8, -8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -8, 4, 8, -8, 8, -8, -8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, -4, 8, 8, 8, 8, -8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -8, 4, 8, -8, 8, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_emlaf"]
+physics_layer_0/collision_layer = 1024
+physics_layer_0/collision_mask = 0
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_s08fn")
+sources/0 = SubResource("TileSetAtlasSource_8u11b")
+
+[node name="LadderTiles" type="TileMap"]
+light_mask = 3
+tile_set = SubResource("TileSet_emlaf")
+format = 2

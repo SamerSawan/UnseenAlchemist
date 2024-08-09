@@ -134,6 +134,8 @@ restart={
 2d_physics/layer_8="potion"
 2d_physics/layer_9="lightsource"
 2d_physics/layer_10="smoke"
+2d_physics/layer_11="ladder"
+2d_physics/layer_12="crate"
 
 [rendering]
 
