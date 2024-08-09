@@ -325,7 +325,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_it53u")
 animation = &"stationary"
 autoplay = "walk"
-frame_progress = 0.692904
+frame_progress = 0.537275
 
 [node name="Raycasts" type="Node2D" parent="."]
 
@@ -343,6 +343,7 @@ collision_mask = 8
 enabled = false
 target_position = Vector2(168, -56)
 collision_mask = 521
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="GapCalculator" type="RayCast2D" parent="Raycasts"]

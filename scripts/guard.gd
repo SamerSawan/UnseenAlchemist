@@ -106,7 +106,7 @@ func idle():#stand around for a few, unless something changes
 	is_idle = true
 	guard_sprite.play("idle")
 	
-func de_aggro():
+func de_aggro(): #run when detection area left or LOS is broken during chase
 	guard_sprite.play("walk")
 	is_chasing = false
 	if !is_stationary:
@@ -115,7 +115,6 @@ func de_aggro():
 		direction = position.direction_to(stationary_patrol_point)
 	speed = patrol_speed
 	player.watched = false
-	print("bitch ass de_aggro played")
 
 func raycast_business(): #jump over cliffs
 	gap_distance()

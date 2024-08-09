@@ -109,10 +109,10 @@ debug_color = Color(0.482353, 0.588235, 0, 0.419608)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 scale = Vector2(4, 4)
-target_position = Vector2(-268, -8)
-collision_mask = 24
+target_position = Vector2(0, 280)
+collision_mask = 25
+hit_from_inside = true
 collide_with_areas = true
-collide_with_bodies = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

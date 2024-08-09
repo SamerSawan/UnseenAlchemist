@@ -79,6 +79,9 @@ func _ready():
 	watched_timer.timeout.connect(_on_watched_timer_timeout)
 	
 	signal_connector()
+func _input(event):
+	if event.is_action_pressed("restart"):
+		redo_stage()
 
 func _process(_delta):
 	animation_handler()
@@ -306,6 +309,8 @@ func new_stage(): #call to reset inventory and potions
 	hotbar.remove_all()
 	inventory.remove_all()
 
+func redo_stage():
+	get_tree().reload_current_scene()
 # save shit for json that doesnt work
 
 #func save():
