@@ -147,6 +147,7 @@ func _on_pp_2_area_body_entered(body):
 		idle()
 		current_destination = Patrol1.position
 		direction = position.direction_to(current_destination)
+		print(direction)
 	elif body == self && !is_chasing && is_stationary:
 		stationary_patrol()
 		guard_sprite.play("stationary")
@@ -156,6 +157,7 @@ func _on_pp_1_area_body_entered(body):
 		idle()
 		current_destination = Patrol2.position
 		direction = position.direction_to(current_destination)
+		print(direction)
 
 func move(delta):
 	if !is_idle && HoleRaycast.is_colliding() && !player.dying:
@@ -171,7 +173,7 @@ func gap_distance(): #increases x jump speed according to gap
 		to_cliff = position.distance_to(collision_point)
 
 func flip_sprite():
-	if direction.x != 0 && !player.dying: #it gets fducky when it goes to 0, rounds -0.4 -> 0 rather than -1
+	if direction.x != 0 && $IdleTimer.is_stopped(): #it gets fducky when it goes to 0, rounds -0.4 -> 0 rather than -1
 		guard_sprite.flip_h = ((direction.x) < 0)
 		if direction.x > 0: #if positive, round up to 1
 			WallRaycast.target_position.x = 32*(ceil(direction.x)) #ceiling is round up
@@ -204,6 +206,7 @@ func _on_lose_aggro_timer_timeout(): #stop chasing if LOS broken for too long
 func kill_mode(): #THE FINAL STRIKE
 	distance_to_player = (position - player.global_position)
 	if abs(distance_to_player.x) < 40 && abs(distance_to_player.y) < 31 && !player.dying:
+		$IdleTimer.stop() #fixes guard not turning if the player dies while it's idle
 		guard_sprite.play("attack")
 		SignalBus.player_died.emit()
 		velocity.x = 0

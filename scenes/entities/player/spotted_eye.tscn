@@ -46,6 +46,7 @@ _data = {
 }
 
 [node name="SpottedEye" type="Node2D"]
+z_index = 10
 
 [node name="Spotted" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.470588, 0.478431, 1)
