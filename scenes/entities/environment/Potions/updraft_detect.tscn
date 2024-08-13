@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dym7s2hs03flt"]
+
+[ext_resource type="Script" path="res://scripts/potions/UpdraftDetect.gd" id="1_boixa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfmm7"]
+radius = 8.0
+
+[node name="UpdraftDetect" type="Area2D"]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("1_boixa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cfmm7")
+debug_color = Color(0.627451, 0.352941, 0.992157, 0.419608)

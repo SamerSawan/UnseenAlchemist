@@ -322,5 +322,6 @@ sources/0 = SubResource("TileSetAtlasSource_fvni1")
 
 [node name="PRISONTILEMAPFR" type="TileMap" groups=["tilemap"]]
 light_mask = 3
+z_index = 2
 tile_set = SubResource("TileSet_fa5jo")
 format = 2

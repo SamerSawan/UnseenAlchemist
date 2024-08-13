@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://biu6lxme4wo4k"]
+
+[ext_resource type="Texture2D" uid="uid://bmkm75dptx63o" path="res://assets/objects/traps/Saw.png" id="1_iid4n"]
+[ext_resource type="Script" path="res://scripts/objects/saw_shot.gd" id="1_ryxxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68dbl"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i25p"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6crc"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1qc7"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuecm"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m5s8"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me7id"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aibdi"]
+atlas = ExtResource("1_iid4n")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p42fr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68dbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i25p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6crc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuecm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m5s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me7id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aibdi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vueu4"]
+radius = 17.0
+
+[node name="Saw Shot" type="Node2D"]
+z_index = 1
+script = ExtResource("1_ryxxe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p42fr")
+autoplay = "default"
+frame_progress = 0.0926747
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vueu4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 13.333)
+target_position = Vector2(0, -5)
+collision_mask = 2056
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

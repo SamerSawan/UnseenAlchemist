@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player #adds Player to the global scope, now i can just use Player to reference this
 
 @onready var player_sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer

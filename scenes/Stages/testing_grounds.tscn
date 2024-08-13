@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brscyffvsmm42"]
+[gd_scene load_steps=11 format=3 uid="uid://brscyffvsmm42"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_h2tq8"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_u84vh"]
@@ -7,12 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://baajoxfci0h7" path="res://scenes/entities/environment/test_crate.tscn" id="4_wryas"]
 [ext_resource type="PackedScene" uid="uid://b3eu22l24js0b" path="res://scenes/entities/environment/light_source.tscn" id="6_0bvew"]
 [ext_resource type="PackedScene" uid="uid://bammgjxm85t3k" path="res://scenes/entities/environment/props/barrel.tscn" id="7_yaxtg"]
+[ext_resource type="PackedScene" uid="uid://daxcpqvhi4umu" path="res://scenes/entities/environment/traps/blade_shooter.tscn" id="8_yid4e"]
+[ext_resource type="PackedScene" uid="uid://5wfcbq4khtse" path="res://scenes/tilemap/prisontilemapfr.tscn" id="9_rxau1"]
+[ext_resource type="PackedScene" uid="uid://dbh34hxeti8yq" path="res://scenes/entities/environment/Potions/updraft.tscn" id="10_4nry6"]
 
 [node name="Testing Grounds" type="Node2D"]
 script = ExtResource("1_h2tq8")
 
 [node name="Player" parent="." instance=ExtResource("1_u84vh")]
-position = Vector2(72, 8)
+position = Vector2(192, 24)
 
 [node name="TileMap" parent="." instance=ExtResource("2_7icd0")]
 layer_0/tile_data = PackedInt32Array(262135, 589824, 10, 262136, 655360, 10, 262137, 720896, 10, 262138, 786432, 10, 262139, 851968, 10, 262140, 917504, 10, 262141, 983040, 10, 262142, 1048576, 10, 262143, 1114112, 10, 196608, 589824, 10, 196609, 655360, 10, 196610, 720896, 10, 196611, 786432, 10, 196612, 851968, 10, 196613, 917504, 10, 196614, 983040, 10, 196615, 1048576, 10, 196616, 1114112, 10, 196617, 589824, 10, 196618, 655360, 10, 196619, 720896, 10, 196620, 786432, 10, 196621, 851968, 10, 196622, 917504, 10, 196623, 983040, 10, 196624, 1048576, 10, 196625, 1114112, 10, 196626, 589824, 10, 196627, 655360, 10, 196628, 720896, 10, 196629, 786432, 10, 196630, 851968, 10, 196631, 917504, 10, 196632, 983040, 10, 196633, 1048576, 10, 196634, 1114112, 10, 196635, 589824, 10, 196636, 655360, 10, 196637, 720896, 10, 196638, 786432, 10, 196639, 851968, 10, 196640, 917504, 10, 196641, 983040, 10, 196642, 1048576, 10, 196643, 1114112, 10)
@@ -21,7 +24,16 @@ layer_0/tile_data = PackedInt32Array(262135, 589824, 10, 262136, 655360, 10, 262
 layer_0/tile_data = PackedInt32Array(65537, 0, 0, 131073, 0, 1, 65538, 65536, 0, 131074, 65536, 1, -65535, 0, 0, 1, 0, 1, -65534, 65536, 0, 2, 65536, 1, -196607, 0, 0, -131071, 0, 1, -196606, 65536, 0, -131070, 65536, 1, -327679, 0, 0, -262143, 0, 1, -327678, 65536, 0, -262142, 65536, 1)
 
 [node name="Crate" parent="." instance=ExtResource("4_wryas")]
-position = Vector2(-40, 24)
+position = Vector2(240, 24)
+mass = 20.0
+continuous_cd = 2
+can_sleep = false
+
+[node name="Crate2" parent="." instance=ExtResource("4_wryas")]
+position = Vector2(328, 24)
+mass = 20.0
+continuous_cd = 2
+can_sleep = false
 
 [node name="LightSource" parent="." instance=ExtResource("6_0bvew")]
 position = Vector2(-96, -32)
@@ -29,3 +41,18 @@ position = Vector2(-96, -32)
 [node name="Barrel" parent="." instance=ExtResource("7_yaxtg")]
 position = Vector2(256, -104)
 scale = Vector2(1.52941, 1.5625)
+
+[node name="Blade_Shooter" parent="." instance=ExtResource("8_yid4e")]
+position = Vector2(536, -80)
+rotation = 1.5708
+
+[node name="PRISONTILEMAPFR" parent="." instance=ExtResource("9_rxau1")]
+layer_0/tile_data = PackedInt32Array(196598, 262144, 2, 131062, 262144, 3, 65526, 262144, 1, -10, 262144, 3, -65546, 262144, 2, -131082, 262144, 2, -196618, 262144, 3, -262154, 262144, 2, -262155, 0, 3, -327691, 0, 3, -393226, 262144, 2, -327690, 262144, 1, -458762, 262144, 1, -524298, 262144, 0, 262134, 262144, 4, 262133, 0, 4, 196597, 0, 3, 131061, 0, 3, 65525, 0, 3, -11, 0, 3, -65547, 0, 3, -131083, 0, 3, -196619, 0, 3, -393227, 0, 3, -458763, 0, 1, -524299, 0, 0, 196644, 0, 4, 196645, 196608, 4, 196646, 65536, 4, 131111, 262144, 1, 65575, 262144, 1, 39, 262144, 1, 131110, 196608, 3, 65574, 196608, 3, 38, 196608, 1, -65498, 131072, 1, -131034, 65536, 2, -196570, 196608, 1, -262106, 65536, 3, -327642, 196608, 3, -393178, 65536, 1, -458714, 65536, 1, -524250, 65536, 1, -589786, 196608, 2, -655322, 65536, 3, -720858, 65536, 0, 131109, 65536, 3, 65573, 65536, 3, 37, 131072, 1, -65499, 65536, 1, -131035, 131072, 1, -196571, 131072, 1, -262107, 65536, 1, -327643, 196608, 1, -393179, 65536, 3, -458715, 196608, 1, -524251, 196608, 3, -589787, 196608, 1, -655323, 196608, 1, -720859, 131072, 0, 131108, 0, 1, 65572, 0, 1, 36, 0, 3, -65500, 0, 1, -131036, 0, 1, -196572, 0, 2, -262108, 0, 3, -327644, 0, 2, -393180, 0, 1, -458716, 0, 1, -524252, 0, 1, -589788, 0, 2, -655324, 0, 2, -720860, 0, 0, 196647, 262144, 4, -65497, 262144, 1, -131033, 262144, 1, -196569, 262144, 1, -262105, 262144, 1, -327641, 262144, 1, -393177, 262144, 1, -458713, 262144, 2, -524249, 262144, 1, -589785, 262144, 2, -655321, 262144, 3, -720857, 262144, 0)
+
+[node name="Updraft" parent="." instance=ExtResource("10_4nry6")]
+position = Vector2(144, 48)
+
+[node name="ExpireTimer" parent="Updraft" index="2"]
+wait_time = 5.0
+
+[editable path="Updraft"]

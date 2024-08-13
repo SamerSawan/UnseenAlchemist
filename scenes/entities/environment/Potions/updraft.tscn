@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbh34hxeti8yq"]
+
+[ext_resource type="Script" path="res://scripts/potions/updraft.gd" id="1_04xcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jka65"]
+size = Vector2(32, 154)
+
+[node name="Updraft" type="Node2D"]
+script = ExtResource("1_04xcp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 50
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+gravity = Vector2(0, -300)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_jka65")
+
+[node name="ExpireTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]
