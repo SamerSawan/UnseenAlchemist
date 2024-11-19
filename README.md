@@ -1,10 +1,16 @@
-Submission: https://bappleboi.itch.io/unseen-alchemist
+# Unseen Alchemist
+Unseen Alchemist is a game about the protagonist, Yarn, who is trying to use shadows and alchemy to escape from a dark dungeon! Will Yarn be able to see the sunlight again?
+Try the game at https://bappleboi.itch.io/unseen-alchemist!
 
-# Contribution Guidelines
+## Why?
+Unseen Alchemist was created as a submission for the PirateJam 15, organized by Twitch Streamer and Youtuber PirateSoftware. Unseen Alchemist was in the top 3% of submissions at the conclusion of the judging period. 
 
-1. Make a branch titled after the feature you are implementing
-2. Test feature to make sure the whole game works with said feature
-3. Push to remote and create pull request
-4. Assign (SamerSawan) or (BromarBalkis) as reviewers
-5. Wait until pull request is approved
-6. Merge
+## Contributing
+
+### Clone the repo
+```bash
+git clone https://github.com/SamerSawan/UnseenAlchemist
+```
+
+Create a new branch named after your desired feature or addition, then launch the project in Godot.
+Once you've completed your feature, please submit a pull request to the main branch.
