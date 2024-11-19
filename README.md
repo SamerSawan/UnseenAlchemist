@@ -1,6 +1,9 @@
 # Unseen Alchemist
 Unseen Alchemist is a game about the protagonist, Yarn, who is trying to use shadows and alchemy to escape from a dark dungeon! Will Yarn be able to see the sunlight again?
-Try the game at https://bappleboi.itch.io/unseen-alchemist!
+Try the game [here](https://bappleboi.itch.io/unseen-alchemist)!
+
+![image](https://github.com/user-attachments/assets/b08b0192-3066-4008-836a-78991defbc31)
+
 
 ## Why?
 Unseen Alchemist was created as a submission for the PirateJam 15, organized by Twitch Streamer and Youtuber PirateSoftware. Unseen Alchemist was in the top 3% of submissions at the conclusion of the judging period. 
