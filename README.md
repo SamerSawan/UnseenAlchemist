@@ -21,6 +21,6 @@ Once you've completed your feature, please submit a pull request to the main bra
 ## Team
 - [SamerSawan](https://github.com/SamerSawan) - Programming Lead
 - [BromarBalkis](https://github.com/BromarBalkis) - Developer
-- [Totsnuk](https://github.com/tot121212) - Developer
+- [Totsnuk](https://github.com/tot121212) - Developer and Musician
 - PencilNexus (pencilnexus on discord) - Artist
 - Sheepy (greensheep27 on discord) - Artist
