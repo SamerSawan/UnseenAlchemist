@@ -6,7 +6,7 @@ Try the game [here](https://bappleboi.itch.io/unseen-alchemist)!
 
 
 ## Why?
-Unseen Alchemist was created as a submission for the PirateJam 15, organized by Twitch Streamer and Youtuber PirateSoftware. Unseen Alchemist was in the top 3% of submissions at the conclusion of the judging period. 
+Unseen Alchemist was created as a submission for the PirateJam 15, organized by Twitch Streamer and Youtuber PirateSoftware. Unseen Alchemist was built in 2 weeks and scored in the top 3% of submissions at the conclusion of the judging period. 
 
 ## Contributing
 
