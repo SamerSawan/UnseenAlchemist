@@ -17,3 +17,10 @@ git clone https://github.com/SamerSawan/UnseenAlchemist
 
 Create a new branch named after your desired feature or addition, then launch the project in Godot.
 Once you've completed your feature, please submit a pull request to the main branch.
+
+## Team
+[SamerSawan](https://github.com/SamerSawan) - Programming Lead
+[BromarBalkis](https://github.com/BromarBalkis) - Developer
+[Totsnuk](https://github.com/tot121212) - Developer
+PencilNexus (pencilnexus on discord) - Artist
+Sheepy (greensheep27 on discord) - Artist
